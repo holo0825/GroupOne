@@ -38,6 +38,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <!-- 後台 -->
 	<link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+	
 </head>
 <style>
 body {
@@ -548,10 +549,10 @@ body {
                     </a>
                     <ul class="collapse list-unstyled" id="page4">
                         <li>
-                            <a href="#">活動管理 明細</a>
+                            <a href="<c:url value='/ActivityRegister' />">活動管理 明細</a>
                         </li>
                         <li>
-                            <a href="<c:url value='/RecordParticipantBack'/>">報名參加者管理 明細</a>
+                            <a href="<c:url value='/admin/RecordParticipantBack'/>">報名參加者管理 明細</a>
                         </li>
                         
                     </ul>
@@ -568,8 +569,8 @@ body {
                        
                     </ul>
                 </li>
-                <li >
-                    <a href="#page5"  >
+                <li style="background-color:#1c0f54;">
+                    <a href="<c:url value='/GroupOneHome' />"  >
                         <i class="icon icon-single-04"></i>
                         返回首頁
                     </a>
@@ -579,7 +580,7 @@ body {
 	</div>
 
 
-	<form:form action="${pageContext.request.contextPath}/activityInsert" method="post" 
+	<form:form action="${pageContext.request.contextPath}/admin/activityInsert" method="post" 
 			onsubmit="return checkStyle()" modelAttribute="activity" enctype="multipart/form-data">
 		
 		<div class="col-md-12 text-center">
@@ -763,11 +764,11 @@ body {
                             <td>
                                 <a href="<c:url value='/activitypage?id=${activity.id}' />" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
 <%-- 								<a href="#" class="edit" title="Edit" data-toggle="tooltip"> --%>
-								<a href="${pageContext.request.contextPath}/activityEdit?id=<c:out value='${activity.id}' />" class="edit" title="Edit" data-toggle="tooltip">
+								<a href="${pageContext.request.contextPath}/admin/activityEdit?id=<c:out value='${activity.id}' />" class="edit" title="Edit" data-toggle="tooltip">
                                 <i class="material-icons">&#xE254;</i></a>
 
 <%-- 								<a href='#' onclick="if(window.confirm('確定要刪除？')) location.href ='<c:url value='/delete?id=${RecordParticipant.recordId}'/>'" class="delete" title="Delete" data-toggle="tooltip"> --%>
-								<a href="${pageContext.request.contextPath}/activityDelete?id=<c:out value='${activity.id}' />" class="delete" title="Delete" data-toggle="tooltip">
+								<a href="${pageContext.request.contextPath}/admin/activityDelete?id=<c:out value='${activity.id}' />" class="delete" title="Delete" data-toggle="tooltip">
 	         								<i class="material-icons">&#xE872;</i>
 	        					</a>
                             </td>

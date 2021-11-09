@@ -13,8 +13,8 @@ import javax.persistence.Table;
 public class RecordParticipantBean {
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer recordId;
+
+	private String recordId;
 	private String s_username; //廠商帳號
 	private String activity_topic;
 	private String u_userid;//顧客帳號
@@ -28,11 +28,11 @@ public class RecordParticipantBean {
 
 	}
 
-	public Integer getRecordId() {
+	public String getRecordId() {
 		return recordId;
 	}
 
-	public void setRecordId(Integer recordId) {
+	public void setRecordId(String recordId) {
 		this.recordId = recordId;
 	}
 
@@ -99,9 +99,10 @@ public class RecordParticipantBean {
 	public void setCreate_date(Date create_date) {
 		this.create_date = create_date;
 	}
-
-	public RecordParticipantBean(Integer recordId, String s_username, String activity_topic, String u_userid,
+	//建構子
+	public RecordParticipantBean(String recordId, String s_username, String activity_topic, String u_userid,
 			String u_username, Integer u_phone, String sent_email, String u_styles, Date create_date) {
+		super();
 		this.recordId = recordId;
 		this.s_username = s_username;
 		this.activity_topic = activity_topic;
@@ -114,8 +115,12 @@ public class RecordParticipantBean {
 	}
 
 	
+
 	
-	//建構子
+
+	
+	
+	
 	
 	
 	

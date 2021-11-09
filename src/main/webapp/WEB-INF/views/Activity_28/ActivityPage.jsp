@@ -286,6 +286,7 @@ response.setDateHeader ("Expires", -1); // Prevents caching at the proxy server
             
 </style>
 <script>
+	
        //navbar float
         window.addEventListener('scroll', function (e) {
             var method = window.scrollY <= 10 ? 'add' : 'remove'
@@ -310,6 +311,8 @@ response.setDateHeader ("Expires", -1); // Prevents caching at the proxy server
                     last_scroll_top = scroll_top;
                 });
             }
+            
+            console.log(${user.getUsername()})
         })
         
      //Filter DIV Elements
@@ -344,17 +347,18 @@ response.setDateHeader ("Expires", -1); // Prevents caching at the proxy server
             }
             element.className = arr1.join(" ");
         }
-
-        // Add active class to the current button (highlight it)
-        var btnContainer = document.getElementById("myBtnContainer");
-        var btns = btnContainer.getElementsByClassName("bttn");
-        for (var i = 0; i < btns.length; i++) {
-            btns[i].addEventListener("click", function () {
-                var current = document.getElementsByClassName("activee");
-                current[0].className = current[0].className.replace(" activee", "");
-                this.className += " activee";
-            });
-        }
+        $(function(){ // Add active class to the current button (highlight it)
+            var btnContainer = document.getElementById("myBtnContainer");
+            var btns = btnContainer.getElementsByClassName("bttn");
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener("click", function () {
+                    var current = document.getElementsByClassName("activee");
+                    current[0].className = current[0].className.replace(" activee", "");
+                    this.className += " activee";
+                });
+            }          
+            })
+        
 </script>
 <body>
 	<!--nar bar first-->
@@ -363,9 +367,9 @@ response.setDateHeader ("Expires", -1); // Prevents caching at the proxy server
     <a class="nav-link text-decoration-none co" href="<c:url value='/ActivityRegister' />">後端</a>
     <a class="nav-link text-decoration-none co" href="<c:url value='/test' />">後端2</a>
     
-        <form class="form-inline my-2 my-lg-0 ml-auto">
-		      <input class="form-control mr-sm-2" type="search" placeholder="查詢主題關鍵字" aria-label="Search" style="height: 30px;">
-		      <button class="btn btn-outline-success my-2 my-sm-0 btn-sm" type="submit">查詢</button>
+        <form class="form-inline my-2 my-lg-0 ml-auto" action="${pageContext.request.contextPath}/activityQuery">
+		      <input class="form-control mr-sm-2" type="search" name="search" placeholder="查詢主題關鍵字" aria-label="Search" style="height: 30px;">
+		      <button  class="btn btn-outline-success my-2 my-sm-0 btn-sm" type="submit">查詢</button>
 		</form>
 <%--         <a class="text-decoration-none co" style="font-size:x-small; padding-left: 5px;padding-right: 5px;" font color="#FFFFFF" href="<c:url value='/UserTryLogin' />">登入</a> --%>
 <%--         <a class="text-decoration-none co" style="font-size:x-small; padding-right: 5px;" font color="#FFFFFF" href="<c:url value='/' />">註冊</a> --%>
@@ -377,11 +381,18 @@ response.setDateHeader ("Expires", -1); // Prevents caching at the proxy server
                 <a class="sign-popup-btn loingcolor" style="font-size:x-small; margin-right: 153px;"  href="#" title="Register" itemprop="url">賣家中心</a>
              </c:when>
              <c:otherwise>
-             	<span>${user.getUsername()}</span>&nbsp&nbsp&nbsp
+             	<span>${user.username}</span>&nbsp&nbsp&nbsp
              	<a class="sign-popup-btn loingcolor" href="#" title="Register" itemprop="url">登出</a>
              </c:otherwise>
         </c:choose>
         
+        
+        
+        
+<%--         <c:if test="${managerSession != null}"> --%>
+<%-- 	              <li class="nav-item"><a class="nav-link" href="<c:url value='/manager_Ui0' />">Hi管理員!!! &nbsp; --%>
+<%-- 	      ${loginSession.userEmail}</a></li> --%>
+<%--     	</c:if> --%>
         
     </nav>
 
@@ -527,7 +538,7 @@ response.setDateHeader ("Expires", -1); // Prevents caching at the proxy server
                             </div>
                             <div class="col-md-3 col-sm-6 col-lg-3">
                                 <div class="widget information_links wow fadeIn" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeIn;">
-                                    <h4 class="widget-title" itemprop="headline">About Shop</h4>
+                                    <h4 class="widget-title" itemprop="headline">購物流程</h4>
                                     <ul>
                                         <li>
                                             <a href="#" title="" itemprop="url">購物須知</a>

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.GroupOne.kai.model.ActivityBean;
@@ -21,6 +22,7 @@ import com.GroupOne.kai.model.RecordParticipantBean;
 import com.GroupOne.kai.service.RecordParticipantService;
 
 @Controller
+@SessionAttributes({"admin", "user"})
 public class RecordParticipantController {
 	
 	RecordParticipantService recordParticipantService;
@@ -48,7 +50,7 @@ public class RecordParticipantController {
 			ActivityBean activityBean = new ActivityBean();
 			System.out.println("******************"+recordParticipant.getRecordId());
 
-			return "redirect:Activity_28/RecordParticipantBack";
+			return "redirect:/RecordParticipantBack";
 
 		}
 		
@@ -61,15 +63,15 @@ public class RecordParticipantController {
 		System.out.println("+++POST++立即報名按下++++++>"+recordParticipant.getActivity_topic());
 		model.addAttribute("RecordParticipant",recordParticipant);
 
-		return "redirect:Activity_28/activitypage?id={id}";
+		return "redirect:/activitypage?id={id}";
 		
 		}
 	//[後端]確認刪除ID後V
 		@GetMapping("/delete")
-		public String delete(@RequestParam Integer id) {
+		public String delete(@RequestParam String id) {
 			recordParticipantService.deleteRecordParticipant(id);
 			
-			return "redirect:Activity_28/RecordParticipantBack";
+			return "redirect:/RecordParticipantBack";
 		}
 	
 	

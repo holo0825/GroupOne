@@ -79,31 +79,31 @@ body {
 	margin-left: 60px;
 }
 
-.btn {
-	display: inline-block;
-	padding: 10px 20px;
-	font-size: 10px;
-	cursor: pointer;
-	text-align: center;
-	text-decoration: none;
-	outline: none;
-	color: #fff;
-	background-color: #3f18cf;
-	border: none;
-	border-radius: 10px;
-	box-shadow: 0 5px #999;
+.btn { 
+/* 	display: inline-block; */
+/* 	padding: 10px 20px; */
+/* 	font-size: 10px; */
+/* 	cursor: pointer; */
+/* 	text-align: center; */
+/* 	text-decoration: none; */
+/* 	outline: none; */
+/* 	color: #fff; */
+/* 	background-color: #3f18cf; */
+/* 	border: none; */
+/* 	border-radius: 10px; */
+/* 	box-shadow: 0 5px #999; */
 	margin-left: 50px;
-}
+ } 
 
 .btn:hover {
 	background-color: #2e7fdb
 }
 
-.btn:active {
-	background-color: #3e8e41;
+ .btn:active {
+ 	background-color: #3e8e41;
 	box-shadow: 0 5px #666;
-	transform: translateY(4px);
-}
+ 	transform: translateY(4px);
+ } 
 
 .btn1 {
 	display: inline-block;
@@ -196,13 +196,13 @@ body {
 						<td><c:out value="${activity.quota}" /></td>
 						<td><c:out value="${activity.bonus_point}" /></td>
 						<td>
-							<input type="submit" value="確認">
+							<input type="submit"class="btn btn-primary" value="確認">
 						</td>
 					</tr>
 
 				</tbody>
 			</table>
-			<input type="button" class="btn" value="返回" onclick="window.history.go(-1); return false;">
+			<input type="button" class="btn btn-primary" value="返回" onclick="window.history.go(-1); return false;">
 			<input type="hidden" name="id" value="${activity.id}"/>
 		</form>
 	</div>

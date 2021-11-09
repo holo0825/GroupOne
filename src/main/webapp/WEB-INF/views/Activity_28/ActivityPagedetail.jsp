@@ -518,7 +518,7 @@ response.setDateHeader ("Expires", -1); // Prevents caching at the proxy server
                             </div>
                             <div class="col-md-3 col-sm-6 col-lg-3">
                                 <div class="widget information_links wow fadeIn" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeIn;">
-                                    <h4 class="widget-title" itemprop="headline">About Shop</h4>
+                                    <h4 class="widget-title" itemprop="headline">購物流程</h4>
                                     <ul>
                                         <li>
                                             <a href="#" title="" itemprop="url">購物須知</a>

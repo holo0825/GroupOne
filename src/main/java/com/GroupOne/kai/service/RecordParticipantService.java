@@ -16,7 +16,7 @@ public interface RecordParticipantService {
 	List<RecordParticipantBean> selectAllUsers();
 	
 	//刪除活動資料
-	void deleteRecordParticipant(int id);
+	void deleteRecordParticipant(String id);
 	
 	//更新報名人數
 	void updatequota(int id,int quota);

@@ -39,9 +39,9 @@ public class RecordParticipantServiceImpl implements RecordParticipantService {
 	}
 
 	@Override
-	public void deleteRecordParticipant(int id) {
+	public void deleteRecordParticipant(String id) {
 		
-		recordParticipantRepository.deleteById(id);
+		recordParticipantRepository.deleteByRid(id);
 		
 	}
 	//更新報名人數

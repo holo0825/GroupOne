@@ -12,6 +12,13 @@ import com.GroupOne.kai.model.RecordParticipantBean;
 
 public interface RecordParticipantRepository 
 				extends JpaRepository<RecordParticipantBean, Integer>{
+
+	
+	@Transactional
+	 @Modifying
+	  @Query(nativeQuery = true,value="delete from Record_Participant where recordId=?1 ")
+	 public void deleteByRid(String id);
+	
 	
 	
 	
