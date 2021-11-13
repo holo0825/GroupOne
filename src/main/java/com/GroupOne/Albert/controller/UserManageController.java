@@ -53,12 +53,14 @@ public class UserManageController {
 		List<Member> listUser = umService.selectAllUsers();
 		model.addAttribute("listUser", listUser);
 //		return "user-list";
-		return "_new_user_list";
+		return "Members/_new_user_DataTable";
+//		return "_new_user_DataTable";
 	}
 
 	@GetMapping("/newuser")
 	public String showNewForm(Model model) {
-		return "user-form";
+//		return "user-form";
+		return "Members/_new_user_form";
 	}
 	
 	// 點選編輯按鈕，抓取PathVariable的userId，根據userId查詢使用者資料，並填入編輯表單輸入框
@@ -69,7 +71,8 @@ public class UserManageController {
 //		UserBean existingUser = umService.selectUser(userId);
 		Member existingUser = umService.selectUser(userId);
 		model.addAttribute("user", existingUser);
-		return "user-form";
+//		return "user-form";
+		return "Members/_new_user_form";
 	}
 
 	@GetMapping("/insertuser")
@@ -87,7 +90,7 @@ public class UserManageController {
 //		UserBean newUser = new UserBean(username, password, fullname, dob, gender, email, phoneNumber, homeNumber, bonusPoint);
 		Member newUser = new Member(username, password, fullname, dob, gender, email, phoneNumber, homeNumber, bonusPoint);
 		umService.insertUser(newUser);
-		return "redirect:/UserAll/listuser";
+		return "redirect:/admin/listuser";
 	}
 
 	@GetMapping("/updateuser")
@@ -108,7 +111,7 @@ public class UserManageController {
 //		UserBean book = new UserBean(id, username, password, fullname, dob, gender, email, phoneNumber, homeNumber, bonusPoint);
 		Member book = new Member(id, username, password, fullname, dob, gender, email, phoneNumber, homeNumber, bonusPoint);
 		umService.updateUser(book);
-		return "redirect:/UserAll/listuser";
+		return "redirect:/admin/listuser";
 	}
 
 //	@GetMapping("/deleteuser")
@@ -116,7 +119,7 @@ public class UserManageController {
 //	public String deleteUser(@RequestParam int id, Model model) throws SQLException{
 	public String deleteUser(@PathVariable int userId, Model model) throws SQLException{
 		umService.deleteUser(userId);
-		return "redirect:/UserAll/listuser";
+		return "redirect:/admin/listuser";
 	}
 	
 //--------------------------------------------------------------------------
@@ -136,7 +139,8 @@ public class UserManageController {
 //		List<UserBean> listUser = umService.selectAllUsers();
 		List<Member> listUser = umService.selectAllUsers();
 		model.addAttribute("listUser", listUser);
-		return "user-list";
+//		return "user-list";
+		return "Members/_new_user_DataTable";
 	}
 	
 	// 專門處理Ajax更新功能
@@ -157,7 +161,7 @@ public class UserManageController {
 //		UserBean book = new UserBean(id, username, password, fullname, dob, gender, email, phoneNumber, homeNumber, bonusPoint);
 		Member book = new Member(id, username, password, fullname, dob, gender, email, phoneNumber, homeNumber, bonusPoint);
 		umService.updateUser(book);
-		return "redirect:/UserAll/listuser";
+		return "redirect:/admin/listuser";
 	}
 	
 	// 專門處理Ajax新增功能
@@ -176,7 +180,7 @@ public class UserManageController {
 //		UserBean newUser = new UserBean(username, password, fullname, dob, gender, email, phoneNumber, homeNumber, bonusPoint);
 		Member newUser = new Member(username, password, fullname, dob, gender, email, phoneNumber, homeNumber, bonusPoint);
 		umService.insertUser(newUser);
-		return "redirect:/UserAll/listuser";
+		return "redirect:/admin/listuser";
 	}
 
 }

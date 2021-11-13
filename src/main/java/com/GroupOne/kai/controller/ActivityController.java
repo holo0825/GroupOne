@@ -234,12 +234,12 @@ public class ActivityController {
 		return "/Test";
 	}
 	//[首頁]2
-	@GetMapping("/GroupOneHome")
-	public String home( Model model) {
-	
-				
-		return "GroupOneHome";
-	}
+//	@GetMapping("/GroupOneHome")
+//	public String home( Model model) {
+//	
+//				
+//		return "GroupOneHome";
+//	}
 	
 	//冠宇logout方法
 	@GetMapping("/Userlogout2")

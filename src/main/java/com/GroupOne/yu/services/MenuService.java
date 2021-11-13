@@ -28,7 +28,7 @@ public interface MenuService {
 	//賣家&消費者  查詢單筆菜色
 	MenuBean findByProductName(String productName);
 	//Optional<MenuBean> findByProduct(String productName);
-	//MenuBean findById(Integer id);
+	Optional<MenuBean> findById(Integer id);
 		
 	//賣家 根據餐廳名稱查詢自家菜單
 	//MenuBean findByMyRstName(String rstName);

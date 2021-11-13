@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.GroupOne.Albert.members.Member;
+import com.GroupOne.Albert.members.MemberRole;
 import com.GroupOne.Albert.members.oldusers.SellerBean;
 
 // Admin管理Seller會員的Service介面，裡面定義抽象方法給Service實作類別(SellerManageServiceImpl.java)Override使用

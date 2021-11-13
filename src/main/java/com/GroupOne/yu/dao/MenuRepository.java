@@ -22,7 +22,7 @@ public interface MenuRepository
 	//賣家&消費者 查詢單筆菜色
 	MenuBean findByProductName(String productName);
 	//Optional<MenuBean> findByProduct(String productName);
-	//MenuBean findById(Integer id);
+	Optional<MenuBean> findById(Integer id);
 	
 	//買家 根據單一餐廳查詢菜單
 	MenuBean findByRstName(String rstName);	

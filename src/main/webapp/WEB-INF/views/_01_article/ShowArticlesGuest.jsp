@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isErrorPage="true"%>
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,6 +27,10 @@
 <link rel="stylesheet" href="assets/css/red-color.css">
 <link rel="stylesheet" href="assets/css/yellow-color.css">
 <link rel="stylesheet" href="assets/css/responsive.css">
+<link rel="stylesheet"
+	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+	crossorigin="anonymous" />
 </head>
 <body itemscope>
 	<main>
@@ -51,55 +56,81 @@
 			<div class="topbar">
 				<div class="container">
 					<div class="topbar-register">
-						<a class="log-popup-btn" href="#" title="Login" itemprop="url">登入</a>
-						<a class="sign-popup-btn" href="#" title="Register" itemprop="url">註冊</a>
-						<a class="sign-popup-btn" href="#" title="Register" itemprop="url">賣家中心</a>
-					</div>
-					<div class="social1">
-						<a href="#" title="Facebook" itemprop="url" target="_blank"><i
-							class="fa fa-facebook-square"></i></a>
-					</div>
+                    <c:choose>
+                        <c:when test="${empty user}">
+                            <a  href="<c:url value="/login" />" title="Login" itemprop="url">登入</a>
+                            <a href="<c:url value="/register" />" title="Register" itemprop="url">註冊</a>
+                            <a class="sign-popup-btn" href="#" title="Register" itemprop="url">賣家中心</a>
+                        </c:when>
+                        <c:otherwise>
+                            <span>${user.getUsername()}</span>&nbsp&nbsp&nbsp
+<!--                             <a class="sign-popup-btn" href="#" title="Register" itemprop="url">登出</a> -->
+                            <span class="">
+                                <form action="<c:url value='/logout' />" method="post" style="display:inline;font-size:15px">
+                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                    <input type="submit" value="登出" style="color:white;background:#161616;">
+                                </form> 
+                            </span>
+
+                        </c:otherwise>
+                    </c:choose>
+                    </div>
+					<div class="social1" style="margin-top:12px;!important">
+                        <a href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook-square"></i></a>
+                        <a href="#" title="Google Plus" itemprop="url" target="_blank"><i class="fa fa-google-plus"></i></a>
+                    </div>
 				</div>
 			</div>
 			<!-- Topbar -->
 			<div class="logo-menu-sec">
-				<div class="container" style="margin-left: 350px;">
-
+				<div class="container" >
+					<div class="logo" style="margin:12px 0 0 0 ;!important">
+						<h1 itemprop="headline">
+							<a href="index.html" title="Home" itemprop="url">
+								<img style="width:150px;" src="assets/images/icon_get_together.png" alt="Logo.png" itemprop="image">
+							</a>
+						</h1>
+					</div>
 					<nav>
 						<div class="menu-sec">
-							<ul>
-								<li class="menu-item-has-children"><a href="./home"
-									title="HOMEPAGES" itemprop="url"><span class="red-clr"></span>首頁</a>
-									<ul class="sub-dropdown">
-										<li><a href="index.html" title="HOMEPAGE 1"
-											itemprop="url">HOMEPAGE 1</a></li>
-										<li><a href="index2.html" title="HOMEPAGE 2"
-											itemprop="url">HOMEPAGE 2</a></li>
-									</ul></li>
-								<li class="menu-item-has-children"><a href="#"
-									title="RESTAURANTS" itemprop="url"><span class="red-clr"></span>餐廳</a>
-								</li>
-								<li class="menu-item-has-children"><a href="#"
-									title="PAGES" itemprop="url"><span class="red-clr"></span>團購</a>
-								</li>
-								<li class="menu-item-has-children"><a href="#"
-									title="PAGES" itemprop="url"><span class="red-clr"></span>活動</a>
-								</li>
-								<li class="menu-item-has-children"><a
-									href="./ShowArticlesGuest" title="PAGES" itemprop="url"><span
-										class="red-clr"></span>討論區</a></li>
-								<li class="menu-item-has-children"><a href="#"
-									title="PAGES" itemprop="url"><span class="red-clr"></span>購物車</a>
-									<ul class="sub-dropdown">
-										<li><a href="index.html" title="HOMEPAGE 1"
-											itemprop="url">訂餐</a></li>
-										<li><a href="index2.html" title="HOMEPAGE 2"
-											itemprop="url">團購</a></li>
-									</ul></li>
-								<li class="menu-item-has-children"><a href="#"
-									title="PAGES" itemprop="url"><span class="red-clr"></span>會員中心</a>
-								</li>
-							</ul>
+							 <ul>
+                                <li class="menu-item-has-children">
+                                    <a href="<c:url value='/GroupOneHome' />" title="GroupOneHome" itemprop="url"><span class="red-clr"></span>首頁</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="<c:url value='/searchallrestaurant' />" title="RESTAURANTS" itemprop="url"><span class="red-clr"></span>餐廳</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="<c:url value='/customerSearch' />" title="customerSearch" itemprop="url"><span class="red-clr"></span>團購</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="<c:url value='/ActivityPage' />" title="Activity" itemprop="url"><span class="red-clr"></span>活動</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="<c:url value='/ShowArticlesGuest' />" title="ShowArticlesGuest" itemprop="url"><span class="red-clr"></span>討論區</a>
+
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="#" title="CartList" itemprop="url"><span class="red-clr"></span>購物車</a>
+                                    <ul class="sub-dropdown">
+                                        <li>
+                                            <a href="<c:url value='/user/CartList/food' />" title="food" itemprop="url">訂餐</a>
+                                        </li>
+                                        <li>
+                                            <a href="<c:url value='/user/CartList/coupon' />" title="coupon" itemprop="url">團購</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="#" title="#" itemprop="url"><span class="red-clr"></span>會員中心</a>
+                                    <ul class="sub-dropdown">
+                                        <li>
+                                            <a href="<c:url value='/user/AllCarts' />" itemprop="url">訂單紀錄</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                
+                            </ul>
 
 						</div>
 					</nav>
@@ -213,6 +244,13 @@
                                                 
                                             </div>
                                         </div>
+                                        <c:choose>
+                                        <c:when test="${!empty user}">
+                                        <a href="<c:url value='/user/insertArticleUser' />"><font
+												size='5'><i class="fas fa-edit"></i>新增貼文</font></a>
+                                        
+                                        </c:when>
+                                        </c:choose>
                                         </div>
                                         </div>
 									<div class="pagination-wrapper text-center">

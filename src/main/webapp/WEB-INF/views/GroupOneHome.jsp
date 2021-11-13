@@ -17,7 +17,9 @@ response.setDateHeader ("Expires", -1); // Prevents caching at the proxy server
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <title>Food Ordering HTML Template</title>
+
+    <title>聚點時刻 - 首頁</title>
+
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/icons.min.css">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -81,8 +83,8 @@ response.setDateHeader ("Expires", -1); // Prevents caching at the proxy server
             </div>
             <!-- Topbar -->
             <div class="logo-menu-sec">
-               <div class="container" ">
-				<div class="logo" style="margin:10px 0 0 0 ;!important">
+               <div class="container" style="margin-left: 220px;">
+				<div class="logo" style="margin:12px 0 0 0 ;!important">
 				<h1 itemprop="headline">
 					<a href="index.html" title="Home" itemprop="url">
 						<img style="width:150px;" src="assets/images/icon_get_together.png" alt="Logo.png" itemprop="image">

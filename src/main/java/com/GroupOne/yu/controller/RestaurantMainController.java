@@ -44,16 +44,11 @@ public class RestaurantMainController {
 		return bean;
 	}
 
-	// 餐廳首頁
-	@GetMapping("top")
-	public String restauranttop() {
-		return "Restaurant_Menu/top";
-	}
-
 	// 買家 查詢所有餐廳
 	@GetMapping("/searchallrestaurant") // 對應前端jsp畫面的value值
 	public String list(Model model) {
-		List<RestaurantBean> list = restaurantService.findAllRestaurant();
+	//	List<RestaurantBean> list = restaurantService.findAllRestaurant();
+		List<RestaurantBean> list = restaurantService.findAllRst();		
 		System.out.println("list size=" + list.size());
 		model.addAttribute("rstName", list);
 		return "Restaurant_Menu/restaurants"; // 查詢完進到的jsp頁面
@@ -79,10 +74,11 @@ public class RestaurantMainController {
 
 	//買家 商品加入購物車，導向購物車畫面
 	@GetMapping(value = "/user/OrderForm")
-	public String sellerForm(Model model, RedirectAttributes red, @RequestParam(value = "rstName") String rstName,
+	public String sellerForm(Model model, RedirectAttributes red, @RequestParam(value = "id") Integer id, @RequestParam(value = "rstName") String rstName,
 			@RequestParam(value = "productName") String productName, @RequestParam(value = "price") String price,
 			@RequestParam(value = "number") String number) {
 
+		red.addAttribute("id", id);
 		red.addAttribute("rstName", rstName);
 		red.addAttribute("name", productName); // "name"要跟團購的名稱相同
 		red.addAttribute("price", price);

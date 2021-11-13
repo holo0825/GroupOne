@@ -152,7 +152,7 @@
 									<i class="mdi mdi-account"></i>
 							</a>
 								<div class="dropdown-menu dropdown-menu-right">
-									  <a href="./page-login.html" class="dropdown-item">
+									<a href="./page-login.html" class="dropdown-item">
                                         <i class="icon-key"></i>
                                         <span class="ml-2">
                                             <form action="<c:url value='/logout' />" method="post" style="display:inline;">
@@ -198,19 +198,12 @@
 					</li>
 						
 					<li><a class="has-arrow" href="javascript:void()"
-						aria-expanded="false"><i class="icon icon-single-04"></i><span
-							class="nav-text">團購管理</span></a>
-						<ul aria-expanded="false">
-							<li><a href="./index.html">A</a></li>
-							<li><a class="has-arrow" href="javascript:void()"
-								aria-expanded="false">B</a>
-								<ul aria-expanded="false">
-									<li><a href="./email-compose.html">1</a></li>
-									<li><a href="./email-inbox.html">2</a></li>
-									<li><a href="./email-read.html">3</a></li>
-								</ul></li>
-						</ul>
-					</li>
+                        aria-expanded="false"><i class="icon icon-single-04"></i><span
+                            class="nav-text">團購餐券管理</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="<c:url value='/admin/adminGroupBuy' />">團購餐券總覽</a></li>
+                        </ul>
+                    </li>
 					
 					<li><a class="has-arrow" href="javascript:void()"
 						aria-expanded="false"><i class="icon icon-single-04"></i><span

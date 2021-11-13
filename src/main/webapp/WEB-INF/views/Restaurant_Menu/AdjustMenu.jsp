@@ -67,50 +67,85 @@ td, th {
 		<div class="topbar">
 			<div class="container">
 				<div class="topbar-register">
-					<a class="log-popup-btn" href="#" title="Login" itemprop="url">登入</a>
-					<a class="sign-popup-btn" href="#" title="Register" itemprop="url">註冊</a>
-					<a href="<c:url value='/seller/ManageRestaurant' />">賣家中心</a>
+					<!-- <a class="log-popup-btn" href="#" title="Login" itemprop="url">登入</a>
+                         <a class="sign-popup-btn" href="#" title="Register" itemprop="url">註冊</a>
+                         <a class="sign-popup-btn" href="#" title="Register" itemprop="url">賣家中心</a>-->
+
+					<c:choose>
+						<c:when test="${user.username == null}">
+							<a href="<c:url value='/login' />" title="Login" itemprop="url">登入</a>
+							<a href="<c:url value='/register' />" title="Register"
+								itemprop="url">註冊</a>
+							<a href="<c:url value='/seller/home' />" title="sellerhome"
+								itemprop="url">賣家中心</a>
+						</c:when>
+						<c:otherwise>
+							<span>${user.getUsername()}</span>&nbsp&nbsp&nbsp
+                               <span class="">
+								<form action="<c:url value='/logout' />" method="post"
+									style="display: inline; font-size: 13px">
+									<input type="hidden" name="${_csrf.parameterName}"
+										value="${_csrf.token}" /> <input type="submit" value="登出"
+										style="color: white; background: #161616;">
+								</form>
+							</span>
+						</c:otherwise>
+					</c:choose>
 				</div>
-				<div class="social1">
+				<div class="social1" style="margin-top: 16px;!important">
 					<a href="#" title="Facebook" itemprop="url" target="_blank"><i
-						class="fa fa-facebook-square"></i></a>
+						class="fa fa-facebook-square"></i></a> <a href="#" title="Google Plus"
+						itemprop="url" target="_blank"><i class="fa fa-google-plus"></i></a>
 				</div>
 			</div>
 		</div>
 		<!-- Topbar -->
 		<div class="logo-menu-sec">
-			<div class="container" style="margin-left: 250px;">
-				<div class="logo">
+			<div class="container" style="margin-left: 220px;">
+				<div class="logo" style="margin: 12px 0 0 0;!important">
 					<h1 itemprop="headline">
-						<a href="index.html" title="Home" itemprop="url"><img
-							src="../assets/images/logo2.png" alt="logo.png" itemprop="image"></a>
+						<a href="index.html" title="Home" itemprop="url"> <img
+							style="width: 150px;"
+							src="../assets/images/icon_get_together.png" alt="Logo.png"
+							itemprop="image">
+						</a>
 					</h1>
 				</div>
-
 				<nav>
 					<div class="menu-sec">
 						<ul>
-							<li class="menu-item-has-children"><a href="#"
-								title="HOMEPAGES" itemprop="url"><span class="red-clr"></span>首頁</a>
-							</li>
-							<li class="menu-item-has-children"><a href="#"
+							<li class="menu-item-has-children"><a
+								href="<c:url value='/GroupOneHome' />" title="GroupOneHome"
+								itemprop="url"><span class="red-clr"></span>首頁</a></li>
+							<li class="menu-item-has-children"><a
+								href="<c:url value='/searchallrestaurant' />"
 								title="RESTAURANTS" itemprop="url"><span class="red-clr"></span>餐廳</a>
 							</li>
-							<li class="menu-item-has-children"><a href="#" title="PAGES"
+							<li class="menu-item-has-children"><a
+								href="<c:url value='/customerSearch' />" title="customerSearch"
 								itemprop="url"><span class="red-clr"></span>團購</a></li>
-							<li class="menu-item-has-children"><a href="#" title="PAGES"
+							<li class="menu-item-has-children"><a
+								href="<c:url value='/ActivityPage' />" title="Activity"
 								itemprop="url"><span class="red-clr"></span>活動</a></li>
-							<li class="menu-item-has-children"><a href="#" title="PAGES"
-								itemprop="url"><span class="red-clr"></span>討論區</a></li>
-							<li class="menu-item-has-children"><a href="#" title="PAGES"
-								itemprop="url"><span class="red-clr"></span>購物車</a>
+							<li class="menu-item-has-children"><a
+								href="<c:url value='/ShowArticlesGuest' />"
+								title="ShowArticlesGuest" itemprop="url"><span
+									class="red-clr"></span>討論區</a></li>
+							<li class="menu-item-has-children"><a href="#"
+								title="CartList" itemprop="url"><span class="red-clr"></span>購物車</a>
 								<ul class="sub-dropdown">
-									<li><a href="index.html" title="HOMEPAGE 1" itemprop="url">訂餐</a></li>
-									<li><a href="index2.html" title="HOMEPAGE 2"
-										itemprop="url">團購</a></li>
+									<li><a href="<c:url value='/user/CartList/food' />"
+										title="food" itemprop="url">訂餐</a></li>
+									<li><a href="<c:url value='/user/CartList/coupon' />"
+										title="coupon" itemprop="url">團購</a></li>
 								</ul></li>
-							<li class="menu-item-has-children"><a href="#" title="PAGES"
-								itemprop="url"><span class="red-clr"></span>會員中心</a></li>
+							<li class="menu-item-has-children"><a href="#" title="#"
+								itemprop="url"><span class="red-clr"></span>會員中心</a>
+								<ul class="sub-dropdown">
+									<li><a href="<c:url value='/user/AllCarts' />"
+										itemprop="url">訂單紀錄</a></li>
+								</ul></li>
+
 						</ul>
 
 					</div>
@@ -120,6 +155,7 @@ td, th {
 		</div>
 		<!-- Logo Menu Section -->
 	</header>
+	<!-- Header -->
 	<section>
 		<div class="block">
 			<div style="background-image: url(../assets/images/topbg.jpg);"
@@ -136,63 +172,85 @@ td, th {
 	<div class="bread-crumbs-wrapper">
 		<div class="container">
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href=./ManageRestaurant title="" itemprop="url">菜單列表</a></li>
+				<li class="breadcrumb-item"><a href=./ManageRestaurant title=""
+					itemprop="url">菜單列表</a></li>
 				<li class="breadcrumb-item active">更新菜單</li>
 			</ol>
 		</div>
 	</div>
+	<section>
+		<div class="block less-spacing gray-bg top-padd30">
+			<div class="container">
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="block">
+							<div class="col-md-12 col-sm-12 col-lg-12">
+								<div class="sec-box">
 
+									<form:form action="./doupdate" method='POST'
+										modelAttribute="menuBean" class='form-horizontal'
+										enctype="multipart/form-data">
+										<br>
 
-	<form:form action="./doupdate" method='POST' modelAttribute="menuBean" class='form-horizontal' enctype="multipart/form-data">
-		<br>
+										<fieldset>
+											<legend>修改菜單</legend>
 
-		<fieldset>
-			<legend>修改菜單</legend>
+											<form:input type="hidden" path="id" id="id"
+												value="${menu.id}" />
+											<form:input type="hidden" path="rstName" id="rstName"
+												value="${menu.rstName}" />
 
-				<form:input type="hidden" path="id" id="id" value="${menu.id}" />
-				<form:input type="hidden" path="rstName" id="rstName" value="${menu.rstName}" />
-			
-			<div class="st1">
-				<label for="productName" class="t1">* 品名：</label> 
-				<form:input type="text" path="productName" id="productName" value="${menu.productName}" size="20" /> 
-				<span id="pronamesp"></span> <span class="ps">(必填！)</span>
+											<div class="st1">
+												<label for="productName" class="t1">* 品名：</label>
+												<form:input type="text" path="productName" id="productName"
+													value="${menu.productName}" size="20" />
+												<span id="pronamesp"></span> <span class="ps">(必填！)</span>
+											</div>
+
+											<!-- 讀取圖片 -->
+											<div class="st1">
+												<label class="t1">照片:</label>
+												<form:input type="file" accept="image/*" path="coverImage"
+													value="" id="coverImage" />
+												<%-- 				<img src="<c:url value='/getMenuPicture/${menu.productName}'/>" width='120'> --%>
+											</div>
+
+											<div class="st1">
+												<label for="remark" class="t1">菜色描述： </label>
+												<textarea name="remark" id="remark" cols="40" rows="5">${menu.remark} </textarea>
+											</div>
+
+											<div class="st1">
+												<span id="pricesp">$NTD</span> <label for="price" class="t1">*單價：</label>
+												<form:input type="text" path="price" id="price"
+													value="${menu.price}" />
+											</div>
+
+										</fieldset>
+
+										<table>
+											<thead>
+
+											</thead>
+
+											<tbody>
+
+											</tbody>
+										</table>
+
+										<div class="sub">
+											<input type="submit" name="submit" value="更新"> <input
+												type="reset" value="清除">
+										</div>
+									</form:form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-
-			<!-- 讀取圖片 -->
-			<div class="st1">
-				<label class="t1">照片:</label> 
-				<form:input type="file" accept="image/*" path="coverImage" value="" id="coverImage"  />		
-<%-- 				<img src="<c:url value='/getMenuPicture/${menu.productName}'/>" width='120'> --%>
-			</div>
-
-			<div class="st1">
-				<label for="remark" class="t1">菜色描述： </label>
-				<textarea name="remark" id="remark" cols="40" rows="5">${menu.remark} </textarea> 
-			</div>
-
-			<div class="st1">
-				<span id="pricesp">$NTD</span> 
-				<label for="price" class="t1">*單價：</label> 
-				<form:input type="text" path="price" id="price" value="${menu.price}" />
-			</div>
-
-		</fieldset>
-
-		<table>
-			<thead>
-
-			</thead>
-
-			<tbody>
-
-			</tbody>
-		</table>
-
-		<div class="sub">
-			<input type="submit" name="submit" value="更新"> <input
-				type="reset" value="清除">
 		</div>
-	</form:form>
+	</section>
 	<footer>
 		<div class="block top-padd80 bottom-padd80 dark-bg">
 			<div class="container">

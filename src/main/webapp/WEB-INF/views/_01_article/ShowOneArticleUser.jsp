@@ -18,7 +18,10 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<link rel="stylesheet"
+	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+	crossorigin="anonymous" />
 <meta charset="UTF-8">
 <title>${article.title}</title>
 <link rel="shortcut icon" href="../assets/images/favicon.png"
@@ -68,7 +71,12 @@
 			<!-- Topbar -->
 			<div class="logo-menu-sec">
 				<div class="container" style="margin-left: 350px;">
-
+					<div class="logo">
+						<h1 itemprop="headline">
+							<a href="index.html" title="Home" itemprop="url"><img
+								src="../assets/images/logo2.png" alt="logo.png" itemprop="image"></a>
+						</h1>
+					</div>
 					<nav>
 						<div class="menu-sec">
 							<ul>
@@ -150,14 +158,13 @@
 									<div class="blog-detail-wrapper">
 										<div class="blog-detail-thumb wow fadeIn"
 											data-wow-delay="0.2s">
-										<!-- 
+											<!-- 
 											<img src="../assets/images/resource/i3.jpg"
 												alt="blog-detial-img2-1.jpg" itemprop="image">
-										 -->	
-										<img
-											src="<c:url value='/getPicture/${article.id}'/>" />
+										 -->
+											<img src="<c:url value='/getPicture/${article.id}'/>" />
 										</div>
-										
+
 										<div class="blog-detail-info">
 											<span class="post-detail-date red-clr"><i
 												class="fa fa-clock-o"></i>${article.registerTime}</span>
@@ -196,8 +203,9 @@
 											</div>
 											<!-- Section Box -->
 										</div>
-										 <a href='articlesUser/${article.id}'><font size='5'><i class="fas fa-edit"></i>編輯貼文</font></a>
-										
+										<a href='articlesUser/${article.id}'><font size='5'><i
+												class="fas fa-edit"></i>編輯貼文</font></a>
+
 									</div>
 								</div>
 							</div>

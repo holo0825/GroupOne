@@ -51,6 +51,13 @@ public class MenuServiceImpl implements MenuService {
 	  
 	}
 	
+	//賣家&消費者 查詢單筆ID
+	@Override
+	public Optional<MenuBean> findById(Integer id) {
+		return menuRepository.findById(id);
+		  
+		}
+	
 	//買家根據餐廳查詢菜單
 	@Override
 	public List<MenuBean> findByRstName(String rstName){

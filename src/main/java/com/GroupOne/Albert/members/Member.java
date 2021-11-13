@@ -112,11 +112,8 @@ public class Member {
 	@Column(name = "COMPANY_ADDRESS")
 	protected String companyAddress;
 
-	@Column(name = "BUSINESS_CERT")
-	protected Byte[] businessCert;
-
-	@Column(name = "VERIFY_STATUS")
-	protected Boolean verifyStatus; // nullable，剛剛註冊時給預設值為false
+	@Column(name = "deleted")
+	protected Boolean deleted; // nullable，剛剛註冊時給預設值為false
 	//------------------------------------------------------------
 	@Column(name = "ENABLED")
 	private Boolean enabled = false; // set default as false
@@ -138,6 +135,9 @@ public class Member {
 	
 	@Column(name = "mime_type")
 	String mimeType;
+	
+	@Column(name = "reset_password_token")
+    private String resetPasswordToken;
 	// 用來存取圖片，但是不會進到資料庫
 	@Transient
 	MultipartFile memberMultipartFile;
@@ -183,7 +183,7 @@ public class Member {
 	// SELLER UPDATE/EDIT專用Constructor
 	public Member(Integer id, String username, String fullname, String email, String password, String dob,
 			String gender, String phoneNumber, String telephoneNumber, String extensionNumber, String companyName,
-			String companyAddress, Byte[] businessCert, Boolean verifyStatus) {
+			String companyAddress, Boolean deleted) {
 		this.id = id;
 		this.username = username;
 		this.fullname = fullname;
@@ -196,14 +196,13 @@ public class Member {
 		this.extensionNumber = extensionNumber;
 		this.companyName = companyName;
 		this.companyAddress = companyAddress;
-		this.businessCert = businessCert;
-		this.verifyStatus = verifyStatus;
+		this.deleted = deleted;
 	}
 	
 	// SELLER CREATE/INSERT專用Constructor
 	public Member(String username, String fullname, String email, String password, String dob,
 			String gender, String phoneNumber, String telephoneNumber, String extensionNumber, String companyName,
-			String companyAddress, Byte[] businessCert, Boolean verifyStatus) {
+			String companyAddress, Boolean deleted) {
 		this.username = username;
 		this.fullname = fullname;
 		this.email = email;
@@ -215,8 +214,7 @@ public class Member {
 		this.extensionNumber = extensionNumber;
 		this.companyName = companyName;
 		this.companyAddress = companyAddress;
-		this.businessCert = businessCert;
-		this.verifyStatus = verifyStatus;
+		this.deleted = deleted;
 	}
 
 	//-----------------------------------------------

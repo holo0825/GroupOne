@@ -11,8 +11,10 @@ import com.GroupOne.yu.model.RestaurantBean;
 public interface RestaurantService {
 
 	//管理者 查詢所有資料
-	List<RestaurantBean> findAllRestaurant();
-			
+	List<RestaurantBean> findAllRestaurant();	
+	
+	//買家 查詢所有餐廳(不含已被下架)
+	List<RestaurantBean> findAllRst();
 
 	 //賣家 更新資料(管理者部分強制下架)
 	RestaurantBean updateRestaurant(RestaurantBean restaurantBean);

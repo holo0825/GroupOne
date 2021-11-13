@@ -126,7 +126,7 @@ public class RestaurantBean implements Serializable {
 		return rstName;
 	}
 
-	public void setRstname(String rstName) {
+	public void setRstName(String rstName) {
 		this.rstName = rstName;
 	}
 
@@ -169,13 +169,6 @@ public class RestaurantBean implements Serializable {
 	public void setBusinessHour(String businessHour) {
 		this.businessHour = businessHour;
 	}
-
-//	public Set<MenuBean> getMenu() {
-//		return menu;
-//	}
-//	public void setMenu(Set<MenuBean> menu) {
-//		this.menu = menu;
-//	}
 
 	public void setRestautantBean(RestaurantBean rb) {
 		

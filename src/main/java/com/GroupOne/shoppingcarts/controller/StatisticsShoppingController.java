@@ -52,10 +52,10 @@ public class StatisticsShoppingController {
 	@GetMapping("/AdminCart")
 	public String adminFindAll(Model model) {
 
-		if(model.getAttribute("admin") == null) {
-			System.out.println("未登入");
-			return "redirect:/AdminTryLogin";
-		}
+//		if(model.getAttribute("admin") == null) {
+//			System.out.println("未登入");
+//			return "redirect:/AdminTryLogin";
+//		}
 		Member adminBean = (Member) model.getAttribute("admin");
 		String username = adminBean.getUsername();
 		System.out.println("admin_name: "+username);
@@ -68,10 +68,10 @@ public class StatisticsShoppingController {
 	@GetMapping("/Adminstatistics")
 	public String admintatistics(Model model) {
 		
-		if(model.getAttribute("admin") == null) {
-			System.out.println("未登入");
-			return "redirect:/AdminTryLogin";
-		}
+//		if(model.getAttribute("admin") == null) {
+//			System.out.println("未登入");
+//			return "redirect:/AdminTryLogin";
+//		}
 		Member adminBean = (Member) model.getAttribute("admin");
 		String username = adminBean.getUsername();
 		System.out.println("admin_name: "+username);

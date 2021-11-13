@@ -21,6 +21,7 @@ import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -96,7 +97,8 @@ public class SellerRegisterController {
 	@GetMapping("/seller")
 	public String showSellerRegistrationForm(Model model) {
 //		model.addAttribute("sellerRegisterBean", new Member());
-		return "register_seller";
+//		return "register_seller";
+		return "Members/register_seller";
 	}
 	
 	@PostMapping("/process_seller")
@@ -117,8 +119,15 @@ public class SellerRegisterController {
 										
 										@ModelAttribute("sellerRegisterBean") Member sellerRegisterBean,
 										BindingResult result,
-										RedirectAttributes redirectAttributes
+										RedirectAttributes redirectAttributes,
+										HttpServletRequest request
 										) {
+		// 先判斷email是否已經會員使用過，若信箱重複則重新導回一般會員註冊頁面
+		if (memberService.findByEmail(email)!=null) {
+			redirectAttributes.addFlashAttribute("message", "信箱已經註冊過，請改用其他信箱");
+			return "redirect:/register/seller";
+		}
+				
 		sellerRegisterBean.setUsername(username);
 		sellerRegisterBean.setEmail(email);
 		
@@ -152,8 +161,8 @@ public class SellerRegisterController {
 //			for (ObjectError error : list) {
 //				System.out.println("有錯誤：" + error);
 //			}
-//			return inputDataForm;
-			return "register_seller";
+//			return "register_seller";
+			return "Members/register_seller";
 		}
 		
 		MultipartFile picture = sellerRegisterBean.getMemberMultipartFile();
@@ -185,7 +194,8 @@ public class SellerRegisterController {
 			result.rejectValue("username", "", "帳號已存在，請重新輸入");
 //			result.rejectValue("memberId", "", "帳號已存在，請重新輸入");
 //			return inputDataForm;
-			return "register_seller";
+//			return "register_seller";
+			return "Members/register_seller";
 		}
 		
 //		bean.setPassword(GlobalService.getMD5Endocing(
@@ -197,7 +207,11 @@ public class SellerRegisterController {
 		sellerRegisterBean.setEnabled(false);
 		
 		try {
-			memberService.save(sellerRegisterBean);
+//			memberService.save(sellerRegisterBean);
+			memberService.register(sellerRegisterBean, getSiteURL(request));
+			// 執行帳號註冊及確認信寄出
+			
+			
 			log.info("寫入MemberBean物件：" + sellerRegisterBean);
 			redirectAttributes.addFlashAttribute("SUCCESS", "會員: " + sellerRegisterBean.getUsername() +  "資料新增成功");
 		} 
@@ -205,8 +219,8 @@ public class SellerRegisterController {
 			System.out.println(ex.getClass().getName() + ", ex.getMessage()=" + ex.getMessage());
 			result.rejectValue("username", "", "發生異常，請通知系統人員..." + ex.getMessage());
 //			result.rejectValue("memberId", "", "發生異常，請通知系統人員..." + ex.getMessage());
-//			return inputDataForm;
-			return "/register/seller";
+//			return "register_seller";
+			return "Members/register_seller";
 		}
 		// 將上傳的檔案移到指定的資料夾, 目前註解此功能
 //		String ext = "";
@@ -238,11 +252,24 @@ public class SellerRegisterController {
 			return sellerRegisterBean;
 		}
 	
-	
-	
-	
-	
-	
+		//-------------------------------------------------------------------
+		// 註冊時取得網站網址的工具方法
+		private String getSiteURL(HttpServletRequest request) {
+			String siteURL = request.getRequestURL().toString();
+//			return siteURL.replace(request.getServletPath(), "");
+			return siteURL.replace(request.getServletPath(), "").replace("/process_seller", "");
+		}	
+				
+//		// 註冊會員點選確認信連結時對應的Controller方法，信箱驗證成功會變更enabled=true
+//		@GetMapping("/verify")
+//		public String verifySeller(@Param("code") String code) {
+////			if (service.verify(code)) {
+//			if (memberService.verify(code)) {
+//				return "verify_success";
+//			} else {
+//				return "verify_fail";
+//			}
+//		}		
 	
 	
 

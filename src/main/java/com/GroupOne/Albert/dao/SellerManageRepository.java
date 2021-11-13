@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.GroupOne.Albert.members.Member;
+import com.GroupOne.Albert.members.MemberRole;
 import com.GroupOne.Albert.members.oldusers.SellerBean;
 import com.GroupOne.Albert.members.oldusers.UserBean;
 
@@ -29,5 +30,7 @@ public interface SellerManageRepository extends JpaRepository<Member, Integer>{
 //
 //	// Update seller by id
 //	boolean updateSeller(SellerBean seller) throws SQLException;
-
+	
+	// seller全查詢排除deleted為true的資料
+	List<Member> findByMemberRoleAndDeleted(MemberRole memberRole, Boolean deleted);
 }

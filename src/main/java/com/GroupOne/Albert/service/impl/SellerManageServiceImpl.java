@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.GroupOne.Albert.dao.SellerManageRepository;
 import com.GroupOne.Albert.members.Member;
+import com.GroupOne.Albert.members.MemberRole;
 import com.GroupOne.Albert.members.oldusers.SellerBean;
 import com.GroupOne.Albert.service.SellerManageService;
 
@@ -53,7 +54,9 @@ public class SellerManageServiceImpl implements SellerManageService {
 	@Override
 	public List<Member> selectAllSellers() {
 //	public List<SellerBean> selectAllSellers() {
-		return sellerManageRepo.findAll();
+//		return sellerManageRepo.findAll();
+		// seller全查詢排除deleted為true的資料
+		return sellerManageRepo.findByMemberRoleAndDeleted(MemberRole.ROLE_SELLER, false);
 	}
 
 //	@Override

@@ -16,155 +16,270 @@
 <link rel="stylesheet" href="../assets/css/yellow-color.css">
 <link rel="stylesheet" href="../assets/css/responsive.css">
 <link rel="stylesheet" href="../css/yu.css">
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	crossorigin="anonymous"></script>
+<script>
+	// 一鍵輸入註冊資料
+	function quickInput() {
+		document.getElementById('rstName').value = '鬍鬚李';
+		document.getElementById('rstAddress').value = '台北市中山區復興南路一段218號3樓';
+		document.getElementById('rstTel').value = '0288886666';
+		document.getElementById('category').value = '台式';
+		document.getElementById('businessHour').value = '11:00-20:30';
+	}
+</script>
+
 </head>
+
+
 
 <!-- 前端畫面for賣家創建餐廳 -->
 
-<body>
-   <header>
+<body itemscope>
+	<header>
+		<main>
+			<div class="preloader">
+				<div id="cooking">
+					<div class="bubble"></div>
+					<div class="bubble"></div>
+					<div class="bubble"></div>
+					<div class="bubble"></div>
+					<div class="bubble"></div>
+					<div id="area">
+						<div id="sides">
+							<div id="pan"></div>
+							<div id="handle"></div>
+						</div>
+						<div id="pancake">
+							<div id="pastry"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</header>
+
+	<header class="stick">
 		<div class="topbar">
 			<div class="container">
 				<div class="topbar-register">
-					<a class="log-popup-btn" href="#" title="Login" itemprop="url">登入</a>
-					<a class="sign-popup-btn" href="#" title="Register" itemprop="url">註冊</a>
-					<a href="<c:url value='/seller/ManageRestaurant' />">賣家中心</a>
+					<!-- <a class="log-popup-btn" href="#" title="Login" itemprop="url">登入</a>
+                         <a class="sign-popup-btn" href="#" title="Register" itemprop="url">註冊</a>
+                         <a class="sign-popup-btn" href="#" title="Register" itemprop="url">賣家中心</a>-->
+
+					<c:choose>
+						<c:when test="${user.username == null}">
+							<a href="<c:url value='/login' />" title="Login" itemprop="url">登入</a>
+							<a href="<c:url value='/register' />" title="Register"
+								itemprop="url">註冊</a>
+							<a href="<c:url value='/seller/home' />" title="sellerhome"
+								itemprop="url">賣家中心</a>
+						</c:when>
+						<c:otherwise>
+							<span>${user.getUsername()}</span>&nbsp&nbsp&nbsp
+                               <span class="">
+								<form action="<c:url value='/logout' />" method="post"
+									style="display: inline; font-size: 13px">
+									<input type="hidden" name="${_csrf.parameterName}"
+										value="${_csrf.token}" /> <input type="submit" value="登出"
+										style="color: white; background: #161616;">
+								</form>
+							</span>
+						</c:otherwise>
+					</c:choose>
 				</div>
-				<div class="social1">
+				<div class="social1" style="margin-top: 16px;!important">
 					<a href="#" title="Facebook" itemprop="url" target="_blank"><i
-						class="fa fa-facebook-square"></i></a>
+						class="fa fa-facebook-square"></i></a> <a href="#" title="Google Plus"
+						itemprop="url" target="_blank"><i class="fa fa-google-plus"></i></a>
 				</div>
 			</div>
 		</div>
 		<!-- Topbar -->
 		<div class="logo-menu-sec">
-			<div class="container" style="margin-left: 450px;">
-
+			<div class="container" style="margin-left: 220px;">
+				<div class="logo" style="margin: 12px 0 0 0;!important">
+					<h1 itemprop="headline">
+						<a href="index.html" title="Home" itemprop="url"> <img
+							style="width: 150px;"
+							src="../assets/images/icon_get_together.png" alt="Logo.png"
+							itemprop="image">
+						</a>
+					</h1>
+				</div>
 				<nav>
 					<div class="menu-sec">
 						<ul>
-							<li class="menu-item-has-children"><a href="#"
-								title="HOMEPAGES" itemprop="url"><span class="red-clr"></span>首頁</a>
-							</li>
-							<li class="menu-item-has-children"><a href="#"
+							<li class="menu-item-has-children"><a
+								href="<c:url value='/GroupOneHome' />" title="GroupOneHome"
+								itemprop="url"><span class="red-clr"></span>首頁</a></li>
+							<li class="menu-item-has-children"><a
+								href="<c:url value='/searchallrestaurant' />"
 								title="RESTAURANTS" itemprop="url"><span class="red-clr"></span>餐廳</a>
-								<ul class="sub-dropdown">
-									<li><a href="<c:url value='/ManageRestaurant' />">餐廳管理</a></li>
-									<li><a href="<c:url value='/ManageMenu' />">菜單管理</a></li>
-								</ul></li>
-							<li class="menu-item-has-children"><a href="#" title="PAGES"
+							</li>
+							<li class="menu-item-has-children"><a
+								href="<c:url value='/customerSearch' />" title="customerSearch"
 								itemprop="url"><span class="red-clr"></span>團購</a></li>
-							<li class="menu-item-has-children"><a href="#" title="PAGES"
+							<li class="menu-item-has-children"><a
+								href="<c:url value='/ActivityPage' />" title="Activity"
 								itemprop="url"><span class="red-clr"></span>活動</a></li>
-							<li class="menu-item-has-children"><a href="#" title="PAGES"
-								itemprop="url"><span class="red-clr"></span>討論區</a></li>							
-							<li class="menu-item-has-children"><a href="#" title="PAGES"
-								itemprop="url"><span class="red-clr"></span>會員中心</a></li>
+							<li class="menu-item-has-children"><a
+								href="<c:url value='/ShowArticlesGuest' />"
+								title="ShowArticlesGuest" itemprop="url"><span
+									class="red-clr"></span>討論區</a></li>
+							<li class="menu-item-has-children"><a href="#"
+								title="CartList" itemprop="url"><span class="red-clr"></span>購物車</a>
+								<ul class="sub-dropdown">
+									<li><a href="<c:url value='/user/CartList/food' />"
+										title="food" itemprop="url">訂餐</a></li>
+									<li><a href="<c:url value='/user/CartList/coupon' />"
+										title="coupon" itemprop="url">團購</a></li>
+								</ul></li>
+							<li class="menu-item-has-children"><a href="#" title="#"
+								itemprop="url"><span class="red-clr"></span>會員中心</a>
+								<ul class="sub-dropdown">
+									<li><a href="<c:url value='/user/AllCarts' />"
+										itemprop="url">訂單紀錄</a></li>
+								</ul></li>
+
 						</ul>
+
 					</div>
 				</nav>
 				<!-- Navigation -->
 			</div>
-		</div>		
+		</div>
+		<!-- Logo Menu Section -->
 	</header>
+	<!-- Header -->
 	<section>
 		<div class="block">
 			<div style="background-image: url(../assets/images/topbg.jpg);"
 				class="fixed-bg"></div>
 			<div class="restaurant-searching text-center">
 				<div class="restaurant-searching-inner">
-					<h2 itemprop="headline">建立餐廳 <br>New Your Restaurant</h2>
+					<h2 itemprop="headline">
+						建立餐廳 <br>New Your Restaurant
+					</h2>
 				</div>
 
 			</div>
 		</div>
 	</section>
-	 <div class="bread-crumbs-wrapper">
-            <div class="container">
-                <ol class="breadcrumb">
-                   <li class="breadcrumb-item"><a href="./ManageRestaurant" title="" itemprop="url">餐廳管理</a></li>
-                    <li class="breadcrumb-item active">建立餐廳</li>
-                </ol>
-            </div>
-        </div>
-    <form:form action="./OpenSuccess" method='POST' modelAttribute="restaurantBean" class='form-horizontal'
-			enctype="multipart/form-data" >
-        <br>
- 
-        <fieldset>
-            <legend>基本資料<em>(必填)</em></legend>
+	<div class="bread-crumbs-wrapper">
+		<div class="container">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="./ManageRestaurant"
+					title="" itemprop="url">餐廳管理</a></li>
+				<li class="breadcrumb-item active">建立餐廳</li>
+			</ol>
+		</div>
+	</div>
+<section>
+	<div class="block less-spacing gray-bg top-padd30">
+		<div class="container">
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="sec-box">
+						<form:form action="./OpenSuccess" method='POST'
+							modelAttribute="restaurantBean" class='form-horizontal'
+							enctype="multipart/form-data">
+							<br>
 
-            <!-- restaurant縮寫rst -->     
-            
-            <div class="st1">
-                <label>經營者姓名：</label>
-                <form:input type="text" path="userName" value="" size="10" /> 
-                <span id="usernamesp"></span><br>           
-           		<form:errors path="userName" cssClass="error" />
-            </div>
+							<fieldset>
+								<legend>
+									基本資料<em>(必填)</em>
+								</legend>
 
-            <div class="st1">
-                <label>經營者電話：</label>
-                <form:input type="text" path="mobile" onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="12" /> 
-                <span id="mobsp"></span>
-                <span class="ps">(必填)</span>
-                <form:errors path="Mobile" cssClass="error" />
-            </div>
+								<!-- restaurant縮寫rst -->
 
-            <div class="st1">
-                <label>餐廳名稱：</label>
-                <form:input type="text" path="rstName" id="rstName" value="" size="10" /> 
-                <span id="rstnamesp"></span>
-                <span class="ps">(必填)</span>
-                <form:errors path="RstName" cssClass="error" />
-            </div>
- 
-            <div class="st1">
-                <label>證照號碼：</label>
-                <form:input type="text" path="license" id="license" value="" size="20" /> 
-                <span class="ps">(必填)</span>
-                <form:errors path="License" cssClass="error" />
-            </div> 
+								<div class="st1">
+									<label>帳號(ID)：</label>
+									<form:input type="text" path="userName"
+										value="${seller.username}" size="10" />
+									<span id="usernamesp"></span><br>
+									<form:errors path="userName" cssClass="error" />
+								</div>
 
-            <div class="st1">
-                <label for="rstAddress">餐廳地址：</label>
-                <form:input type="text" path="rstAddress" id="rstAddress" value="" size="50" /> 
-                <span id="rstaddsp"></span><br>
-                <form:errors path="RstAddress" cssClass="error" />
-            </div>
+								<div class="st1">
+									<label>經營者電話：</label>
+									<form:input type="text" path="mobile"
+										value="${seller.phoneNumber}"
+										onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="12" />
+									<span id="mobsp"></span> <span class="ps">(必填)</span>
+									<form:errors path="Mobile" cssClass="error" />
+								</div>
 
-            <div class="st1">
-                <label>餐廳電話：</label>
-                <form:input type="text" path="rstTel" id="rstTel" onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="12" /> 
-                <span id="rsttelsp"></span>
-                <span class="ps">(必填)</span>
-                <form:errors path="RstTel" cssClass="error" />
+								<div class="st1">
+									<label>餐廳名稱：</label>
+									<form:input type="text" path="rstName" id="rstName" value=""
+										size="15" />
+									<span id="rstnamesp"></span> <span class="ps">(必填)</span>
+									<form:errors path="RstName" cssClass="error" />
+								</div>
 
-            </div>
+								<div class="st1">
+									<label>證照：</label>
+									<%--                 <form:input type="text" path="license" id="license" value="" size="20" />  --%>
+									<img
+										src="<c:url value='/getMemberImage?username=${seller.username}'/>"
+										width='120' height='90'>
+									<form:errors path="License" cssClass="error" />
+								</div>
 
-            <div class="st1">
-                <label>餐廳類型：</label>
-                <form:input type="text" path="category" id="category" value="" size="20" /> 
-                <span class="ps">(日式、中式、義式、韓式、台式、美式...etc.)</span>
-            </div>
+								<div class="st1">
+									<label for="rstAddress">餐廳地址：</label>
+									<form:input type="text" path="rstAddress" id="rstAddress"
+										value="" size="50" />
+									<span id="rstaddsp"></span><br>
+									<form:errors path="RstAddress" cssClass="error" />
+								</div>
 
-            <div class="st1">
-                <label>營業時間<span class="ps">(請以24小時制填寫)：</span></label>
-                <form:input type="text" path="businessHour" id="businessHour" value="" size="20" />                               
-            </div>
+								<div class="st1">
+									<label>餐廳電話：</label>
+									<form:input type="text" path="rstTel" id="rstTel"
+										onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="12" />
+									<span id="rsttelsp"></span> <span class="ps">(必填)</span>
+									<form:errors path="RstTel" cssClass="error" />
 
-			<div class="st1">
-				<label>餐廳形象照： </label>
-				<form:input type="file" accept="image/*" path="rstImage" value="" id="rstImage" /> 
+								</div>
+
+								<div class="st1">
+									<label>餐廳類型：</label>
+									<form:input type="text" path="category" id="category" value=""
+										size="20" />
+									<span class="ps">(日式、中式、義式、韓式、台式、美式...etc.)</span>
+								</div>
+
+								<div class="st1">
+									<label>營業時間<span class="ps">(請以24小時制填寫)：</span></label>
+									<form:input type="text" path="businessHour" id="businessHour"
+										value="" size="20" />
+								</div>
+
+								<div class="st1">
+									<label>餐廳形象照： </label>
+									<form:input type="file" accept="image/*" path="rstImage"
+										value="" id="rstImage" />
+								</div>
+
+							</fieldset>
+
+							<div class="sub">
+								<input type="submit" name="submit" class="btn btn-info"
+									value="完成"> <input type="reset" class="btn btn-info"
+									value="清除"> <input type="button" class="btn btn-info"
+									value="一鍵輸入" onclick='quickInput();'>
+							</div>
+						</form:form>
+						<!--form標籤結束-->
+					</div>
+				</div>
 			</div>
-
-		</fieldset>
-        
-        <div class="sub">
-        	<input type="submit" name="submit" style="width:200px;height:30px; font-size: medium;" value="完成">    
-            <input type="reset" style="width:200px;height:30px; font-size: medium;" value="清除">
-        </div>
-    	</form:form>
-<footer>
+		</div>
+	</div>
+	</section>
+	<footer>
 		<div class="block top-padd80 bottom-padd80 dark-bg">
 			<div class="container">
 				<div class="row">

@@ -1,5 +1,6 @@
 package com.GroupOne.tom.customer.service.imp;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,6 +47,24 @@ public class CustomerServiceImpl implements CustomerService {
 	public Optional<SellerProductBean> findById(int id) {
 		return customerRepository.findById(id);
 	}
+	
+	public List<SellerProductBean> findAllByName(String name){
+		return customerRepository.findAllByName(name);
+	}
 
+	@Override
+	public List<SellerProductBean> findByItem(String item) {
+		return customerRepository.findByItem(item);
+	}
 
+	@Override
+	public List<SellerProductBean> findAllByNameAndItem(String name, String item) {
+
+		return customerRepository.findAllByNameAndItem(name,item);
+	}
+
+	@Override
+	public void updateProduct(SellerProductBean seller) {
+		customerRepository.save(seller);
+	}
 }

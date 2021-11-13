@@ -243,13 +243,13 @@ public class ArticleController {
 	}
 
 	// 會員跳至新增頁面
-	@GetMapping("/_01_article/insertArticleUser")
+	@GetMapping("/user/insertArticleUser")
 	public String sendEmptyFormUser(Model model) {
 		return "_01_article/insertArticleUser";
 	}
 
 	// 會員新增貼文
-	@PostMapping("_01_article/articlesUser")
+	@PostMapping("/user/articlesUser")
 	public String saveUser(@ModelAttribute("articleBean") ArticleBean bean, BindingResult result) {
 		new ArticleValidator().validate(bean, result);
 		if (result.hasErrors()) {
@@ -285,11 +285,11 @@ public class ArticleController {
 			e.printStackTrace();
 			throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
 		}
-		return "redirect:/_01_article/ShowArticlesUser";
+		return "redirect:/ShowArticlesGuest";
 	}
 
 	// 會員找單筆
-	@GetMapping("/_01_article/ShowOneArticleUser")
+	@GetMapping("/user/ShowOneArticleUser")
 	public String showOneArticleUser(Model model, @RequestParam("id") Integer id) {
 		ArticleBean articleBean = new ArticleBean();
 		Optional<ArticleBean> beans = articleService.getArticleById(id);
@@ -300,7 +300,7 @@ public class ArticleController {
 	}
 
 	// 跳至編輯頁面
-	@GetMapping("_01_article/articlesUser/{id}")
+	@GetMapping("/user/articlesUser/{id}")
 	public String sendArticleFormUser(Model model, @PathVariable(required = false) Integer id) {
 		if (id == null) {
 			throw new RuntimeException("無效ID");
@@ -310,11 +310,11 @@ public class ArticleController {
 			ArticleBean bean = optional.get();
 			model.addAttribute(bean);
 		}
-		return "/_01_article/EditFormUser";
+		return "_01_article/EditFormUser";
 	}
 
 	// 會員更新
-	@PutMapping("/_01_article/articlesUser/{id}")
+	@PutMapping("/user/articlesUser/{id}")
 	public String updateUser(@ModelAttribute ArticleBean bean, BindingResult result, @PathVariable Integer id) {
 		new ArticleValidator().validate(bean, result);
 		if (result.hasErrors()) {
@@ -350,11 +350,11 @@ public class ArticleController {
 			e.printStackTrace();
 			throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
 		}
-		return "redirect:/_01_article/ShowArticlesUser";
+		return "redirect:/ShowArticlesGuest";
 	}
 
 	// 會員刪除
-	@DeleteMapping("/_01_article/articlesUser/{id}")
+	@DeleteMapping("/user/articlesUser/{id}")
 	public String deleteArticleUser(Model model, @PathVariable(required = false) Integer id) {
 		if (id == null) {
 			throw new RuntimeException("無效ID");
@@ -365,6 +365,6 @@ public class ArticleController {
 		} else {
 			throw new RuntimeException("文章不存在 id=" + id);
 		}
-		return "redirect:/_01_article/ShowArticlesUser";
+		return "redirect:/ShowArticlesGuest";
 	}
 }

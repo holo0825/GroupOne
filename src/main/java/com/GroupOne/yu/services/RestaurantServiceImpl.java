@@ -32,6 +32,12 @@ public class RestaurantServiceImpl implements RestaurantService {
 	public List<RestaurantBean> findAllRestaurant() {
 		return restaurantRepository.findAll();
 	}
+	
+	//買家 查詢所有餐廳(不含已被下架) 
+	@Override
+	public List<RestaurantBean> findAllRst() {
+		return restaurantRepository.findByOffshelfIsNull();		
+	}	
 
 	//賣家 更新 save
 	@Transactional

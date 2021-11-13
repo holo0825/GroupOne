@@ -12,6 +12,6 @@ public interface UserPointRepository extends JpaRepository<Member, Integer>{
 	Member findByUsername(String username);
 	
 	@Modifying
-	@Query("update UserBean u set u.bonusPoint = ?1 where u.username = ?2")
+	@Query("update Member u set u.bonusPoint = ?1 where u.username = ?2")
 	void updatePointByUsername(float point,String username);
 }

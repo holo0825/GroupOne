@@ -16,21 +16,26 @@ public class MvcConfig implements WebMvcConfigurer {
 	 * */
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/403").setViewName("403");
+//		registry.addViewController("/403").setViewName("403");
+		registry.addViewController("/403").setViewName("Members/403");
 		
 //		registry.addViewController("/login").setViewName("login");
 		
-		registry.addViewController("/admin/home").setViewName("adminDash");
-		registry.addViewController("/user/home").setViewName("userDash");
-		registry.addViewController("/seller/home").setViewName("userDash");
+//		registry.addViewController("/admin/home").setViewName("adminDash");
+		registry.addViewController("/admin/home").setViewName("Members/_new_user_DataTable");
+//		registry.addViewController("/user/home").setViewName("userDash");
+		registry.addViewController("/user/home").setViewName("Members/userDash");
+//		registry.addViewController("/seller/home").setViewName("sellerDash");
 		
 		// 透過註冊告訴Spring一般會員註冊及商家會員註冊的頁面對應路徑和邏輯名稱
-		registry.addViewController("/register").setViewName("__register_index");
+//		registry.addViewController("/register").setViewName("__register_index");
+		registry.addViewController("/register").setViewName("Members/__register_index");
+
 //		registry.addViewController("/register/user").setViewName("__register_user");
 //		registry.addViewController("/register/seller").setViewName("__register_seller");
 
-//		registry.addViewController("/login/test").setViewName("__login");
-		registry.addViewController("/login").setViewName("__login");
+//		registry.addViewController("/login").setViewName("__login");
+		registry.addViewController("/login").setViewName("Members/__login");
 
 		
 	}

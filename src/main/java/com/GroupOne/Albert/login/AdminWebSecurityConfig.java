@@ -78,15 +78,17 @@ public class AdminWebSecurityConfig extends WebSecurityConfigurerAdapter {
 	// 當使用者沒有足夠權限(permission)時，也可以自定義URL專門用來顯示權限不足的警告(access denied error)
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		// crsf must be disabled to enable ajax
 		http.csrf().disable();
+		http.cors().disable();
 //		http.sessionManagement()
 //		.sessionCreationPolicy(SessionCreationPolicy.NEVER);
 		http.authorizeRequests()
-		.antMatchers("/seller/home").hasAuthority("ROLE_SELLER") // commented for testing
-		.antMatchers("/user/**").hasAuthority("ROLE_USER") // commented for testing
-		.antMatchers("/ajaxCheckUsername", "/js/**", "/css/**", "/resources/**", "/img/**", "/static/**", "/templates/**",
-				"/WEB-INF/views/**", "/assets/**", "/", "/register/**", "/login", "/oauth/**","/**").permitAll() // used for testing
-		.antMatchers("/admin/home", "/AdminHome", "/admin/UserAll/**", "/SellerAll/**").hasAuthority("ROLE_ADMIN") // commented for testing
+		.antMatchers("/admin/home", "/admin/**").hasAuthority("ROLE_ADMIN") // commented for testing
+		.antMatchers("/seller/home", "/seller/**").hasAuthority("ROLE_SELLER") // commented for testing
+		.antMatchers("/user/home", "/user/**").hasAuthority("ROLE_USER") // commented for testing
+		.antMatchers("/ajaxCheckUsername", "/assets/**", "icons/**", "vendor/**", "/js/**", "/css/**", "/resources/**", "/img/**", "/static/**", "/templates/**",
+				"/WEB-INF/views/**", "/assets/**", "/", "/register/**", "/login", "/oauth/**", "/verify", "/**").permitAll() // used for testing
 		
 		.anyRequest().authenticated()
 //			.antMatchers("/login", "/oauth/**").permitAll() // commented for testing
@@ -145,23 +147,32 @@ public class AdminWebSecurityConfig extends WebSecurityConfigurerAdapter {
 			            
 			            UrlPathHelper helper = new UrlPathHelper();
 			            String contextPath = helper.getContextPath(request);
-			            switch (memberRole) {
-						case ROLE_ADMIN:
-							request.getSession().setAttribute("admin", member);
-							response.sendRedirect(contextPath + "/admin/home");
-							break;
-						case ROLE_USER:
-							request.getSession().setAttribute("user", member);
-							response.sendRedirect(contextPath + "/user/home");
-							break;
-						case ROLE_SELLER:
-							request.getSession().setAttribute("seller", member);
-							response.sendRedirect(contextPath + "/seller/home");
-							break;
-						default:
-							response.sendRedirect(contextPath + "/");
-							break;
-						}
+			            // 根據enabled欄位是否為true判斷使用者是否已經確認信箱啟用帳號
+//			            if (member.getEnabled()) {
+			            	switch (memberRole) {
+			            	case ROLE_ADMIN:
+			            		request.getSession().setAttribute("admin", member);
+//							response.sendRedirect(contextPath + "/admin/home");
+			            		// 新的轉跳首頁為一般會員管理頁面
+			            		response.sendRedirect(contextPath + "/admin/listuser");
+			            		break;
+			            	case ROLE_USER:
+			            		request.getSession().setAttribute("user", member);
+			            		response.sendRedirect(contextPath + "/user/home");
+			            		break;
+			            	case ROLE_SELLER:
+			            		request.getSession().setAttribute("seller", member);
+			            		response.sendRedirect(contextPath + "/seller/home");
+			            		break;
+			            	default:
+			            		response.sendRedirect(contextPath + "/");
+			            		break;
+			            	}
+//						}else {
+//							System.out.println("會員登入失敗，尚未確認信箱");
+//							response.sendRedirect(contextPath + "/");
+//						}
+			            
 			        }
 			    })
 				.failureUrl("/")

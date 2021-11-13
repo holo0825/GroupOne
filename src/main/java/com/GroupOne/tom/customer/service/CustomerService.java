@@ -12,4 +12,12 @@ public interface CustomerService {
 	CartBean getCustomerById(int id);
 	
 	Optional<SellerProductBean> findById(int id);
+	
+	List<SellerProductBean> findAllByName(String name);
+	
+	List<SellerProductBean> findByItem(String item);
+	
+	List<SellerProductBean> findAllByNameAndItem(String name,String item);
+	
+	void updateProduct(SellerProductBean seller);
 }

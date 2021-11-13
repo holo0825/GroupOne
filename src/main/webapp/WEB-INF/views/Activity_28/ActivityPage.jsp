@@ -360,7 +360,7 @@ response.setDateHeader ("Expires", -1); // Prevents caching at the proxy server
 	<!--nar bar first-->
     <nav class="navbar first-navbar navbar-expand-lg navbar-light bg-dark  ">
     
-    <a class="nav-link text-decoration-none co" href="<c:url value='admin/ActivityRegister' />">後端</a>
+<%--     <a class="nav-link text-decoration-none co" href="<c:url value='admin/ActivityRegister' />">後端</a> --%>
 <%--     <a class="nav-link text-decoration-none co" href="<c:url value='/test' />">後端2</a> --%>
     
         <form class="form-inline my-2 my-lg-0 ml-auto" action="${pageContext.request.contextPath}/activityQuery">

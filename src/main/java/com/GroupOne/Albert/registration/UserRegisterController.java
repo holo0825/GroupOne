@@ -21,6 +21,7 @@ import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -89,7 +90,8 @@ public class UserRegisterController {
 	@GetMapping("/user")
 	public String showUserRegistrationForm(Model model) {
 //	    model.addAttribute("userRegisterBean", new Member());
-	    return "register_user";
+//		return "register_user";
+	    return "Members/register_user";
 	}
 
 ////	@GetMapping("/register/seller")
@@ -113,8 +115,15 @@ public class UserRegisterController {
 									  @RequestParam MultipartFile memberMultipartFile,
 									  @ModelAttribute("userRegisterBean") Member userRegisterBean,
 									  BindingResult result,
-									  RedirectAttributes redirectAttributes
+									  RedirectAttributes redirectAttributes,
+									  HttpServletRequest request
 									  ) {
+		// 先判斷email是否已經會員使用過，若信箱重複則重新導回一般會員註冊頁面
+		if (memberService.findByEmail(email)!=null) {
+			redirectAttributes.addFlashAttribute("message", "信箱已經註冊過，請改用其他信箱");
+			return "redirect:/register/user";
+		}
+		
 		userRegisterBean.setUsername(username);
 		userRegisterBean.setEmail(email);
 		
@@ -138,8 +147,8 @@ public class UserRegisterController {
 //			for (ObjectError error : list) {
 //				System.out.println("有錯誤：" + error);
 //			}
-//			return inputDataForm;
-			return "register_user";
+//			return "register_user";
+			return "Members/register_user";
 		}
 		
 		MultipartFile picture = userRegisterBean.getMemberMultipartFile();
@@ -170,8 +179,8 @@ public class UserRegisterController {
 //		if (memberService.existsById(userRegisterBean.getMemberId())) {
 			result.rejectValue("username", "", "帳號已存在，請重新輸入");
 //			result.rejectValue("memberId", "", "帳號已存在，請重新輸入");
-//			return inputDataForm;
-			return "register_user";
+//			return "register_user";
+			return "Members/register_user";
 		}
 		
 //		bean.setPassword(GlobalService.getMD5Endocing(
@@ -184,7 +193,11 @@ public class UserRegisterController {
 		userRegisterBean.setEnabled(false);
 		
 		try {
-			memberService.save(userRegisterBean);
+//			memberService.save(userRegisterBean);
+			// 執行帳號註冊及確認信寄出
+			memberService.register(userRegisterBean, getSiteURL(request));
+			
+			
 			log.info("寫入MemberBean物件：" + userRegisterBean);
 			redirectAttributes.addFlashAttribute("SUCCESS", "會員: " + userRegisterBean.getUsername() +  "資料新增成功");
 		} 
@@ -192,8 +205,8 @@ public class UserRegisterController {
 			System.out.println(ex.getClass().getName() + ", ex.getMessage()=" + ex.getMessage());
 			result.rejectValue("username", "", "發生異常，請通知系統人員..." + ex.getMessage());
 //			result.rejectValue("memberId", "", "發生異常，請通知系統人員..." + ex.getMessage());
-//			return inputDataForm;
-			return "/register/user";
+//			return "register_user";
+			return "Members/register_user";
 		}
 		// 將上傳的檔案移到指定的資料夾, 目前註解此功能
 //		String ext = "";
@@ -226,4 +239,24 @@ public class UserRegisterController {
 			return userRegisterBean;
 		}
 
+		//-------------------------------------------------------------------
+		// 註冊時取得網站網址的工具方法
+		private String getSiteURL(HttpServletRequest request) {
+			String siteURL = request.getRequestURL().toString();
+//			return siteURL.replace(request.getServletPath(), "");
+			return siteURL.replace(request.getServletPath(), "").replace("/process_user", "");
+		}	
+		
+//		// 註冊會員點選確認信連結時對應的Controller方法，信箱驗證成功會變更enabled=true
+//		@GetMapping("/verify")
+//		public String verifyUser(@Param("code") String code) {
+////			if (service.verify(code)) {
+//			if (memberService.verify(code)) {
+//				return "verify_success";
+//			} else {
+//				return "verify_fail";
+//			}
+//		}
+		
+		
 }

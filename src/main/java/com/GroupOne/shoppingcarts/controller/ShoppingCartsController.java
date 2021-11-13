@@ -34,6 +34,7 @@ public class ShoppingCartsController {
 
 	ProductService productService;
 	String username ;     // password: Helloworld123
+//	String username = "JackyChen";
 	CartsBean payProcess;
 
 	@Autowired
@@ -47,17 +48,21 @@ public class ShoppingCartsController {
 			@ModelAttribute("name") String productName,
 			@ModelAttribute("price") String priceS,
 			@ModelAttribute("number") String numberS,
-			@ModelAttribute("category") String typeS
+			@ModelAttribute("category") String typeS,
+			@ModelAttribute("id") String idS
  			) {
 		
-		if(model.getAttribute("user") == null) {
-			System.out.println("未登入");
-			return "redirect:/UserTryLogin";
-		}
+//		if(model.getAttribute("user") == null) {
+//			System.out.println("未登入");
+//			return "redirect:/UserTryLogin";
+//		}
 		Member userBean = (Member) model.getAttribute("user");
 		String username = userBean.getUsername();
 		System.out.println("user_name: "+username);
-		
+		if(idS == null) {
+			idS ="-1";
+		}
+		int id = Integer.parseInt(idS);
 		int price = Integer.parseInt(priceS);
 		int number = Integer.parseInt(numberS);
 		String type =typeS;		
@@ -85,7 +90,7 @@ public class ShoppingCartsController {
 		if (exist) {
 			productService.updateNumberByItemNoAndProductName(number, itemNo, productName);
 		}else {
-			ListBean lBean = new ListBean(itemNo,productName,number,price);
+			ListBean lBean = new ListBean(itemNo,productName,number,price,id);
 			productService.saveList(lBean);
 		}
 //		List<ListBean> findByItemNo = productService.findByItemNo(itemNo);
@@ -102,10 +107,10 @@ public class ShoppingCartsController {
 	public String cartListType(Model model,RedirectAttributes redModel,
 			@PathVariable("type") String type) {
 		
-		if(model.getAttribute("user") == null) {
-			System.out.println("未登入123");
-			return "redirect:/UserTryLogin";
-		}
+//		if(model.getAttribute("user") == null) {
+//			System.out.println("未登入123");
+//			return "redirect:/UserTryLogin";
+//		}
 		Member userBean = (Member) model.getAttribute("user");
 		String username = userBean.getUsername();
 		System.out.println("user_name: "+username);
@@ -119,7 +124,7 @@ public class ShoppingCartsController {
 		}
 		System.out.println(cartBean);
 		
-		model.addAttribute("havePoint",productService.findByUsernametoCart(username)); //---------------------------------------------
+		model.addAttribute("havePoint",productService.findByUsernametoCart(username));
 		model.addAttribute("no",itemNo);
 		model.addAttribute("info",username);
 		model.addAttribute("cartList",productService.findByItemNo(itemNo));
@@ -133,10 +138,10 @@ public class ShoppingCartsController {
 	@GetMapping("/AllCarts")
 	public String allCarts(Model model) {
 		
-		if(model.getAttribute("user") == null) {
-			System.out.println("未登入");
-			return "redirect:/UserTryLogin";
-		}
+//		if(model.getAttribute("user") == null) {
+//			System.out.println("未登入");
+//			return "redirect:/UserTryLogin";
+//		}
 		Member userBean = (Member) model.getAttribute("user");
 		String username = userBean.getUsername();
 		System.out.println("user_name: "+username);
@@ -179,7 +184,7 @@ public class ShoppingCartsController {
 			CartsBean cBean0 = (CartsBean) model.getAttribute("payProcess");
 			System.out.println("cBean0: "+cBean0);
 			System.out.println("cBean0.T:"+cBean0.getTransactionalNum());
-//			return "redirect:/index";
+//			return "redirect:/";
 		}
 		CartsBean cartsBean = (CartsBean) model.getAttribute("payProcess");
 		System.out.println("cBean1: "+cartsBean);

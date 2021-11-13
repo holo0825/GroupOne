@@ -26,7 +26,10 @@
 <link rel="stylesheet" href="../assets/css/red-color.css">
 <link rel="stylesheet" href="../assets/css/yellow-color.css">
 <link rel="stylesheet" href="../assets/css/responsive.css">
-<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<link rel="stylesheet"
+	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+	crossorigin="anonymous" />
 </head>
 <body itemscope>
 	<main>
@@ -65,7 +68,12 @@
 			<!-- Topbar -->
 			<div class="logo-menu-sec">
 				<div class="container" style="margin-left: 350px;">
-
+					<div class="logo">
+						<h1 itemprop="headline">
+							<a href="index.html" title="Home" itemprop="url"><img
+								src="../assets/images/logo2.png" alt="logo.png" itemprop="image"></a>
+						</h1>
+					</div>
 					<nav>
 						<div class="menu-sec">
 							<ul>
@@ -135,24 +143,24 @@
 		</div>
 		<div align='center'>
 			<hr>
-			 <section>
-            <div class="block less-spacing gray-bg top-padd30">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="sec-box">
-                                <div class="col-md-9 col-sm-12 col-lg-9">
-                                    <div class="blog-detail-wrapper">
+			<section>
+				<div class="block less-spacing gray-bg top-padd30">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="sec-box">
+									<div class="col-md-9 col-sm-12 col-lg-9">
+										<div class="blog-detail-wrapper">
 											<c:choose>
 												<c:when test="${not empty articleBeanList}">
 													<c:forEach var='article' items="${articleBeanList}">
 														<div class="col-md-4 col-sm-6 col-lg-4">
 															<div class="news-box wow fadeIn" data-wow-delay="0.1s">
-													 			<div class="news-thumb">
-																	
-																	<img width='100' height='200' 
-    																	 src="<c:url value='/getPicture/${article.id}' />" />
-  
+																<div class="news-thumb">
+
+																	<img width='100' height='200'
+																		src="<c:url value='/getPicture/${article.id}' />" />
+
 																	<div class="news-btns">
 																		<a class="post-date red-bg" href="#" title=""
 																			itemprop="url">${article.registerTime}</a><a
@@ -184,40 +192,39 @@
 										</div>
 									</div>
 									<div class="col-md-3 col-sm-12 col-lg-3">
-                                    <div class="sidebar right">
-                                        <div class="widget style2 Search_filters wow fadeIn" data-wow-delay="0.2s">
-                                            <h4 class="widget-title2 sudo-bg-red" itemprop="headline">Search Filters
-                                            </h4>
-                                            <div class="widget-data">
-                                                <ul>
-                                                    <li><a href="/ShowArticlesByCategory" title="" itemprop="url">中式</a>
-                                                    </li>
-                                                    <li><a href="#" title="" itemprop="url">義式
-                                                    </a>
-                                                    <li><a href="#" title="" itemprop="url">火鍋</a>
-                                                    </li>
-                                                    <li><a href="#" title="" itemprop="url">牛排</a>
-                                                    </li>
-                                                    <li><a href="#" title="" itemprop="url">速食</a>
-                                                    </li>
-                                                    <li><a href="#" title="" itemprop="url">飲料冰品</a></li>
-                                                    <li><a href="#" title="" itemprop="url">其他</a>
-                                                    </li>
-                                                    
-                                                </ul>
-                                                
-                                                <div>
-                                                <c:forEach var='category' items="${categoryList}">
-                                                <a href="<c:url value="/ShowArticlesGuest/${category}" />">${category}</a><br>
-                                                </c:forEach>
-                                                </div>
-                                                
-                                            </div>
-                                            
-                                        </div>
-                                            <a href="<c:url value='insertArticleUser' />"><font size='5'><i class="fas fa-edit"></i>新增貼文</font></a>
-                                        </div>
-                                        </div>
+										<div class="sidebar right">
+											<div class="widget style2 Search_filters wow fadeIn"
+												data-wow-delay="0.2s">
+												<h4 class="widget-title2 sudo-bg-red" itemprop="headline">Search
+													Filters</h4>
+												<div class="widget-data">
+													<ul>
+														<li><a href="/ShowArticlesByCategory" title=""
+															itemprop="url">中式</a></li>
+														<li><a href="#" title="" itemprop="url">義式 </a>
+														<li><a href="#" title="" itemprop="url">火鍋</a></li>
+														<li><a href="#" title="" itemprop="url">牛排</a></li>
+														<li><a href="#" title="" itemprop="url">速食</a></li>
+														<li><a href="#" title="" itemprop="url">飲料冰品</a></li>
+														<li><a href="#" title="" itemprop="url">其他</a></li>
+
+													</ul>
+
+													<div>
+														<c:forEach var='category' items="${categoryList}">
+															<a
+																href="<c:url value="/ShowArticlesGuest/${category}" />">${category}</a>
+															<br>
+														</c:forEach>
+													</div>
+
+												</div>
+
+											</div>
+											<a href="<c:url value='insertArticleUser' />"><font
+												size='5'><i class="fas fa-edit"></i>新增貼文</font></a>
+										</div>
+									</div>
 									<div class="pagination-wrapper text-center">
 										<ul class="pagination justify-content-center">
 											<li class="page-item prev"><a class="page-link brd-rd2"

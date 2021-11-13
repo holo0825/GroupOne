@@ -18,5 +18,5 @@ public interface SellerService {
 	
 	public Optional<SellerProductBean> findById(int id);
 	
-	
+	List<SellerProductBean> findAllBySellerId(int sellerId);
 }

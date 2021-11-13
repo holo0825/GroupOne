@@ -99,10 +99,13 @@ public class ProcessImages {
 		// 把表格欄位的圖片抓出來往前端送
 		// 要怎麼把blob抓出來改成byte陣列(圖片、檔案)
 	//丟圖片出來的要求
-		@GetMapping("/getMenuPicture/{productName}")
+	
+	
+	//菜單圖片
+		@GetMapping("/getMenuPicture/{id}")
 		public ResponseEntity<byte[]> getPicture(HttpServletResponse resp,
 				@ModelAttribute("menu") MenuBean menu) {
-			String filePath = "/resources/images/NoImage.jpg";
+		//	String filePath = "/resources/images/NoImage.jpg";
 	//		System.out.println("--------/getPicture/{productName}--------productName->" + mb.getProductName());
 			// 要放的byte陣列
 			byte[] media = null;
@@ -113,13 +116,13 @@ public class ProcessImages {
 			// 用ID找到所有資料
 			System.out.println("------getDishImage------>" );
 			
-			MenuBean menu2 = menuService.findByProductName(menu.getProductName());
+			Optional<MenuBean> menu1 = menuService.findById(menu.getId());
 	//		System.out.println("------getDishImage2------>" + (bean2.get().getDishImage());
 			
-	//		MenuBean bean = menu2.get();
+			MenuBean menu2 = menu1.get();
 	 //		System.out.println("------getDishImage3------>" + bean2.get().getDishImage());
 			
-				
+
 					try { // 找長度
 //						len = (int) blob.length();
 //				media = blob.getBytes(1, len); // 地1個位元組(JDBC都是從1開始 0會掛掉)-最後一個取出放入
@@ -129,7 +132,7 @@ public class ProcessImages {
 						System.out.println("-----圖片錯誤-----");
 						throw new RuntimeException("MemberController的getPicture()發生SQLException: " + e.getMessage());
 					}
-			
+	
 			// 不要放去快取區
 			System.out.println("-----快取前------");
 			headers.setCacheControl(CacheControl.noCache().getHeaderValue());
@@ -154,8 +157,8 @@ public class ProcessImages {
 		//餐廳形象照片
 		@GetMapping("/getRestaurantPicture/{rstName}")
 		public ResponseEntity<byte[]> getRstPicture(HttpServletResponse resp,
-				@ModelAttribute("rstName") RestaurantBean restaurant) {
-	
+				@ModelAttribute("restaurant") RestaurantBean restaurant) {
+			String filePath = "/resources/images/NoImage.jpg";
 			// 要放的byte陣列
 			byte[] media = null;
 			// media - headers(表投)
@@ -164,7 +167,8 @@ public class ProcessImages {
 			//int len = 0;
 			System.out.println("------getrstImage------" );
 			
-			RestaurantBean restaurant2 = restaurantService.findByRstName(restaurant.getRstName());				
+			RestaurantBean restaurant2 = restaurantService.findByRstName(restaurant.getRstName());							
+			// 如果圖片的來源有問題，就送回預設圖片(/images/NoImage.png)
 					try { 
 						media = restaurant2.getRstImage();
 						System.out.println("-----有圖片哦-----");

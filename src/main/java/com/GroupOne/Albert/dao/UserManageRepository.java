@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.GroupOne.Albert.members.Member;
+import com.GroupOne.Albert.members.MemberRole;
 import com.GroupOne.Albert.members.oldusers.UserBean;
 
 // Admin管理User會員的DAO CRUD功能介面，裡面定義抽象方法給DAO實作類別(UserManageDaoImpl.java)Override使用
@@ -29,4 +30,6 @@ public interface UserManageRepository extends JpaRepository<Member, Integer>{
 //	// Update user by id
 //	boolean updateUser(UserBean user) throws SQLException;
 
+	// user全查詢排除deleted為true的資料
+	List<Member> findByMemberRoleAndDeleted(MemberRole memberRole, Boolean deleted);
 }

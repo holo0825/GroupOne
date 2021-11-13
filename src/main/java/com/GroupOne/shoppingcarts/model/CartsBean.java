@@ -21,7 +21,7 @@ public class CartsBean implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int itemNo;
+	private Integer itemNo;
 	private String username;
 	private Integer amount;
 	private Date payday;
@@ -42,8 +42,9 @@ public class CartsBean implements Serializable{
 		super();
 	}
 	
-	public CartsBean(int itemNo, String username, Integer amount, Date payday, Float points, String wrong, String type,
-			Integer discount, Integer disAmount, String transactionalNum, String refund) {
+	public CartsBean(Integer itemNo, String username, Integer amount, Date payday, Float points, String wrong,
+			String type, Integer discount, Integer disAmount, String transactionalNum, String refund,
+			String stringDate) {
 		super();
 		this.itemNo = itemNo;
 		this.username = username;
@@ -56,109 +57,30 @@ public class CartsBean implements Serializable{
 		this.disAmount = disAmount;
 		this.transactionalNum = transactionalNum;
 		this.refund = refund;
+		this.stringDate = stringDate;
 	}
 
-	public CartsBean(int itemNo, String username, Integer amount, Date payday, Float points, String wrong, String type,
-			Integer discount, Integer disAmount, String transactionalNum) {
-		super();
-		this.itemNo = itemNo;
-		this.username = username;
-		this.amount = amount;
-		this.payday = payday;
-		this.points = points;
-		this.wrong = wrong;
-		this.type = type;
-		this.discount = discount;
-		this.disAmount = disAmount;
-		this.transactionalNum = transactionalNum;
-	}
-	
-	public CartsBean(int amount,float points,String username,int itemNo,int discount,int disAmount,String transactionalNum) {
-		super();
-		this.itemNo = itemNo;
-		this.username = username;
-		this.amount = amount;
-		this.points = points;
-		this.discount = discount;
-		this.disAmount = disAmount;
-		this.transactionalNum = transactionalNum;
-	}
 	
 
-	public CartsBean(int itemNo, String username, int amount, Date payday, float points, String wrong, String type) {
-		super();
-		this.itemNo = itemNo;
-		this.username = username;
-		this.amount = amount;
-		this.payday = payday;
-		this.points = points;
-		this.wrong = wrong;
-		this.type = type;
-	}
-
-	public CartsBean(int itemNo) {
-		super();
-		this.itemNo = itemNo;
-	}
-
-	public CartsBean(int itemNo, String username, int amount, Date payday, float points) {
-		super();
-		this.itemNo = itemNo;
-		this.username = username;
-		this.amount = amount;
-		this.payday = payday;
-		this.points = points;
-	}
-	
 	public CartsBean(String username, String type) {
 		super();
 		this.username = username;
 		this.type = type;
 	}
-	public CartsBean(int amount,float point,Date payday,String username,int itemNo) {   //測試用
+	
+	
+
+	public CartsBean(Integer amount,Float points,String username,Integer itemNo,Integer discount,Integer disAmount,String transactionalNum) {
 		super();
 		this.itemNo = itemNo;
 		this.username = username;
 		this.amount = amount;
-		this.payday = payday;
+		this.points = points;
+		this.discount = discount;
+		this.disAmount = disAmount;
+		this.transactionalNum = transactionalNum;
 	}
 
-	public int getItemNo() {
-		return itemNo;
-	}
-	public void setItemNo(int itemNo) {
-		this.itemNo = itemNo;
-	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	public int getAmount() {
-		return amount;
-	}
-	public void setAmount(Integer amount) {
-		this.amount = amount;
-	}
-	public Date getPayday() {
-		return payday;
-	}
-	public void setPayday(Date payday) {
-		this.payday = payday;
-	}
-	public float getPoints() {
-		return points;
-	}
-	public void setPoints(Float points) {
-		this.points = points;
-	}
-	public String getWrong() {
-		return wrong;
-	}
-	public void setWrong(String wrong) {
-		this.wrong = wrong;
-	}
 	public String getType() {
 		if (type.equals("food")) {
 			type = "訂餐";
@@ -171,30 +93,6 @@ public class CartsBean implements Serializable{
 		this.type = type;
 	}
 	
-	public Integer getDiscount() {
-		return discount;
-	}
-
-	public void setDiscount(Integer discount) {
-		this.discount = discount;
-	}
-
-	public Integer getDisAmount() {
-		return disAmount;
-	}
-
-	public void setDisAmount(Integer disAmount) {
-		this.disAmount = disAmount;
-	}
-
-	public String getTransactionalNum() {
-		return transactionalNum;
-	}
-
-	public void setTransactionalNum(String transactionalNum) {
-		this.transactionalNum = transactionalNum;
-	}
-
 	public String getStringDate() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		stringDate = sdf.format(payday);
@@ -205,12 +103,104 @@ public class CartsBean implements Serializable{
 		this.stringDate = stringDate;
 	}
 
+
+	public Integer getItemNo() {
+		return itemNo;
+	}
+
+
+	public void setItemNo(Integer itemNo) {
+		this.itemNo = itemNo;
+	}
+
+
+	public String getUsername() {
+		return username;
+	}
+
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+
+	public Integer getAmount() {
+		return amount;
+	}
+
+
+	public void setAmount(Integer amount) {
+		this.amount = amount;
+	}
+
+
+	public Date getPayday() {
+		return payday;
+	}
+
+
+	public void setPayday(Date payday) {
+		this.payday = payday;
+	}
+
+
+	public Float getPoints() {
+		return points;
+	}
+
+
+	public void setPoints(Float points) {
+		this.points = points;
+	}
+
+
+	public String getWrong() {
+		return wrong;
+	}
+
+
+	public void setWrong(String wrong) {
+		this.wrong = wrong;
+	}
+
+
+	public Integer getDiscount() {
+		return discount;
+	}
+
+
+	public void setDiscount(Integer discount) {
+		this.discount = discount;
+	}
+
+
+	public Integer getDisAmount() {
+		return disAmount;
+	}
+
+
+	public void setDisAmount(Integer disAmount) {
+		this.disAmount = disAmount;
+	}
+
+
+	public String getTransactionalNum() {
+		return transactionalNum;
+	}
+
+
+	public void setTransactionalNum(String transactionalNum) {
+		this.transactionalNum = transactionalNum;
+	}
+
+
 	public String getRefund() {
 		return refund;
 	}
 
+
 	public void setRefund(String refund) {
 		this.refund = refund;
 	}
-	
+
 }

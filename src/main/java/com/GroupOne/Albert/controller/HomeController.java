@@ -12,7 +12,7 @@ import com.GroupOne.Albert.members.oldusers.UserBean;
 
 @Controller
 public class HomeController {
-	@GetMapping({"/index", "/", "/home"})
+	@GetMapping({"/index", "/", "/home", "/GroupOneHome"})
 	public String Index(Model model) { // Spring MVC不重視方法名稱，但是建議取名為有意義的名稱
 		
 //		AdminBean admin = new AdminBean();
@@ -24,6 +24,6 @@ public class HomeController {
 //		SellerBean seller = new SellerBean();
 //		model.addAttribute("seller", seller);
 
-		return "index";
+		return "GroupOneHome";
 	}
 }

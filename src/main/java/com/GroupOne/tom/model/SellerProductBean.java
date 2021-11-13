@@ -8,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -33,6 +31,9 @@ public class SellerProductBean implements Serializable {
 	
 	@Column(name="PEOPLE_ENOUGH")
 	private Integer people;
+	
+	@Column(name="START_DATE")
+	private Date start;
  
 	@Column(name="END_DATE")
 	private Date date;
@@ -47,25 +48,29 @@ public class SellerProductBean implements Serializable {
 	private String introduceProduct;
 	
 	@Column(name="SELLERID")
-	private Integer sellerID;
+	private Integer sellerId;
+	
+	@Column(name="ITEM")
+	private String item;
+	
+	
 	
 
-	
-	
-	
 	public SellerProductBean() {}
 	
-	public SellerProductBean(Integer id, String name, Integer price, Integer people,
-			 Date date,byte[] picture,Integer peopleNow,String introduceProduct,Integer sellerID) {
+	public SellerProductBean(Integer id, String name, Integer price, Integer people,Date start,
+			 Date date,byte[] picture,Integer peopleNow,String introduceProduct,Integer sellerId,String item) {
 		this.id = id;
 		this.name = name;
 		this.price = price;
 		this.people = people;
+		this.start = start;
 		this.date = date;
 		this.picture = picture;
 		this.introduceProduct = introduceProduct;
 		this.peopleNow = peopleNow;
-		this.sellerID = sellerID;
+		this.sellerId = sellerId;
+		this.item = item;
 	}
 	
 	
@@ -119,6 +124,14 @@ public class SellerProductBean implements Serializable {
 		this.people = people;
 	}
 
+	public Date getStart() {
+		return start;
+	}
+
+	public void setStart(Date start) {
+		this.start = start;
+	}
+
 	public Date getDate() {
 		return date;
 	}
@@ -144,11 +157,11 @@ public class SellerProductBean implements Serializable {
 	}
 
 	public Integer getSellerId() {
-		return sellerID;
+		return sellerId;
 	}
 
-	public void setSellerId(Integer sellerID) {
-		this.sellerID = sellerID;
+	public void setSellerId(Integer sellerId) {
+		this.sellerId = sellerId;
 	}
 
 
@@ -159,8 +172,14 @@ public class SellerProductBean implements Serializable {
 	public void setIntroduceProduct(String introduceProduct) {
 		this.introduceProduct = introduceProduct;
 	}
-	
-	
-	
 
+	public String getItem() {
+		return item;
+	}
+
+	public void setItem(String item) {
+		this.item = item;
+	}
+	
+	
 }

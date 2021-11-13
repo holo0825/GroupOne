@@ -73,14 +73,14 @@
             </div>
             <!-- Topbar -->
             <div class="logo-menu-sec">
-            	<div class="container">
-	               	<div class="logo" style="margin:12px 0 0 0 ;!important">
-					<h1 itemprop="headline">
-						<a href="index.html" title="Home" itemprop="url">
-							<img style="width:150px;" src="<c:url value='/assets/images/icon_get_together.png' />" alt="Logo.png" itemprop="image">
-						</a>
-					</h1>
-						</div>
+             <div class="container">
+               <div class="logo" style="margin:12px 0 0 0 ;!important">
+				<h1 itemprop="headline">
+					<a href="index.html" title="Home" itemprop="url"> 
+						<img style="width:150px;" src="<c:url value='/assets/images/icon_get_together.png' />" alt="Logo.png" itemprop="image">
+					</a>
+				</h1>
+					</div>
                     <nav>
                         <div class="menu-sec">
                             <ul>

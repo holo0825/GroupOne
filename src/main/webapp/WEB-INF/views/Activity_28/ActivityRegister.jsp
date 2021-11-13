@@ -520,7 +520,10 @@ body {
                     </a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="#">Home 1</a>
+                            <a href="<c:url value='/admin/listuser' />">一般會員管理</a>
+                        </li>
+                        <li>
+                        	<a href="<c:url value='/admin/listseller' />">商家會員管理</a>
                         </li>
                     </ul>
                 </li>
@@ -531,9 +534,8 @@ body {
                         餐廳管理
                     </a>
                     <ul class="collapse list-unstyled" id="page1">
-                        <li>
-                            <a href="#">Page 1</a>
-                        </li>
+                        <li><a href="<c:url value='/admin/queryallrestaurant' />">餐廳總覽</a></li>
+						<li><a href="<c:url value='/admin/queryallmenu' />" >菜單總覽</a></li>
                        
                     </ul>
                 </li>
@@ -543,9 +545,9 @@ body {
                         團購管理
                     </a>
                     <ul class="collapse list-unstyled" id="page2">
-                        <li>
-                            <a href="#">Page 1</a>
-                        </li>
+                        
+                          <li><a href="<c:url value='/admin/adminGroupBuy' />">團購餐券總覽</a></li>
+                        
                         
                     </ul>
                 </li>
@@ -576,16 +578,11 @@ body {
                     </ul>
                 </li>
                 <li class="licolor">
-                    <a href="#page5" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <a href="<c:url value='/_01_article/ShowArticles' />" aria-expanded="false" >
                         <i class="icon icon-single-04"></i>
                         討論區管理
                     </a>
-                    <ul class="collapse list-unstyled" id="page5">
-                        <li>
-                            <a href="#">Page 1</a>
-                        </li>
-                       
-                    </ul>
+                    
                 </li>
                 <li style="background-color:#1c0f54;">
                     <a href="<c:url value='/GroupOneHome' />"  >
@@ -603,7 +600,7 @@ body {
 		
 		<div class="col-md-12 text-center">
 		
-			<a value="前端" href="<c:url value='/ActivityPage'/>">前端</a>
+<%-- 			<a value="前端" href="<c:url value='/ActivityPage'/>">前端</a> --%>
 		
 <%-- 		 	<a value="管理報名者頁" href="<c:url value='/RecordParticipantBack'/>">管理報名者頁</a> --%>
 			<button type="button" class="btn btn-primary" data-toggle="modal"

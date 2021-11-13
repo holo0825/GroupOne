@@ -71,9 +71,12 @@ public class RestaurantAdminController {
 	@DeleteMapping("/updateRestaurantByAdmin")
 	@ResponseBody // 使其不跳轉畫面
 	public void ajaxUpdateRestaurantByAdmin(@RequestParam String userName, @RequestParam String rstName, Model model)
-			throws SQLException {
+			 {
+		//restaurantService.updateRestaurantByAdmin(userName, rstName);
 		System.out.println("========" + userName + "========" + rstName);
+		//if(userName.equals("此餐廳已下架")) {
 		restaurantService.updateRestaurantByAdmin("此餐廳已下架", userName, rstName);
+		//}
 	}
 
 	// ----------菜單----------
@@ -87,9 +90,11 @@ public class RestaurantAdminController {
 	}
 
 	// 管理者 (更新)強制下架 (更新一個欄位，避免全部強制更新)
-	@PostMapping("/updateMenuByAdmin")
-	public String updateMenuByAdmin(String rstName, String productName) {
-		return "Restaurant_Menu/AdminRestaurant";
+	@DeleteMapping("/updateMenuByAdmin")
+	@ResponseBody // 使其不跳轉畫面
+	public void updateMenuByAdmin(String rstName, String productName, Model model) {
+		System.out.println("========" + rstName + "========" + productName);
+		menuService.updateMenuByAdmin("此菜色已下架", rstName, productName);		
 	}
 
 }

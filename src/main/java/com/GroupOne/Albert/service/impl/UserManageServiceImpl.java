@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.GroupOne.Albert.dao.UserManageRepository;
 import com.GroupOne.Albert.members.Member;
+import com.GroupOne.Albert.members.MemberRole;
 import com.GroupOne.Albert.members.oldusers.UserBean;
 import com.GroupOne.Albert.service.UserManageService;
 
@@ -54,7 +55,9 @@ public class UserManageServiceImpl implements UserManageService {
 	@Override
 	public List<Member> selectAllUsers() {
 //	public List<UserBean> selectAllUsers() {
-		return userManageRepo.findAll();
+//		return userManageRepo.findAll();
+		// user全查詢排除deleted為true的資料
+		return userManageRepo.findByMemberRoleAndDeleted(MemberRole.ROLE_USER, false);
 	}
 
 //	@Override

@@ -5,10 +5,10 @@
 <html>
 <head>
 
-<link rel="stylesheet"
-	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-	crossorigin="anonymous" />
+<!-- <link rel="stylesheet" -->
+<!-- 	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" -->
+<!-- 	 /> -->
+<link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -55,55 +55,81 @@
 			<div class="topbar">
 				<div class="container">
 					<div class="topbar-register">
-						<a class="log-popup-btn" href="#" title="Login" itemprop="url">登入</a>
-						<a class="sign-popup-btn" href="#" title="Register" itemprop="url">註冊</a>
-						<a class="sign-popup-btn" href="#" title="Register" itemprop="url">賣家中心</a>
-					</div>
-					<div class="social1">
-						<a href="#" title="Facebook" itemprop="url" target="_blank"><i
-							class="fa fa-facebook-square"></i></a>
-					</div>
+                    <c:choose>
+                        <c:when test="${empty user}">
+                          <a  href="<c:url value="/login" />" title="Login" itemprop="url">登入</a>
+                            <a href="<c:url value="/register" />" title="Register" itemprop="url">註冊</a>
+                            <a class="sign-popup-btn" href="#" title="Register" itemprop="url">賣家中心</a>
+                        </c:when>
+                        <c:otherwise>
+                            <span>${user.getUsername()}</span>&nbsp&nbsp&nbsp
+<!--                             <a class="sign-popup-btn" href="#" title="Register" itemprop="url">登出</a> -->
+                            <span class="">
+                                <form action="<c:url value='/logout' />" method="post" style="display:inline;font-size:15px">
+                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                    <input type="submit" value="登出" style="color:white;background:#161616;">
+                                </form> 
+                            </span>
+
+                        </c:otherwise>
+                    </c:choose>
+                    </div>
+					<div class="social1" style="margin-top:12px;!important">
+                        <a href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook-square"></i></a>
+                        <a href="#" title="Google Plus" itemprop="url" target="_blank"><i class="fa fa-google-plus"></i></a>
+                    </div>
 				</div>
 			</div>
 			<!-- Topbar -->
 			<div class="logo-menu-sec">
-				<div class="container" style="margin-left: 350px;">
-
+				<div class="container" >
+					<div class="logo" style="margin:12px 0 0 0 ;!important">
+				<h1 itemprop="headline">
+					<a href="index.html" title="Home" itemprop="url">
+						<img style="width:150px;" src="../assets/images/icon_get_together.png" alt="Logo.png" itemprop="image">
+					</a>
+				</h1>
+					</div>
 					<nav>
 						<div class="menu-sec">
-							<ul>
-								<li class="menu-item-has-children"><a href="../home"
-									title="HOMEPAGES" itemprop="url"><span class="red-clr"></span>首頁</a>
-									<ul class="sub-dropdown">
-										<li><a href="index.html" title="HOMEPAGE 1"
-											itemprop="url">HOMEPAGE 1</a></li>
-										<li><a href="index2.html" title="HOMEPAGE 2"
-											itemprop="url">HOMEPAGE 2</a></li>
-									</ul></li>
-								<li class="menu-item-has-children"><a href="#"
-									title="RESTAURANTS" itemprop="url"><span class="red-clr"></span>餐廳</a>
-								</li>
-								<li class="menu-item-has-children"><a href="#"
-									title="PAGES" itemprop="url"><span class="red-clr"></span>團購</a>
-								</li>
-								<li class="menu-item-has-children"><a href="#"
-									title="PAGES" itemprop="url"><span class="red-clr"></span>活動</a>
-								</li>
-								<li class="menu-item-has-children"><a
-									href="../ShowArticlesGuest" title="PAGES" itemprop="url"><span
-										class="red-clr"></span>討論區</a></li>
-								<li class="menu-item-has-children"><a href="#"
-									title="PAGES" itemprop="url"><span class="red-clr"></span>購物車</a>
-									<ul class="sub-dropdown">
-										<li><a href="index.html" title="HOMEPAGE 1"
-											itemprop="url">訂餐</a></li>
-										<li><a href="index2.html" title="HOMEPAGE 2"
-											itemprop="url">團購</a></li>
-									</ul></li>
-								<li class="menu-item-has-children"><a href="#"
-									title="PAGES" itemprop="url"><span class="red-clr"></span>會員中心</a>
-								</li>
-							</ul>
+							 <ul>
+                                <li class="menu-item-has-children">
+                                    <a href="<c:url value='/GroupOneHome' />" title="GroupOneHome" itemprop="url"><span class="red-clr"></span>首頁</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="<c:url value='/searchallrestaurant' />" title="RESTAURANTS" itemprop="url"><span class="red-clr"></span>餐廳</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="<c:url value='/customerSearch' />" title="customerSearch" itemprop="url"><span class="red-clr"></span>團購</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="<c:url value='/ActivityPage' />" title="Activity" itemprop="url"><span class="red-clr"></span>活動</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="<c:url value='/ShowArticlesGuest' />" title="ShowArticlesGuest" itemprop="url"><span class="red-clr"></span>討論區</a>
+
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="#" title="CartList" itemprop="url"><span class="red-clr"></span>購物車</a>
+                                    <ul class="sub-dropdown">
+                                        <li>
+                                            <a href="<c:url value='/user/CartList/food' />" title="food" itemprop="url">訂餐</a>
+                                        </li>
+                                        <li>
+                                            <a href="<c:url value='/user/CartList/coupon' />" title="coupon" itemprop="url">團購</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="#" title="#" itemprop="url"><span class="red-clr"></span>會員中心</a>
+                                    <ul class="sub-dropdown">
+                                        <li>
+                                            <a href="<c:url value='/user/AllCarts' />" itemprop="url">訂單紀錄</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                
+                            </ul>
 
 						</div>
 					</nav>
@@ -150,14 +176,13 @@
 									<div class="blog-detail-wrapper">
 										<div class="blog-detail-thumb wow fadeIn"
 											data-wow-delay="0.2s">
-										<!-- 
+											<!-- 
 											<img src="../assets/images/resource/i3.jpg"
 												alt="blog-detial-img2-1.jpg" itemprop="image">
-										 -->	
-										<img
-											src="<c:url value='/getPicture/${article.id}'/>" />
+										 -->
+											<img src="<c:url value='/getPicture/${article.id}'/>" />
 										</div>
-										
+
 										<div class="blog-detail-info">
 											<span class="post-detail-date red-clr"><i
 												class="fa fa-clock-o"></i>${article.registerTime}</span>
@@ -196,13 +221,20 @@
 											</div>
 											<!-- Section Box -->
 										</div>
+										<c:choose>
+                                        <c:when test="${article.username == user.username}">
+                                        <a href="<c:url value='/user/articlesUser/${article.id}' />"><font
+												size='5'><i class="fas fa-edit"></i>編輯貼文</font></a>
+                                        
+                                        </c:when>
+                                        </c:choose>
+										
+										
 									</div>
 								</div>
 							</div>
 		</section>
-		<section>
-			
-		</section>
+		<section></section>
 
 		<footer>
 			<div class="block top-padd80 bottom-padd80 dark-bg">

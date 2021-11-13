@@ -17,8 +17,9 @@ public interface RestaurantRepository extends JpaRepository<RestaurantBean, Inte
 		//買家 查單一餐廳
 		RestaurantBean findByRstName(String rstName);		
 	
-		//消費者 查某餐廳菜單
-		RestaurantBean findByRstNameAndOffshelfIsNull(String rstName);
+		//消費者 查餐廳
+		//RestaurantBean findByRstNameAndOffshelfIsNull(String rstName);
+		List<RestaurantBean> findByOffshelfIsNull();
 
 		//管理員查單筆
 		RestaurantBean findByUserName(String userName);

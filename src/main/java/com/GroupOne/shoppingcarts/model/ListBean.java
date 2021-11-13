@@ -16,19 +16,23 @@ public class ListBean implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	private int itemNo;
+	private Integer id;
+	private Integer itemNo;
 	private String productName;
-	private int number;
-	private int price;
+	private Integer number;
+	private Integer price;
 	private String exist;
 	private String refund;
+	private Integer typeId;
+	
+	
+	
 	
 	public ListBean() {
 		super();
 	}
-	
-	public ListBean(int id, int itemNo, String productName, int number, int price, String exist, String refund) {
+	public ListBean(Integer id, Integer itemNo, String productName, Integer number, Integer price, String exist,
+			String refund, Integer typeId) {
 		super();
 		this.id = id;
 		this.itemNo = itemNo;
@@ -37,47 +41,28 @@ public class ListBean implements Serializable{
 		this.price = price;
 		this.exist = exist;
 		this.refund = refund;
+		this.typeId = typeId;
 	}
-
-	public ListBean(int id, int itemNo, String productName, int number, int price, String exist) {
-		super();
-		this.id = id;
-		this.itemNo = itemNo;
-		this.productName = productName;
-		this.number = number;
-		this.price = price;
-		this.exist = exist;
-	}
-
-	public ListBean(int itemNo) {
-		super();
-		this.itemNo = itemNo;
-	}
-
-	public ListBean(int itemNo, String productName, int number, int price) {
+	
+	public ListBean(Integer itemNo, String productName, Integer number, Integer price, Integer typeId) {
 		super();
 		this.itemNo = itemNo;
 		this.productName = productName;
 		this.number = number;
 		this.price = price;
+		this.typeId = typeId;
 	}
-	public ListBean(int number,int itemNo, String productName) {   //測試用
-		super();
-		this.number = number;
-		this.itemNo = itemNo;
-		this.productName = productName;
-	}
-
-	public int getId() {
+	
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	public int getItemNo() {
+	public Integer getItemNo() {
 		return itemNo;
 	}
-	public void setItemNo(int itemNo) {
+	public void setItemNo(Integer itemNo) {
 		this.itemNo = itemNo;
 	}
 	public String getProductName() {
@@ -86,16 +71,16 @@ public class ListBean implements Serializable{
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	public int getNumber() {
+	public Integer getNumber() {
 		return number;
 	}
-	public void setNumber(int number) {
+	public void setNumber(Integer number) {
 		this.number = number;
 	}
-	public int getPrice() {
+	public Integer getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 	public String getExist() {
@@ -104,13 +89,17 @@ public class ListBean implements Serializable{
 	public void setExist(String exist) {
 		this.exist = exist;
 	}
-
 	public String getRefund() {
 		return refund;
 	}
-
 	public void setRefund(String refund) {
 		this.refund = refund;
+	}
+	public Integer getTypeId() {
+		return typeId;
+	}
+	public void setTypeId(Integer typeId) {
+		this.typeId = typeId;
 	}
 	
 	

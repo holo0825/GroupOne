@@ -29,7 +29,6 @@ public class SellerServiceImpl implements SellerService {
 	@Override
 	public SellerProductBean insertProduct(SellerProductBean seller) {
 		try {
-			System.out.println("2ok");
 			seller.setPicture(seller.getProductImage().getBytes());
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -39,6 +38,11 @@ public class SellerServiceImpl implements SellerService {
 
 	@Override
 	public SellerProductBean updateProduct(SellerProductBean seller) {
+		try {
+			seller.setPicture(seller.getProductImage().getBytes());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return sellerRepository.save(seller);
 	}
 
@@ -55,5 +59,9 @@ public class SellerServiceImpl implements SellerService {
 	@Override
 	public Optional<SellerProductBean> findById(int id) {
 		return sellerRepository.findById(id);
+	}
+	
+	public List<SellerProductBean> findAllBySellerId(int sellerId){
+		return sellerRepository.findAllBySellerId(sellerId);
 	}
 }

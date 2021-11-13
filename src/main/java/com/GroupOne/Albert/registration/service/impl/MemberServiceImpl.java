@@ -1,8 +1,15 @@
 package com.GroupOne.Albert.registration.service.impl;
 
+import java.io.UnsupportedEncodingException;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,16 +18,22 @@ import com.GroupOne.Albert.registration.repository.RegisterMemberRepository;
 
 //import _00_init.util.GlobalService;
 import com.GroupOne.Albert.registration.service.MemberService;
+
+import net.bytebuddy.utility.RandomString;
+
 @Service
 public class MemberServiceImpl implements MemberService {
 	private static Logger log = LoggerFactory.getLogger(MemberServiceImpl.class);
 
 	RegisterMemberRepository registerMemberRepo;
 	
+	JavaMailSender mailSender;
+	
 //	SessionFactory factory;
 	@Autowired
-	public MemberServiceImpl(RegisterMemberRepository memberDao) {
+	public MemberServiceImpl(RegisterMemberRepository memberDao, JavaMailSender mailSender) {
 		this.registerMemberRepo = memberDao;
+		this.mailSender = mailSender;
 //		this.factory = factory;
 	}
 	
@@ -145,4 +158,106 @@ public class MemberServiceImpl implements MemberService {
 		return mb;
 	}
 
+	//--------------------------------------------------------------------------------------
+	
+//	public void register(User user, String siteURL) 
+	public void register(Member user, String siteURL) 
+			throws UnsupportedEncodingException, MessagingException {
+//		String encodedPassword = passwordEncoder.encode(user.getPassword());
+//		user.setPassword(encodedPassword);
+//		
+//		String TrimmedEmail = user.getEmail().trim();
+//		user.setEmail(TrimmedEmail);
+//		
+		String randomCode = RandomString.make(64);
+		user.setVerificationCode(randomCode);
+		user.setEnabled(false);
+		
+//		repo.save(user);
+		registerMemberRepo.save(user);
+		
+		sendVerificationEmail(user, siteURL);
+	}
+	
+//	private void sendVerificationEmail(User user, String siteURL) 
+	public void sendVerificationEmail(Member user, String siteURL) 
+			throws MessagingException, UnsupportedEncodingException {
+		String toAddress = user.getEmail();
+//		String toAddress = IDNMailHelper.toIdnAddress(user.getEmail());
+		
+//		String fromAddress = "your email address";
+		String fromAddress = "littleel218@gmail.com";
+//		String senderName = "your company name";
+		String senderName = "聚點時刻";
+		
+//		String subject = "請完成您的信箱驗證 | 一般會員註冊";
+		String subject;
+		switch (user.getMemberRole()) {
+		case ROLE_USER:
+			subject = "請完成您的信箱驗證 | 一般會員註冊";
+			break;
+		case ROLE_SELLER:
+			subject = "請完成您的信箱驗證 | 商家會員註冊";
+			break;
+		default:
+			subject = "請完成您的信箱驗證 | 會員註冊";
+			break;
+		}
+		
+		
+		String content = "親愛的 [[name]],<br>"
+				+ "請先點選以下連結完成信箱驗證：<br>"
+				+ "<h3><a href=\"[[URL]]\" target=\"_self\">驗證信箱</a></h3>"
+				+ "感謝您的合作，<br>"
+				+ "聚點時刻";
+		
+		MimeMessage message = mailSender.createMimeMessage();
+//		MimeMessageHelper helper = new MimeMessageHelper(message);
+		MimeMessageHelper helper = new MimeMessageHelper(message, "utf-8");
+		
+		helper.setFrom(fromAddress, senderName);
+		helper.setTo(toAddress);
+		helper.setSubject(subject);
+		
+//		content = content.replace("[[name]]", user.getFullName());
+		content = content.replace("[[name]]", user.getFullname());
+		String verifyURL = siteURL + "/verify?code=" + user.getVerificationCode();
+		
+		content = content.replace("[[URL]]", verifyURL);
+		
+		helper.setText(content, true);
+		
+		mailSender.send(message);
+		
+		System.out.println("Email has been sent");
+	}
+	
+	public boolean verify(String verificationCode) {
+//		User user = repo.findByVerificationCode(verificationCode);
+		Member user = registerMemberRepo.findByVerificationCode(verificationCode);
+		
+//		if (user == null || user.isEnabled()) {
+		if (user == null || user.getEnabled()) {
+			return false;
+		} else {
+			user.setVerificationCode(null);
+			user.setEnabled(true);
+//			repo.save(user);
+			registerMemberRepo.save(user);
+			
+			return true;
+		}
+	}
+	
+	// 檢查是否已經註冊過email
+	public Member findByEmail(String email) {
+//	public User findByEmail(String email) {
+		return registerMemberRepo.findByEmail(email);
+//		return repo.findByEmail(email);
+	};
+			
+	//--------------------------------------------------------------------------------------
+	
+
+	
 }

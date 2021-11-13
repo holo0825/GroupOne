@@ -9,16 +9,16 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Focus - Bootstrap Admin Dashboard</title>
+<title>討論區管理</title>
 <!-- Favicon icon -->
-<link rel="icon" type="image/png" sizes="16x16"
-	href="../images/favicon.png">
+<link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
 <!-- Datatable -->
-<link href="../vendor/datatables/css/jquery.dataTables.min.css"
-	rel="stylesheet">
+<link href="../focus2/css/style.css" rel="stylesheet">
+<link rel="stylesheet" href="<c:url value='/css/jquery.dataTables.min.css' />">
 <!-- Custom Stylesheet -->
-<link href="../css/style.css" rel="stylesheet">
-<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<link href="./css/style.css" rel="stylesheet">
+<!-- <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/> -->
+<link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
 </head>
 
 <body>
@@ -151,13 +151,8 @@
 									<i class="mdi mdi-account"></i>
 							</a>
 								<div class="dropdown-menu dropdown-menu-right">
-									<a href="./app-profile.html" class="dropdown-item"> <i
-										class="icon-user"></i> <span class="ml-2">Profile </span>
-									</a> <a href="./email-inbox.html" class="dropdown-item"> <i
-										class="icon-envelope-open"></i> <span class="ml-2">Inbox
-									</span>
-									</a> <a href="./page-login.html" class="dropdown-item"> <i
-										class="icon-key"></i> <span class="ml-2">Logout </span>
+									<a href="../home" class="dropdown-item"> <i
+										class="icon-key"></i> <span class="ml-2">登出 </span>
 									</a>
 								</div></li>
 						</ul>
@@ -175,85 +170,54 @@
 		<div class="quixnav">
 			<div class="quixnav-scroll">
 				<ul class="metismenu" id="menu">
-					<li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-single-04"></i><span class="nav-text">會員管理</span></a>
+					<li><a class="has-arrow" href="javascript:void()"
+						aria-expanded="false"><i class="icon icon-single-04"></i><span
+							class="nav-text">會員管理</span></a>
+						<ul aria-expanded="false">
+							<li><a href="<c:url value='/admin/listuser' />">一般會員管理</a></li>
+							<li><a href="<c:url value='/admin/listseller' />">商家會員管理</a></li>
+						</ul>
+					</li>
+					
+					<li><a class="has-arrow" href="javascript:void()"
+						aria-expanded="false"><i class="icon icon-single-04"></i><span
+							class="nav-text">餐廳管理</span></a>
+						<ul aria-expanded="false">
+							<li><a href="<c:url value='/admin/queryallrestaurant' />">餐廳總覽</a></li>
+							<li><a href="<c:url value='/admin/queryallmenu' />" >菜單總覽</a></li>
+						</ul>
+					</li>
+						
+					<li><a class="has-arrow" href="javascript:void()"
+                        aria-expanded="false"><i class="icon icon-single-04"></i><span
+                            class="nav-text">團購餐券管理</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="./index.html">A</a></li>
-                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">B</a>
-                                <ul aria-expanded="false">
-                                    <li><a href="./email-compose.html">1</a></li>
-                                    <li><a href="./email-inbox.html">2</a></li>
-                                    <li><a href="./email-read.html">3</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-					<li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-single-04"></i><span class="nav-text">餐廳管理</span></a>
-                        <ul aria-expanded="false">
-                            <li><a href="./index.html">A</a></li>
-                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">B</a>
-                                <ul aria-expanded="false">
-                                    <li><a href="./email-compose.html">1</a></li>
-                                    <li><a href="./email-inbox.html">2</a></li>
-                                    <li><a href="./email-read.html">3</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-					<li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-single-04"></i><span class="nav-text">團購管理</span></a>
-                        <ul aria-expanded="false">
-                            <li><a href="./index.html">A</a></li>
-                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">B</a>
-                                <ul aria-expanded="false">
-                                    <li><a href="./email-compose.html">1</a></li>
-                                    <li><a href="./email-inbox.html">2</a></li>
-                                    <li><a href="./email-read.html">3</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-					<li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-single-04"></i><span class="nav-text">銷售管理</span></a>
-                        <ul aria-expanded="false">
-                            <li><a href="./index.html">A</a></li>
-                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">B</a>
-                                <ul aria-expanded="false">
-                                    <li><a href="./email-compose.html">1</a></li>
-                                    <li><a href="./email-inbox.html">2</a></li>
-                                    <li><a href="./email-read.html">3</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-					<li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-single-04"></i><span class="nav-text">活動管理</span></a>
-                        <ul aria-expanded="false">
-                            <li><a href="./index.html">A</a></li>
-                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">B</a>
-                                <ul aria-expanded="false">
-                                    <li><a href="./email-compose.html">1</a></li>
-                                    <li><a href="./email-inbox.html">2</a></li>
-                                    <li><a href="./email-read.html">3</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-					<li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-single-04"></i><span class="nav-text">討論區管理</span></a>
-                        <ul aria-expanded="false">
-                            <li><a href="./index.html">A</a></li>
-                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">B</a>
-                                <ul aria-expanded="false">
-                                    <li><a href="./email-compose.html">1</a></li>
-                                    <li><a href="./email-inbox.html">2</a></li>
-                                    <li><a href="./email-read.html">3</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="<c:url value='/admin/adminGroupBuy' />">團購餐券總覽</a></li>
                         </ul>
                     </li>
 					
+					<li><a class="has-arrow" href="javascript:void()"
+						aria-expanded="false"><i class="icon icon-single-04"></i><span
+							class="nav-text">銷售管理</span></a>
+						<ul aria-expanded="false">
+							<li><a href="<c:url value='/admin/AdminCart' />">訂單處理</a></li>
+							<li><a href="<c:url value='/admin/Adminstatistics' />">商品統計</a></li>
+						</ul>
+					</li>
+					
+					<li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                class="icon icon-single-04"></i><span class="nav-text">活動管理</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="<c:url value='/admin/ActivityRegister' />">活動管理 明細</a></li>
+                            <li><a href="<c:url value='/admin/RecordParticipantBack' />">管理報名者 明細</a></li>
+                        </ul>
+                    </li>
+					
+					<li><a class="has-arrow" href="<c:url value='/_01_article/ShowArticles' />"
+						aria-expanded="false"><i class="icon icon-single-04"></i><span
+							class="nav-text">討論區管理</span></a>
+					</li>
+
 					<li class="nav-label first">其他</li>
 					<ul>
 						<a href="">返回首頁</a>
@@ -273,17 +237,9 @@
 				<div class="row page-titles mx-0">
 					<div class="col-sm-6 p-md-0">
 						<div class="welcome-text">
-							<h4>Hi, welcome back!</h4>
-							<span class="ml-1">Datatable</span>
+							<h4>討論區管理</h4>
+							<span class="ml-1">${article.title}</span>
 						</div>
-					</div>
-					<div
-						class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
-						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="javascript:void(0)">Table</a></li>
-							<li class="breadcrumb-item active"><a
-								href="javascript:void(0)">Datatable</a></li>
-						</ol>
 					</div>
 				</div>
 				<!-- row -->
@@ -292,9 +248,6 @@
 				<div class="row">
 					<div class="col-12">
 						<div class="card">
-							<div class="card-header">
-								<h4 class="card-title">${article.title}</h4>
-							</div>
 							<div class="card-body">
 								<div class="table-responsive">
 									<table id="example" class="display" style="min-width: 845px">
@@ -363,16 +316,16 @@
         Scripts
     ***********************************-->
 	<!-- Required vendors -->
-	<script src="../vendor/global/global.min.js"></script>
-	<script src="../js/quixnav-init.js"></script>
-	<script src="../js/custom.min.js"></script>
+	<script src="../focus2/vendor/global/global.min.js"></script>
+	<script src="../focus2/js/quixnav-init.js"></script>
+	<script src="../focus2/js/custom.min.js"></script>
+
 
 
 
 	<!-- Datatable -->
-	<script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
-	<script src="../js/plugins-init/datatables.init.js"></script>
-
+<script src="../focus2/vendor/datatables/js/jquery.dataTables.min.js"></script>
+	<script src="../focus2/js/plugins-init/datatables.init.js"></script>
 </body>
 
 </html>

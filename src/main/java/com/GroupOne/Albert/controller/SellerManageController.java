@@ -44,13 +44,15 @@ public class SellerManageController {
 		List<Member> listSeller = smService.selectAllSellers();
 		model.addAttribute("listSeller", listSeller);
 //		return "seller-list";
-		return "_new_seller_list";
+		return "Members/_new_seller_DataTable";
+//		return "_new_seller_DataTable";
 	}
 
 	@GetMapping("/newseller")
 	public String showNewForm(Model model)
 			throws ServletException, IOException {
-		return "seller-form";
+//		return "seller-form";
+		return "Members/_new_seller_form";
 	}
 	
 	// 點選編輯按鈕，抓取PathVariable的sellerId，根據sellerId查詢使用者資料，並填入編輯表單輸入框
@@ -61,7 +63,8 @@ public class SellerManageController {
 //		SellerBean existingSeller = smService.selectSeller(sellerId);
 		Member existingSeller = smService.selectSeller(sellerId);
 		model.addAttribute("seller", existingSeller);
-		return "seller-form";
+//		return "seller-form";
+		return "Members/_new_seller_form";
 	}
 
 	@GetMapping("/insertseller")
@@ -76,15 +79,14 @@ public class SellerManageController {
 							   @RequestParam String extensionNumber,
 							   @RequestParam String companyName,
 							   @RequestParam String companyAddress,
-							   @RequestParam(value = "businessCert", required = false) Byte[] businessCert,
-							   @RequestParam(value="verifyStatus", required = false, defaultValue = "false") Boolean verifyStatus,
+							   @RequestParam(required=false, defaultValue="false") Boolean deleted,
 							   Model model) throws SQLException {
-		businessCert = null;
+		deleted = false;
 		
 //		SellerBean newSeller = new SellerBean(username, password, fullname, dob, gender, email, phoneNumber, telephoneNumber, extensionNumber, companyName, companyAddress, businessCert, verifyStatus);
-		Member newSeller = new Member(username, password, fullname, dob, gender, email, phoneNumber, telephoneNumber, extensionNumber, companyName, companyAddress, businessCert, verifyStatus);
+		Member newSeller = new Member(username, password, fullname, dob, gender, email, phoneNumber, telephoneNumber, extensionNumber, companyName, companyAddress, deleted);
 		smService.insertSeller(newSeller);
-		return "redirect:/SellerAll/listseller";
+		return "redirect:/admin/listseller";
 	}
 
 	@GetMapping("/updateseller")
@@ -102,14 +104,14 @@ public class SellerManageController {
 							   @RequestParam String extensionNumber,
 							   @RequestParam String companyName,
 							   @RequestParam String companyAddress,
-							   @RequestParam Byte[] businessCert,
-							   @RequestParam(value="bonusPoint", defaultValue="false") Boolean verifyStatus,
+							   @RequestParam(required=false, defaultValue="false")  Boolean deleted,
 							   Model model) throws SQLException {
-
+		deleted = false;
+		
 //		SellerBean book = new SellerBean(id, username, password, fullname, dob, gender, email, phoneNumber, telephoneNumber, extensionNumber, companyName, companyAddress, businessCert, verifyStatus);
-		Member book = new Member(id, username, password, fullname, dob, gender, email, phoneNumber, telephoneNumber, extensionNumber, companyName, companyAddress, businessCert, verifyStatus);
+		Member book = new Member(id, username, password, fullname, dob, gender, email, phoneNumber, telephoneNumber, extensionNumber, companyName, companyAddress, deleted);
 		smService.updateSeller(book);
-		return "redirect:/SellerAll/listseller";
+		return "redirect:/admin/listseller";
 	}
 
 //	@GetMapping("/deleteseller")
@@ -117,7 +119,7 @@ public class SellerManageController {
 //	public String deleteSeller(@RequestParam int id, Model model) throws SQLException {
 	public String deleteSeller(@PathVariable int sellerId, Model model) throws SQLException {
 		smService.deleteSeller(sellerId);
-		return "redirect:/SellerAll/listseller";
+		return "redirect:/admin/listseller";
 	}
 	
 //--------------------------------------------------------------------------
@@ -137,7 +139,8 @@ public class SellerManageController {
 //		List<SellerBean> listSeller = smService.selectAllSellers();
 		List<Member> listSeller = smService.selectAllSellers();
 		model.addAttribute("listSeller", listSeller);
-		return "seller-list";
+//		return "seller-list";
+		return "Members/_new_seller_DataTable";
 	}
 	
 	// 專門處理Ajax更新功能
@@ -154,14 +157,14 @@ public class SellerManageController {
 								@RequestParam String extensionNumber,
 								@RequestParam String companyName,
 								@RequestParam String companyAddress,
-								@RequestParam Byte[] businessCert,
-								@RequestParam(value="bonusPoint", defaultValue="false") Boolean verifyStatus,
+								@RequestParam(value="bonusPoint", defaultValue="false") Boolean deleted,
 								Model model) throws SQLException {
+//		deleted = false;
 		
 //		SellerBean book = new SellerBean(id, username, password, fullname, dob, gender, email, phoneNumber, telephoneNumber, extensionNumber, companyName, companyAddress, businessCert, verifyStatus);
-		Member book = new Member(id, username, password, fullname, dob, gender, email, phoneNumber, telephoneNumber, extensionNumber, companyName, companyAddress, businessCert, verifyStatus);
+		Member book = new Member(id, username, password, fullname, dob, gender, email, phoneNumber, telephoneNumber, extensionNumber, companyName, companyAddress, deleted);
 		smService.updateSeller(book);
-		return "redirect:/SellerAll/listseller";
+		return "redirect:/admin/listseller";
 	}
 	
 	// 專門處理Ajax新增功能
@@ -177,14 +180,13 @@ public class SellerManageController {
 								@RequestParam String extensionNumber,
 								@RequestParam String companyName,
 								@RequestParam String companyAddress,
-								@RequestParam(value = "businessCert", required = false) Byte[] businessCert,
-								@RequestParam(value="verifyStatus", required = false, defaultValue = "false") Boolean verifyStatus,
+								@RequestParam(value="verifyStatus", required = false, defaultValue = "false") Boolean deleted,
 								Model model) throws SQLException {
-		businessCert = null;
+//		deleted = null;
 		
 //		SellerBean newSeller = new SellerBean(username, password, fullname, dob, gender, email, phoneNumber, telephoneNumber, extensionNumber, companyName, companyAddress, businessCert, verifyStatus);
-		Member newSeller = new Member(username, password, fullname, dob, gender, email, phoneNumber, telephoneNumber, extensionNumber, companyName, companyAddress, businessCert, verifyStatus);
+		Member newSeller = new Member(username, password, fullname, dob, gender, email, phoneNumber, telephoneNumber, extensionNumber, companyName, companyAddress, deleted);
 		smService.insertSeller(newSeller);
-		return "redirect:/SellerAll/listseller";
+		return "redirect:/admin/listseller";
 	}
 }

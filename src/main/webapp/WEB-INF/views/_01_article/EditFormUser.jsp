@@ -35,7 +35,7 @@
 		if (result) {
 			document.forms[1].putOrDelete.name = "_method";
 			document.forms[1].putOrDelete.value = "DELETE";
-			document.forms[1].action = "<c:url value='/_01_article/articlesUser/" + id + "' />";
+			document.forms[1].action = "<c:url value='/user/articlesUser/" + id + "' />";
 			return true;
 		}
 		return false;
@@ -43,7 +43,7 @@
 	function confirmUpdate(id) {
 		document.forms[1].putOrDelete.name = "_method";
 		document.forms[1].putOrDelete.value = "PUT";
-		document.forms[1].action = "<c:url value='/_01_article/articlesUser/" + id + "' />";
+		document.forms[1].action = "<c:url value='/user/articlesUser/" + id + "' />";
 		return true;
 	}
 </script>
@@ -76,51 +76,62 @@
 						<a class="sign-popup-btn" href="#" title="Register" itemprop="url">註冊</a>
 						<a class="sign-popup-btn" href="#" title="Register" itemprop="url">賣家中心</a>
 					</div>
-					<div class="social1">
-						<a href="#" title="Facebook" itemprop="url" target="_blank"><i
-							class="fa fa-facebook-square"></i></a>
-					</div>
+					<div class="social1" style="margin-top:12px;!important">
+                        <a href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook-square"></i></a>
+                        <a href="#" title="Google Plus" itemprop="url" target="_blank"><i class="fa fa-google-plus"></i></a>
+                    </div>
 				</div>
 			</div>
 			<!-- Topbar -->
 			<div class="logo-menu-sec">
-				<div class="container" style="margin-left: 350px;">
-
+				<div class="container" >
+					<div class="logo" style="margin:12px 0 0 0 ;!important">
+						<h1 itemprop="headline">
+							<a href="index.html" title="Home" itemprop="url">
+								<img style="width:150px;" src="../../assets/images/icon_get_together.png" alt="Logo.png" itemprop="image">
+							</a>
+						</h1>
+					</div>
 					<nav>
 						<div class="menu-sec">
-							<ul>
-								<li class="menu-item-has-children"><a href="../../home"
-									title="HOMEPAGES" itemprop="url"><span class="red-clr"></span>首頁</a>
-									<ul class="sub-dropdown">
-										<li><a href="index.html" title="HOMEPAGE 1"
-											itemprop="url">HOMEPAGE 1</a></li>
-										<li><a href="index2.html" title="HOMEPAGE 2"
-											itemprop="url">HOMEPAGE 2</a></li>
-									</ul></li>
-								<li class="menu-item-has-children"><a href="#"
-									title="RESTAURANTS" itemprop="url"><span class="red-clr"></span>餐廳</a>
-								</li>
-								<li class="menu-item-has-children"><a href="#"
-									title="PAGES" itemprop="url"><span class="red-clr"></span>團購</a>
-								</li>
-								<li class="menu-item-has-children"><a href="#"
-									title="PAGES" itemprop="url"><span class="red-clr"></span>活動</a>
-								</li>
-								<li class="menu-item-has-children"><a
-									href="../ShowArticlesUser" title="PAGES" itemprop="url"><span
-										class="red-clr"></span>討論區</a></li>
-								<li class="menu-item-has-children"><a href="#"
-									title="PAGES" itemprop="url"><span class="red-clr"></span>購物車</a>
-									<ul class="sub-dropdown">
-										<li><a href="index.html" title="HOMEPAGE 1"
-											itemprop="url">訂餐</a></li>
-										<li><a href="index2.html" title="HOMEPAGE 2"
-											itemprop="url">團購</a></li>
-									</ul></li>
-								<li class="menu-item-has-children"><a href="#"
-									title="PAGES" itemprop="url"><span class="red-clr"></span>會員中心</a>
-								</li>
-							</ul>
+							 <ul>
+                                <li class="menu-item-has-children">
+                                    <a href="<c:url value='/GroupOneHome' />" title="GroupOneHome" itemprop="url"><span class="red-clr"></span>首頁</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="<c:url value='/searchallrestaurant' />" title="RESTAURANTS" itemprop="url"><span class="red-clr"></span>餐廳</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="<c:url value='/customerSearch' />" title="customerSearch" itemprop="url"><span class="red-clr"></span>團購</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="<c:url value='/ActivityPage' />" title="Activity" itemprop="url"><span class="red-clr"></span>活動</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="<c:url value='/ShowArticlesGuest' />" title="ShowArticlesGuest" itemprop="url"><span class="red-clr"></span>討論區</a>
+
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="#" title="CartList" itemprop="url"><span class="red-clr"></span>購物車</a>
+                                    <ul class="sub-dropdown">
+                                        <li>
+                                            <a href="<c:url value='/user/CartList/food' />" title="food" itemprop="url">訂餐</a>
+                                        </li>
+                                        <li>
+                                            <a href="<c:url value='/user/CartList/coupon' />" title="coupon" itemprop="url">團購</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="#" title="#" itemprop="url"><span class="red-clr"></span>會員中心</a>
+                                    <ul class="sub-dropdown">
+                                        <li>
+                                            <a href="<c:url value='/user/AllCarts' />" itemprop="url">訂單紀錄</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                
+                            </ul>
 
 						</div>
 					</nav>
@@ -187,7 +198,7 @@
 										<form:errors path="title" cssClass="error" /></td>
 								</tr>
 								<tr>
-									<td align='right'>username：<br>&nbsp;
+									<td align='right'>使用者名稱：<br>&nbsp;
 									</td>
 									<td><form:input path="username" size="25"
 											class="form-control" id="exampleFormControlInput1" /><br>&nbsp;

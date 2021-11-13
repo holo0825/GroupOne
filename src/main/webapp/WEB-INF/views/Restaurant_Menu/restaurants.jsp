@@ -17,53 +17,121 @@
 <link rel="stylesheet" href="assets/css/main.css">
 <link rel="stylesheet" href="assets/css/red-color.css">
 <link rel="stylesheet" href="assets/css/yellow-color.css">
-<link rel="stylesheet" href="assets/css/responsive.css">
-<!-- <link rel="stylesheet" href="css/yu.css"> -->
 
 </head>
-<body>
+<body itemscope>
 	<header>
-		<div class="topbar">
-			<div class="container">
-				<div class="topbar-register">
-					<a class="log-popup-btn" href="#" title="Login" itemprop="url">登入</a>
-					<a class="sign-popup-btn" href="#" title="Register" itemprop="url">註冊</a>
-					<a href="<c:url value='/seller/ManageRestaurant' />">賣家中心</a>
-				</div>
-				<div class="social1">
-					<a href="#" title="Facebook" itemprop="url" target="_blank"><i
-						class="fa fa-facebook-square"></i></a>
-				</div>
-			</div>
-		</div>
-		<!-- Topbar -->
-		<div class="logo-menu-sec">
-			<div class="container" style="margin-left: 450px;">
-
-				<nav>
-					<div class="menu-sec">
-						<ul>
-							<li class="menu-item-has-children"><a href="#"
-								title="HOMEPAGES" itemprop="url"><span class="red-clr"></span>首頁</a>
-							</li>
-							<li class="menu-item-has-children"><a href="#" 
- 								title="RESTAURANTS" itemprop="url"><span class="red-clr"></span>餐廳</a> 
- 							</li> 
-							<li class="menu-item-has-children"><a href="#" title="PAGES"
-								itemprop="url"><span class="red-clr"></span>團購</a></li>
-							<li class="menu-item-has-children"><a href="#" title="PAGES"
-								itemprop="url"><span class="red-clr"></span>活動</a></li>
-							<li class="menu-item-has-children"><a href="#" title="PAGES"
-								itemprop="url"><span class="red-clr"></span>討論區</a></li>
-							<li class="menu-item-has-children"><a href="#" title="PAGES"
-								itemprop="url"><span class="red-clr"></span>會員中心</a></li>
-						</ul>
+		<main>
+			<div class="preloader">
+				<div id="cooking">
+					<div class="bubble"></div>
+					<div class="bubble"></div>
+					<div class="bubble"></div>
+					<div class="bubble"></div>
+					<div class="bubble"></div>
+					<div id="area">
+						<div id="sides">
+							<div id="pan"></div>
+							<div id="handle"></div>
+						</div>
+						<div id="pancake">
+							<div id="pastry"></div>
+						</div>
 					</div>
-				</nav>
-				<!-- Navigation -->
+				</div>
 			</div>
-		</div>
 	</header>
+
+	       <header class="stick">
+            <div class="topbar">
+                <div class="container">
+                    <div class="topbar-register">
+                        <!-- <a class="log-popup-btn" href="#" title="Login" itemprop="url">登入</a>
+                         <a class="sign-popup-btn" href="#" title="Register" itemprop="url">註冊</a>
+                         <a class="sign-popup-btn" href="#" title="Register" itemprop="url">賣家中心</a>-->
+                        
+                        <c:choose>
+                            <c:when test="${user.username == null}">
+                                <a  href="<c:url value='/login' />" title="Login" itemprop="url">登入</a>
+                                <a  href="<c:url value='/register' />" title="Register" itemprop="url">註冊</a>
+                                <a  href="<c:url value='/seller/home' />" title="sellerhome" itemprop="url">賣家中心</a>
+                            </c:when>
+                            <c:otherwise>
+                                <span>${user.getUsername()}</span>&nbsp&nbsp&nbsp
+                               <span class="">
+                                <form action="<c:url value='/logout' />" method="post" style="display:inline;font-size:13px">
+                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                    <input type="submit" value="登出" style="color:white;background:#161616;">
+                                </form> 
+                            </span>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
+                    <div class="social1" style="margin-top:16px;!important">
+                        <a href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook-square"></i></a>
+                        <a href="#" title="Google Plus" itemprop="url" target="_blank"><i class="fa fa-google-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Topbar -->
+            <div class="logo-menu-sec">
+               <div class="container" style="margin-left: 220px;">
+				<div class="logo" style="margin:12px 0 0 0 ;!important">
+				<h1 itemprop="headline">
+					<a href="index.html" title="Home" itemprop="url">
+						<img style="width:150px;" src="assets/images/icon_get_together.png" alt="Logo.png" itemprop="image">
+					</a>
+				</h1>
+					</div>
+                    <nav>
+                        <div class="menu-sec">
+                            <ul>
+                                <li class="menu-item-has-children">
+                                    <a href="<c:url value='/GroupOneHome' />" title="GroupOneHome" itemprop="url"><span class="red-clr"></span>首頁</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="<c:url value='/searchallrestaurant' />" title="RESTAURANTS" itemprop="url"><span class="red-clr"></span>餐廳</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="<c:url value='/customerSearch' />" title="customerSearch" itemprop="url"><span class="red-clr"></span>團購</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="<c:url value='/ActivityPage' />" title="Activity" itemprop="url"><span class="red-clr"></span>活動</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="<c:url value='/ShowArticlesGuest' />" title="ShowArticlesGuest" itemprop="url"><span class="red-clr"></span>討論區</a>
+
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="#" title="CartList" itemprop="url"><span class="red-clr"></span>購物車</a>
+                                    <ul class="sub-dropdown">
+                                        <li>
+                                            <a href="<c:url value='/user/CartList/food' />" title="food" itemprop="url">訂餐</a>
+                                        </li>
+                                        <li>
+                                            <a href="<c:url value='/user/CartList/coupon' />" title="coupon" itemprop="url">團購</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="#" title="#" itemprop="url"><span class="red-clr"></span>會員中心</a>
+                                    <ul class="sub-dropdown">
+                                        <li>
+                                            <a href="<c:url value='/user/AllCarts' />" itemprop="url">訂單紀錄</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                
+                            </ul>
+
+                        </div>
+                    </nav>
+                    <!-- Navigation -->
+                </div>
+            </div>
+            <!-- Logo Menu Section -->
+        </header>
+        <!-- Header -->
 	<section>
 		<div class="block">
 			<div style="background-image: url(assets/images/topbg.jpg);"
@@ -71,7 +139,7 @@
 			<div class="restaurant-searching text-center">
 				<div class="restaurant-searching-inner">
 					<h2 itemprop="headline">
-						餐廳列表 <br>Restaurant List
+						餐廳 <br>Restaurant
 					</h2>
 				</div>
 
@@ -81,7 +149,7 @@
 	<div class="bread-crumbs-wrapper">
 		<div class="container">
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="./top" title=" "
+				<li class="breadcrumb-item"><a href="./GroupOneHome" title=" "
 					itemprop="url">首頁</a></li>
 				<li class="breadcrumb-item active">餐廳列表</li>
 			</ol>
@@ -89,7 +157,8 @@
 	</div>
 
 
-
+  <section>
+            <div class="block less-spacing gray-bg top-padd30">
 	<div class="container">
 		<div class="col-lg-12">
 			<div class="card">
@@ -103,7 +172,7 @@
 								<i class="fa fa-search"></i>
 							</button>
 						</form>
-						<table class="table table-striped table-responsive-sm">
+						<table class="table table-hover table-responsive-sm">
 
 							<thead>
 								<tr>
@@ -116,14 +185,14 @@
 							</thead>
 
 							<tbody>
-								<c:forEach var='rstName' items='${rstName}'>
+								<c:forEach var='restaurant' items='${rstName}'>
 									<tr>
-										<td>${rstName.rstName}</td>
+										<td>${restaurant.rstName}</td>
 										<%-- 				<td>${rstname.rstImage}</td> --%>
-										<td><img src="<c:url value='/getRestaurantPicture/${rstName.rstName}'/>"  width='120' height='90'>	</td>			
-										<td>${rstName.category}</td>
-										<td>${rstName.rstTel}</td>
-										<td><a href="./menuforrestaurant${rstName.rstName}">查看餐廳</a></td>
+										<td><img src="<c:url value='/getRestaurantPicture/${restaurant.rstName}'/>"  width='120' height='90'>	</td>			
+										<td>${restaurant.category}</td>
+										<td>${restaurant.rstTel}</td>
+										<td><button type="button" class="btn btn-info"><a href="./menuforrestaurant${restaurant.rstName}">查看餐廳</a></button></td>
 										<%--<td><a href="<c:url value='./menuforrestaurant?rstName=' />${rstName.rstName}">查看餐廳</a></td>--%>
 									</tr>
 								</c:forEach>
@@ -134,8 +203,8 @@
 			</div>
 		</div>
 	</div>
-
-
+</div>
+	</section>
 	<footer>
 		<div class="block top-padd80 bottom-padd80 dark-bg">
 			<div class="container">
@@ -206,6 +275,7 @@
 			</p>
 		</div>
 	</div>
+	 </main><!-- Main Wrapper -->
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/bootstrap.min.js"></script>
 	<script src="assets/js/plugins.js"></script>
