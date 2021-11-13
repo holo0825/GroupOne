@@ -23,6 +23,7 @@ import com.GroupOne.shoppingcarts.model.ListBean;
 import com.GroupOne.shoppingcarts.service.ProductService;
 
 import ecpay.payment.integration.AllInOne;
+import ecpay.payment.integration.domain.AioCheckOutALL;
 import ecpay.payment.integration.domain.AioCheckOutOneTime;
 
 @Controller
@@ -76,7 +77,8 @@ public class PayFinishController {
 		System.out.println(resultURL);
 		
 		AllInOne aio = new AllInOne("");
-		AioCheckOutOneTime obj = new AioCheckOutOneTime();
+//		AioCheckOutOneTime obj = new AioCheckOutOneTime();
+		AioCheckOutALL obj = new AioCheckOutALL();
 		obj.setMerchantID("2000214");
 		obj.setMerchantTradeNo(randomItemNo);
 //		obj.setStoreID();

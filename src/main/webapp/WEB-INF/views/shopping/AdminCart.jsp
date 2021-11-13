@@ -152,14 +152,17 @@
 									<i class="mdi mdi-account"></i>
 							</a>
 								<div class="dropdown-menu dropdown-menu-right">
-									<a href="./app-profile.html" class="dropdown-item"> <i
-										class="icon-user"></i> <span class="ml-2">Profile </span>
-									</a> <a href="./email-inbox.html" class="dropdown-item"> <i
-										class="icon-envelope-open"></i> <span class="ml-2">Inbox
-									</span>
-									</a> <a href="./page-login.html" class="dropdown-item"> <i
-										class="icon-key"></i> <span class="ml-2">Logout </span>
-									</a>
+									  <a href="./page-login.html" class="dropdown-item">
+                                        <i class="icon-key"></i>
+                                        <span class="ml-2">
+                                            <form action="<c:url value='/logout' />" method="post" style="display:inline;">
+                                                <input type="hidden"
+                                                 name="${_csrf.parameterName}"
+                                                 value="${_csrf.token}"/>
+                                               <input type="submit" value="登出" style="background-color: #fff; border: none;">
+                                            </form> 
+                                        </span>
+                                    </a>
 								</div></li>
 						</ul>
 					</div>
@@ -180,28 +183,20 @@
 						aria-expanded="false"><i class="icon icon-single-04"></i><span
 							class="nav-text">會員管理</span></a>
 						<ul aria-expanded="false">
-							<li><a href="./index.html">A</a></li>
-							<li><a class="has-arrow" href="javascript:void()"
-								aria-expanded="false">B</a>
-								<ul aria-expanded="false">
-									<li><a href="./email-compose.html">1</a></li>
-									<li><a href="./email-inbox.html">2</a></li>
-									<li><a href="./email-read.html">3</a></li>
-								</ul></li>
-						</ul></li>
+							<li><a href="<c:url value='/admin/listuser' />">一般會員管理</a></li>
+							<li><a href="<c:url value='/admin/listseller' />">商家會員管理</a></li>
+						</ul>
+					</li>
+					
 					<li><a class="has-arrow" href="javascript:void()"
 						aria-expanded="false"><i class="icon icon-single-04"></i><span
 							class="nav-text">餐廳管理</span></a>
 						<ul aria-expanded="false">
-							<li><a href="./index.html">A</a></li>
-							<li><a class="has-arrow" href="javascript:void()"
-								aria-expanded="false">B</a>
-								<ul aria-expanded="false">
-									<li><a href="./email-compose.html">1</a></li>
-									<li><a href="./email-inbox.html">2</a></li>
-									<li><a href="./email-read.html">3</a></li>
-								</ul></li>
-						</ul></li>
+							<li><a href="<c:url value='/admin/queryallrestaurant' />">餐廳總覽</a></li>
+							<li><a href="<c:url value='/admin/queryallmenu' />" >菜單總覽</a></li>
+						</ul>
+					</li>
+						
 					<li><a class="has-arrow" href="javascript:void()"
 						aria-expanded="false"><i class="icon icon-single-04"></i><span
 							class="nav-text">團購管理</span></a>
@@ -214,36 +209,30 @@
 									<li><a href="./email-inbox.html">2</a></li>
 									<li><a href="./email-read.html">3</a></li>
 								</ul></li>
-						</ul></li>
+						</ul>
+					</li>
+					
 					<li><a class="has-arrow" href="javascript:void()"
 						aria-expanded="false"><i class="icon icon-single-04"></i><span
 							class="nav-text">銷售管理</span></a>
 						<ul aria-expanded="false">
-							<li><a href="./AdminCart">訂單處理</a></li>
-							<li><a href="./Adminstatistics">商品統計</a></li>
-						</ul></li>
+							<li><a href="<c:url value='/admin/AdminCart' />">訂單處理</a></li>
+							<li><a href="<c:url value='/admin/Adminstatistics' />">商品統計</a></li>
+						</ul>
+					</li>
 					
 					<li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon icon-single-04"></i><span class="nav-text">活動管理</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="ActivityRegister">活動管理 明細</a></li>
-                            <li><a href="RecordParticipantBack">管理報名者 明細</a></li>
+                            <li><a href="<c:url value='/admin/ActivityRegister' />">活動管理 明細</a></li>
+                            <li><a href="<c:url value='/admin/RecordParticipantBack' />">管理報名者 明細</a></li>
                         </ul>
                     </li>
 					
-					<li><a class="has-arrow" href="javascript:void()"
+					<li><a class="has-arrow" href="<c:url value='/_01_article/ShowArticles' />"
 						aria-expanded="false"><i class="icon icon-single-04"></i><span
 							class="nav-text">討論區管理</span></a>
-						<ul aria-expanded="false">
-							<li><a href="./index.html">A</a></li>
-							<li><a class="has-arrow" href="javascript:void()"
-								aria-expanded="false">B</a>
-								<ul aria-expanded="false">
-									<li><a href="./email-compose.html">1</a></li>
-									<li><a href="./email-inbox.html">2</a></li>
-									<li><a href="./email-read.html">3</a></li>
-								</ul></li>
-						</ul></li>
+					</li>
 
 					<li class="nav-label first">其他</li>
 					<ul>

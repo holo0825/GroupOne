@@ -60,7 +60,7 @@ response.setDateHeader ("Expires", -1); // Prevents caching at the proxy server
                             <c:when test="${user.username == null}">
                                 <a  href="<c:url value='/login' />" title="Login" itemprop="url">登入</a>
                                 <a  href="<c:url value='/register' />" title="Register" itemprop="url">註冊</a>
-                                <a  href="home" title="Register" itemprop="url">賣家中心</a>
+                                <a  href="<c:url value='/seller/home' />" title="sellerhome" itemprop="url">賣家中心</a>
                             </c:when>
                             <c:otherwise>
                                 <span>${user.getUsername()}</span>&nbsp&nbsp&nbsp
@@ -81,8 +81,8 @@ response.setDateHeader ("Expires", -1); // Prevents caching at the proxy server
             </div>
             <!-- Topbar -->
             <div class="logo-menu-sec">
-               <div class="container" style="margin-left: 220px;">
-				<div class="logo" style="margin:12px 0 0 0 ;!important">
+               <div class="container" ">
+				<div class="logo" style="margin:10px 0 0 0 ;!important">
 				<h1 itemprop="headline">
 					<a href="index.html" title="Home" itemprop="url">
 						<img style="width:150px;" src="assets/images/icon_get_together.png" alt="Logo.png" itemprop="image">
@@ -99,7 +99,7 @@ response.setDateHeader ("Expires", -1); // Prevents caching at the proxy server
                                     <a href="<c:url value='/searchallrestaurant' />" title="RESTAURANTS" itemprop="url"><span class="red-clr"></span>餐廳</a>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="<c:url value='/' />" title="PAGES" itemprop="url"><span class="red-clr"></span>團購</a>
+                                    <a href="<c:url value='/customerSearch' />" title="customerSearch" itemprop="url"><span class="red-clr"></span>團購</a>
                                 </li>
                                 <li class="menu-item-has-children">
                                     <a href="<c:url value='/ActivityPage' />" title="Activity" itemprop="url"><span class="red-clr"></span>活動</a>
@@ -109,7 +109,7 @@ response.setDateHeader ("Expires", -1); // Prevents caching at the proxy server
 
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="#" title="PAGES" itemprop="url"><span class="red-clr"></span>購物車</a>
+                                    <a href="#" title="CartList" itemprop="url"><span class="red-clr"></span>購物車</a>
                                     <ul class="sub-dropdown">
                                         <li>
                                             <a href="<c:url value='/user/CartList/food' />" title="food" itemprop="url">訂餐</a>
@@ -120,7 +120,7 @@ response.setDateHeader ("Expires", -1); // Prevents caching at the proxy server
                                     </ul>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="<c:url value='/' />" title="PAGES" itemprop="url"><span class="red-clr"></span>會員中心</a>
+                                    <a href="#" title="#" itemprop="url"><span class="red-clr"></span>會員中心</a>
                                     <ul class="sub-dropdown">
                                         <li>
                                             <a href="<c:url value='/user/AllCarts' />" itemprop="url">訂單紀錄</a>
