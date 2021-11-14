@@ -56,6 +56,7 @@ response.setDateHeader ("Expires", -1); // Prevents caching at the proxy server
             border-left: 0.3em solid transparent;
             color:white;
         }
+        
         /* wrapper */
         .card {
             border-radius: 16px;
@@ -372,13 +373,13 @@ response.setDateHeader ("Expires", -1); // Prevents caching at the proxy server
 <%--         <a class="text-decoration-none co" style="font-size:x-small; margin-right: 153px;" font color="#FFFFFF" href="<c:url value='/' />">賣家中心</a> --%>
         <c:choose>
              <c:when test="${user.username == null}">
-             	<a class="log-popup-btn  loingcolor" style="font-size:x-small; padding-left: 5px;padding-right: 3px;" href="home" title="Login" itemprop="url">登入</a>
-                <a class="sign-popup-btn loingcolor" style="font-size:x-small; padding-right: 3px;"   href="./register" title="Register" itemprop="url">註冊</a>
-                <a class="sign-popup-btn loingcolor" style="font-size:x-small; margin-right: 153px;"  href="#" title="Register" itemprop="url">賣家中心</a>
+             	<a class="log-popup-btn  loingcolor" style="font-size:x-small; padding-left: 5px;padding-right: 3px;" href="<c:url value='/login' />" title="Login" itemprop="url">登入</a>
+                <a class="sign-popup-btn loingcolor" style="font-size:x-small; padding-right: 3px;"   href="<c:url value='/register' />" title="Register" itemprop="url">註冊</a>
+                <a class="sign-popup-btn loingcolor" style="font-size:x-small; margin-right: 153px;"  href="<c:url value='/seller/home' />" title="sellerhome" itemprop="url">賣家中心</a>
              </c:when>
              <c:otherwise>
              	<span style="color:white;">${user.username}</span>&nbsp&nbsp&nbsp
-             	<a class="sign-popup-btn loingcolor" href="<c:url value='/Userlogout2' />" title="Register" itemprop="url">登出</a>
+             	<a class="sign-popup-btn loingcolor" href="<c:url value='/logout' />" title="Register" itemprop="url">登出</a>
              </c:otherwise>
         </c:choose>
         
@@ -387,7 +388,7 @@ response.setDateHeader ("Expires", -1); // Prevents caching at the proxy server
 
     <!--nar bar second-->
     <nav class="navbar second_navbar navbar-expand-lg navbar-light bg-light active smart-scroll he shadow-sm p-3 mb-5 bg-white rounded" >
-        <a class="navbar-brand" href="#">聚點食刻</a>
+        <a class="navbar-brand" href="#"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -395,7 +396,7 @@ response.setDateHeader ("Expires", -1); // Prevents caching at the proxy server
         <div class="collapse navbar-collapse MR" id="navbarSupportedContent" >
         
 					<a href="<c:url value='/GroupOneHome' />" title="/GroupOneHome" itemprop="url">
-						<img style="width:150px;margin-top: 5px;" src="assets/images/icon_get_together.png" alt="Logo.png" itemprop="image">
+						<img style="width:150px;margin-top: 5px;margin-left:167px;" src="assets/images/icon_get_together.png" alt="Logo.png" itemprop="image">
 					</a>
 
             <ul class="navbar-nav mx-auto">
@@ -523,7 +524,7 @@ response.setDateHeader ("Expires", -1); // Prevents caching at the proxy server
                                 <div class="widget about_widget wow fadeIn" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeIn;">
                                     <div class="logo">
                                         <h1 itemprop="headline">
-                                            <a href="#" title="Home" itemprop="url"><img src="assets/images/logo.png" alt="logo.png" itemprop="image"></a>
+<!--                                             <a href="#" title="Home" itemprop="url"><img src="assets/images/logo.png" alt="logo.png" itemprop="image"></a> -->
                                         </h1>
                                     </div>
                                     <p itemprop="description">聚點食刻，共享美食每一刻！</p><p>
@@ -532,7 +533,7 @@ response.setDateHeader ("Expires", -1); // Prevents caching at the proxy server
                             </div>
                             <div class="col-md-3 col-sm-6 col-lg-3">
                                 <div class="widget information_links wow fadeIn" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeIn;">
-                                    <h4 class="widget-title" itemprop="headline">About Shop</h4>
+                                    <h4 class="widget-title" itemprop="headline">購物流程</h4>
                                     <ul>
                                         <li>
                                             <a href="#" title="" itemprop="url">購物須知</a>

@@ -64,6 +64,7 @@ public class ActivityController {
 		System.out.println("-------------activitypage--------活動卡內容V--"+activityBean.getTopic());
 		model.addAttribute("RecordParticipant",new RecordParticipantBean());
 		System.out.println("-----------已加入空RecordParticipant進入session------");
+		
 		return "Activity_28/ActivityPagedetail";
 	}
 	
@@ -74,6 +75,7 @@ public class ActivityController {
 		public String processgotoactivitydetail(
 				@RequestParam("id")int id,
 				@ModelAttribute("RecordParticipant") RecordParticipantBean rpBean,
+				@ModelAttribute("user") Member mbBean,
 				//使用SessionAttributes引入UserBean user
 //				@ModelAttribute("user") Member usBean,
 				Model model) {
@@ -116,15 +118,18 @@ public class ActivityController {
 			
 			
 			//寄信
-//			SimpleMailMessage message =new SimpleMailMessage();
-//			  message.setTo("coding00825@gmail.com");
-//			  message.setSubject("聚點食刻-活動小組");
-//			  message.setText("感謝您報名參加此次'異國料理輕鬆做'的活動，"
-//			  		+ "您在聚點食刻報名的活動已完成。"
-//					+ "\r\n"
-//					+ "請留意活動時間：2021/11/20 2pm-3pm(1:30開放入場)，謝謝您");
-//			  
-//			  mailSender.send(message);
+			SimpleMailMessage message =new SimpleMailMessage();
+			  message.setTo("coding00825@gmail.com");
+			  message.setSubject("聚點食刻-活動小組");
+			  message.setText("感謝您報名參加此次'異國料理輕鬆做'的活動，"
+			  		+ "您在聚點食刻報名的活動已完成。"
+					+ "\r\n"
+					+ "請留意活動時間：2021/11/20 2pm-3pm(1:30開放入場)，謝謝您");
+			  
+			  mailSender.send(message);
+			if (mbBean == null) {
+				return "Members/_login";
+			}
 			return "Activity_28/ActivitySignUpSuccess";
 		}
 	

@@ -382,12 +382,12 @@
 					<thead>	
                         <tr>
                             <th>ID</th>
-                            <th >廠商帳號 <i class="fa fa-sort"></i></th>
+                            <th >廠商帳號 </th>
                             <th>活動序號</th>
                             <th>廠商活動</th>
-                            <th>顧客帳號 <i class="fa fa-sort"></i></th>
+                            <th>顧客帳號 </th>
                             <th>顧客名稱</th>
-                            <th>顧客電話 <i class="fa fa-sort"></i></th>
+                            <th>顧客電話 </th>
                             <th>顧客Email</th>
                             <th>類型</th>
                             <th>顧客ID</th>
