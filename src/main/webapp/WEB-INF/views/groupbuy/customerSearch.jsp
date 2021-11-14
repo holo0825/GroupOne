@@ -12,7 +12,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="" />
 <meta name="keywords" content="" />
-<title>Food Ordering HTML Template</title>
+<title>團購列表</title>
 <link rel="shortcut icon" href="assets/images/favicon.png"
 	type="image/x-icon">
 <link rel="stylesheet" href="assets/css/icons.min.css">
@@ -163,6 +163,7 @@
 											<select name="item2" id="item2">
 												<option>請選擇品項</option>
 												<option>飲品</option>
+												<option>麵食</option>
 												<option>飯類</option>
 												<option>甜點</option>
 												<option>麵包</option>

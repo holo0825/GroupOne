@@ -201,9 +201,9 @@
 											<td>${product.start}~${product.date}</td>
 											<td>${product.introduceProduct}</td>
 											<td><a
-												href="${pageContext.request.contextPath}/seller/sellerProductEdit?id=<c:out value='${product.id}' />">Edit</a>
-												&nbsp;&nbsp;&nbsp;&nbsp; <a
-												href="${pageContext.request.contextPath}/seller/sellerProductDelete?id=<c:out value='${product.id}' />">Delete</a></td>
+												href="${pageContext.request.contextPath}/seller/sellerProductEdit?id=<c:out value='${product.id}' />">修改</a><br>
+												 <a
+												href="${pageContext.request.contextPath}/seller/sellerProductDelete?id=<c:out value='${product.id}' />">刪除</a></td>
 										</tr>
 									</c:forEach>
 								</tbody>

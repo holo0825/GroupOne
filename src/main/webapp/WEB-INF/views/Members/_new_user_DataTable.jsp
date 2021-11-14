@@ -193,7 +193,7 @@
 									<i class="mdi mdi-account"></i>
 							</a>
 								<div class="dropdown-menu dropdown-menu-right">
-									<a href="./page-login.html" class="dropdown-item">
+									<a href="#" class="dropdown-item">
                                         <i class="icon-key"></i>
                                         <span class="ml-2">
                                             <form action="<c:url value='/logout' />" method="post" style="display:inline;">

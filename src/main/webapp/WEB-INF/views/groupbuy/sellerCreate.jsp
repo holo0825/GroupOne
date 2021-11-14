@@ -228,7 +228,7 @@
 										<div class="col-md-12 col-sm-12 col-lg-12">
 											<div class="step-buttons">
 												<button class="brd-rd3 red-bg" type="submit">
-													submit</button>
+													送出</button>
 											</div>
 										</div>
 									</div>

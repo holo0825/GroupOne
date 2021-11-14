@@ -158,7 +158,7 @@ public class AdminWebSecurityConfig extends WebSecurityConfigurerAdapter {
 			            		break;
 			            	case ROLE_USER:
 			            		request.getSession().setAttribute("user", member);
-			            		response.sendRedirect(contextPath + "/user/home");
+			            		response.sendRedirect(contextPath + "/home");
 			            		break;
 			            	case ROLE_SELLER:
 			            		request.getSession().setAttribute("seller", member);

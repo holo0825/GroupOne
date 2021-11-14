@@ -203,7 +203,7 @@
 										<div class="col-md-6 col-sm-6 col-lg-6">
 											<label for="peopleNow">目前人數: <sup>*</sup></label>
 											<form:input class="brd-rd3" type="text" id="peopleNow"
-												path="peopleNow" value="${product.peopleNow}" readonly="readonly" />
+												path="peopleNow" value="${product.peopleNow}" readonly="true" />
 										</div>
 										<div class="col-md-6 col-sm-6 col-lg-6">
 										<label>品項: <sup>*</sup></label>
@@ -235,7 +235,7 @@
 										<div class="col-md-12 col-sm-12 col-lg-12">
 											<div class="step-buttons">
 												<button class="brd-rd3 red-bg" type="submit">
-													submit</button>
+													送出</button>
 											</div>
 										</div>
 									</div>

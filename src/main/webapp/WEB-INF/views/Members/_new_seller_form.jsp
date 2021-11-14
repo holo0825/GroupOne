@@ -436,8 +436,11 @@
 <!--                 		<br> -->
 <!--                 		<span style="margin: 20px; text-decoration: underline;"><b>(PDF格式)</b></span> -->
 						<div style="text-align: center; ">
-	                <img height='200px' width='400px' style="object-fit: cover;"
-			                src="<c:url value='/getMemberImage?username=${seller.username}'/>">
+		                <img height='200px' width='400px' style="object-fit: cover;"
+	                            src="
+	                    <c:if test="${!empty seller.id}">
+	                            <c:url value='/getMemberImage?username=${seller.username}'/>
+	                    </c:if>">
 		                </div>
 		            </div>
 		            <div class="st1" style="text-align: center;">
@@ -500,9 +503,9 @@
     ***********************************-->
     
     <!-- Required vendors -->
-    <script src="/focus2/vendor/global/global.min.js"></script>
-    <script src="/focus2/js/quixnav-init.js"></script>
-    <script src="/focus2/js/custom.min.js"></script>
+    <script src="<c:url value='/focus2/vendor/global/global.min.js' />"></script>
+    <script src="<c:url value='/focus2/js/quixnav-init.js' />"></script>
+    <script src="<c:url value='/focus2/js/custom.min.js' />"></script>
 	<script>
 // 		$(document).ready( function () {
 // 		      $('#example').DataTable({
@@ -583,8 +586,8 @@
 	</script>
 
     <!-- Datatable -->
-    <script src="/focus2/vendor/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="/focus2/js/plugins-init/datatables.init.js"></script>
+    <script src="<c:url value='/focus2/vendor/datatables/js/jquery.dataTables.min.js' />"></script>
+    <script src="<c:url value='/focus2/js/plugins-init/datatables.init.js' />"></script>
 </body>
 
 </html>

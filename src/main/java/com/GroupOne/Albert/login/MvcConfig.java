@@ -24,7 +24,7 @@ public class MvcConfig implements WebMvcConfigurer {
 //		registry.addViewController("/admin/home").setViewName("adminDash");
 		registry.addViewController("/admin/home").setViewName("Members/_new_user_DataTable");
 //		registry.addViewController("/user/home").setViewName("userDash");
-		registry.addViewController("/user/home").setViewName("Members/userDash");
+//		registry.addViewController("/user/home").setViewName("Members/userDash");
 //		registry.addViewController("/seller/home").setViewName("sellerDash");
 		
 		// 透過註冊告訴Spring一般會員註冊及商家會員註冊的頁面對應路徑和邏輯名稱

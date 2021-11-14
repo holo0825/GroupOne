@@ -127,11 +127,11 @@ public class CustomerController {
 
 	}
 
-	@GetMapping("/CartList/{type}")
-	public String cartListType(Model model, RedirectAttributes redModel, @PathVariable("type") String type) {
-
-//		return "redirect:/user/CartListOld";
-		return "shopping/CartList";
-	}
+//	@GetMapping("/CartList/{type}")
+//	public String cartListType(Model model, RedirectAttributes redModel, @PathVariable("type") String type) {
+//
+////		return "redirect:/user/CartListOld";
+//		return "shopping/CartList";
+//	}
 
 }
