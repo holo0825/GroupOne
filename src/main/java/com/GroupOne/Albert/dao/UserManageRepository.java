@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.GroupOne.Albert.members.Member;
 import com.GroupOne.Albert.members.MemberRole;
@@ -32,4 +34,8 @@ public interface UserManageRepository extends JpaRepository<Member, Integer>{
 
 	// user全查詢排除deleted為true的資料
 	List<Member> findByMemberRoleAndDeleted(MemberRole memberRole, Boolean deleted);
+	
+	@Query(value= "UPDATE Member SET deleted = :deleted WHERE id= :userid", nativeQuery = true)
+	void softDeleteById(@Param("deleted") Boolean deleted, @Param("userid") Integer userid);
+	
 }

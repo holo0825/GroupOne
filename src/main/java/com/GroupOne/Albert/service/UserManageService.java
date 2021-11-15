@@ -26,6 +26,9 @@ public interface UserManageService {
 //	boolean deleteUser(int id) throws SQLException;
 	boolean deleteUser(int id) throws SQLException;
 
+	// Soft delete user by id
+	void softDeleteById (Boolean deleted, int id) throws SQLException;
+
 	// Update user by id
 //	boolean updateUser(UserBean user) throws SQLException;
 	boolean updateUser(Member user) throws SQLException;

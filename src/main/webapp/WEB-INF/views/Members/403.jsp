@@ -34,6 +34,7 @@
 
             if (--timer < 0) {
 //                 window.location = "http://localhost:8080/login";
+//                 window.location.href = "<c:url value='/login'/>";
                 window.location.href = "<c:url value='/'/>";
                 clearInterval(end);
             }

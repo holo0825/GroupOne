@@ -379,7 +379,7 @@
                                                 		<i class="fa fa-facebook "></i>Facebook
                                                 	</a>
 <!--                                                 	<a class="google brd-rd3 " href="/oauth2/authorization/google" title="Google Plus " itemprop="url " target="_blank "> -->
-                                                	<a class="google brd-rd3 " href="/oauth2/authorization/google" title="Google Plus " itemprop="url ">
+                                                	<a class="google brd-rd3 " href="./oauth2/authorization/google" title="Google Plus " itemprop="url ">
                                                 		<i class="fa fa-google-plus "></i>Google
                                                 	</a>
 <!--                                                 	<a class="github brd-rd3 " href="# " title="GitHub " itemprop="url " target="_blank "> -->

@@ -22,29 +22,26 @@
 
 </head>
 <body itemscope>
-	<header>
-		<main>
-			<div class="preloader">
-				<div id="cooking">
-					<div class="bubble"></div>
-					<div class="bubble"></div>
-					<div class="bubble"></div>
-					<div class="bubble"></div>
-					<div class="bubble"></div>
-					<div id="area">
-						<div id="sides">
-							<div id="pan"></div>
-							<div id="handle"></div>
-						</div>
-						<div id="pancake">
-							<div id="pastry"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-	</header>
-
-	       <header class="stick">
+    <main>
+        <div class="preloader">
+            <div id="cooking">
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div id="area">
+                    <div id="sides">
+                        <div id="pan"></div>
+                        <div id="handle"></div>
+                    </div>
+                    <div id="pancake">
+                        <div id="pastry"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <header class="stick">
             <div class="topbar">
                 <div class="container">
                     <div class="topbar-register">
@@ -133,7 +130,7 @@
             </div>
             <!-- Logo Menu Section -->
         </header>
-        <!-- Header -->
+	<!-- Header -->
 	<section>
 		<div class="block">
 			<div style="background-image: url(assets/images/topbg.jpg);"
@@ -159,42 +156,45 @@
 	</div>
 
 
+	<section>
+		<div class="block less-spacing gray-bg top-padd30">
+			<div class="container">
+				<div class="col-lg-12">
+					<div class="card">
 
-	<div class="container">
-		<div class="col-lg-12">
-			<div class="card">
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-striped table-responsive-sm">
 
-				<div class="card-body">
-					<div class="table-responsive">
-						<table class="table table-striped table-responsive-sm">
+									<thead>
+										<tr>
+											<th>餐廳名稱</th>
+											<!-- 						<th>餐廳照片</th>					 -->
+											<th>餐廳類型</th>
+											<th>餐廳電話</th>
+											<th></th>
+										</tr>
+									</thead>
 
-							<thead>
-								<tr>
-									<th>餐廳名稱</th>
-									<!-- 						<th>餐廳照片</th>					 -->
-									<th>餐廳類型</th>
-									<th>餐廳電話</th>
-									<th></th>
-								</tr>
-							</thead>
-
-							<tbody>								
-									<tr>
-										<td>${rstName.rstName}</td>
-										<%-- 				<td>${rstname.rstImage}</td> --%>
-										<td>${rstName.category}</td>
-										<td>${rstName.rstTel}</td>
-										<td><a href="./menuforrestaurant${rstName.rstName}">查看餐廳</a></td>
-									</tr>								
-							</tbody>
-						</table>
-						<br> <a href="<c:url value='/restaurants' />">回前頁</a>
+									<tbody>
+										<tr>
+											<td>${rstName.rstName}</td>
+											<%-- 				<td>${rstname.rstImage}</td> --%>
+											<td>${rstName.category}</td>
+											<td>${rstName.rstTel}</td>
+											<td><a href="./menuforrestaurant${rstName.rstName}">查看餐廳</a></td>
+										</tr>
+									</tbody>
+								</table>
+								<br> <a href="<c:url value='/restaurants' />">回前頁</a>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
+	</section>
 
 	<footer>
 		<div class="block top-padd80 bottom-padd80 dark-bg">

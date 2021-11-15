@@ -63,7 +63,7 @@
 				} else {
 					$.ajax({
 						type: 'post',
-						url: "/ajaxCheckUsername",
+						url: "../ajaxCheckUsername",
 						data: JSON.stringify({username: $('#username').val()}),
 						contentType: 'application/json; charset=utf-8',
 						//dataType: 'html',

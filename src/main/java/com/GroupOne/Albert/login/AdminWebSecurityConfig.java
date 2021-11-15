@@ -147,8 +147,9 @@ public class AdminWebSecurityConfig extends WebSecurityConfigurerAdapter {
 			            
 			            UrlPathHelper helper = new UrlPathHelper();
 			            String contextPath = helper.getContextPath(request);
-			            // 根據enabled欄位是否為true判斷使用者是否已經確認信箱啟用帳號
-//			            if (member.getEnabled()) {
+			            // 1. 根據enabled欄位是否為true判斷使用者是否已經確認信箱啟用帳號，true代表
+			            // 2. 根據deleted欄位是否為false判斷使用者帳號是否遭到刪除。false代表未刪除
+//			            if (member.getEnabled()==true && member.getDeleted()==false) {
 			            	switch (memberRole) {
 			            	case ROLE_ADMIN:
 			            		request.getSession().setAttribute("admin", member);
@@ -158,6 +159,7 @@ public class AdminWebSecurityConfig extends WebSecurityConfigurerAdapter {
 			            		break;
 			            	case ROLE_USER:
 			            		request.getSession().setAttribute("user", member);
+//			            		response.sendRedirect(contextPath + "/user/home");
 			            		response.sendRedirect(contextPath + "/home");
 			            		break;
 			            	case ROLE_SELLER:
@@ -203,7 +205,8 @@ public class AdminWebSecurityConfig extends WebSecurityConfigurerAdapter {
 //						response.sendRedirect("/UserHome");
 						UrlPathHelper helper = new UrlPathHelper();
 			            String contextPath = helper.getContextPath(request);
-			            response.sendRedirect(contextPath + "/user/home");
+//			            response.sendRedirect(contextPath + "/user/home");
+			            response.sendRedirect(contextPath + "/home");
 			            
 					}
 				})

@@ -18,7 +18,9 @@
     <!-- ========================================================================================== -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="<c:url value='/js/jquery-3.6.0.js' />"></script>
+    
     <script src="<c:url value='/js/jquery.dataTables.min.js' />"></script>
+    
     <script type="text/javascript">
         $(document).ready(function() {
             $('tbody').on('click', '.delete', function() { //刪除
@@ -193,6 +195,7 @@
 									<i class="mdi mdi-account"></i>
 							</a>
 								<div class="dropdown-menu dropdown-menu-right">
+<!-- 									<a href="./page-login.html" class="dropdown-item"> -->
 									<a href="#" class="dropdown-item">
                                         <i class="icon-key"></i>
                                         <span class="ml-2">
@@ -379,8 +382,7 @@
 
                                                         <a href=".\deleteuser\<c:out value='${user.id}' />">
                                                             <button class="btn btn-danger" onclick="return confirm('請確認是否刪除該筆買家資料');">
-                                                                <!-- 刪除 -->
-<!--                                                                 <img src="./mySvg/trash-2.svg"> -->
+<!--                                                                 刪除 -->
                                                                 <img src="<c:url value='/mySvg/trash-2.svg'/>">
                                                             </button>
                                                         </a>

@@ -26,8 +26,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.GroupOne.Albert.OAuth2.Provider;
 import com.GroupOne.Albert.dao.UserManageRepository;
 import com.GroupOne.Albert.members.Member;
+import com.GroupOne.Albert.members.MemberRole;
 import com.GroupOne.Albert.members.oldusers.UserBean;
 import com.GroupOne.Albert.service.UserManageService;
 
@@ -129,7 +131,8 @@ public class UserManageController {
 	@ResponseBody
 	public void ajaxDeleteUser(@PathVariable int userId, Model model) throws SQLException {
 		System.out.println("===========================" + userId);
-		umService.deleteUser(userId);
+//		umService.deleteUser(userId);
+		umService.softDeleteById(true, userId);
 	}
 	
 	// 專門處理Ajax全查詢功能
@@ -160,6 +163,11 @@ public class UserManageController {
 		
 //		UserBean book = new UserBean(id, username, password, fullname, dob, gender, email, phoneNumber, homeNumber, bonusPoint);
 		Member book = new Member(id, username, password, fullname, dob, gender, email, phoneNumber, homeNumber, bonusPoint);
+		//=========================================
+		book.setMemberRole(MemberRole.ROLE_USER);
+		book.setProvider(Provider.LOCAL);
+		book.setDeleted(false);
+		//=========================================
 		umService.updateUser(book);
 		return "redirect:/admin/listuser";
 	}
@@ -179,6 +187,11 @@ public class UserManageController {
 			
 //		UserBean newUser = new UserBean(username, password, fullname, dob, gender, email, phoneNumber, homeNumber, bonusPoint);
 		Member newUser = new Member(username, password, fullname, dob, gender, email, phoneNumber, homeNumber, bonusPoint);
+		//=========================================
+		newUser.setMemberRole(MemberRole.ROLE_USER);
+		newUser.setProvider(Provider.LOCAL);
+		newUser.setDeleted(false);
+		//=========================================
 		umService.insertUser(newUser);
 		return "redirect:/admin/listuser";
 	}

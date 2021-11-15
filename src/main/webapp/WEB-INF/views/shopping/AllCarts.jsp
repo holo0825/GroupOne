@@ -127,6 +127,9 @@
                                 <li class="menu-item-has-children">
                                     <a href="#" title="#" itemprop="url"><span class="red-clr"></span>會員中心</a>
                                     <ul class="sub-dropdown">
+                                    	<li>
+                                            <a href="<c:url value='/user/UserEditProfile' />" itemprop="url">個人檔案</a>
+                                        </li>
                                         <li>
                                             <a href="<c:url value='/user/AllCarts' />" itemprop="url">訂單紀錄</a>
                                         </li>

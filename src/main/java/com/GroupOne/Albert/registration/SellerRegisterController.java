@@ -205,6 +205,7 @@ public class SellerRegisterController {
 		sellerRegisterBean.setMemberRole(MemberRole.ROLE_SELLER);
 		sellerRegisterBean.setProvider(Provider.LOCAL);
 		sellerRegisterBean.setEnabled(false);
+		sellerRegisterBean.setDeleted(false);
 		
 		try {
 //			memberService.save(sellerRegisterBean);

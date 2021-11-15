@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.GroupOne.Albert.OAuth2.Provider;
 import com.GroupOne.Albert.members.Member;
+import com.GroupOne.Albert.members.MemberRole;
 import com.GroupOne.Albert.service.SellerManageService;
 
 // Admin管理Seller會員專用的Controller
@@ -157,12 +159,15 @@ public class SellerManageController {
 								@RequestParam String extensionNumber,
 								@RequestParam String companyName,
 								@RequestParam String companyAddress,
-								@RequestParam(value="bonusPoint", defaultValue="false") Boolean deleted,
+								@RequestParam(value="deleted", defaultValue="false") Boolean deleted,
 								Model model) throws SQLException {
 //		deleted = false;
 		
 //		SellerBean book = new SellerBean(id, username, password, fullname, dob, gender, email, phoneNumber, telephoneNumber, extensionNumber, companyName, companyAddress, businessCert, verifyStatus);
 		Member book = new Member(id, username, password, fullname, dob, gender, email, phoneNumber, telephoneNumber, extensionNumber, companyName, companyAddress, deleted);
+		book.setMemberRole(MemberRole.ROLE_SELLER);
+		book.setProvider(Provider.LOCAL);
+		book.setDeleted(false);
 		smService.updateSeller(book);
 		return "redirect:/admin/listseller";
 	}
@@ -180,12 +185,15 @@ public class SellerManageController {
 								@RequestParam String extensionNumber,
 								@RequestParam String companyName,
 								@RequestParam String companyAddress,
-								@RequestParam(value="verifyStatus", required = false, defaultValue = "false") Boolean deleted,
+								@RequestParam(value="deleted", required = false, defaultValue = "false") Boolean deleted,
 								Model model) throws SQLException {
 //		deleted = null;
 		
 //		SellerBean newSeller = new SellerBean(username, password, fullname, dob, gender, email, phoneNumber, telephoneNumber, extensionNumber, companyName, companyAddress, businessCert, verifyStatus);
 		Member newSeller = new Member(username, password, fullname, dob, gender, email, phoneNumber, telephoneNumber, extensionNumber, companyName, companyAddress, deleted);
+		newSeller.setMemberRole(MemberRole.ROLE_SELLER);
+		newSeller.setProvider(Provider.LOCAL);
+		newSeller.setDeleted(false);
 		smService.insertSeller(newSeller);
 		return "redirect:/admin/listseller";
 	}

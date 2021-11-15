@@ -36,7 +36,8 @@ public class UserEditProfileController {
 			return "redirect:/login";
 		}
 //		return "userEditProfile";
-		return "Members/userEditProfile";
+//		return "Members/userEditProfile";
+		return "Members/__user_dash";
 	}
 
 //	@GetMapping("/UpdateUserProfile")
@@ -65,13 +66,23 @@ public class UserEditProfileController {
 		Member updateUserProfileBean;
 //		if (username != null) {
 //			updateUserProfileBean = new UserBean(id, username, password, fullname, dob, gender, email, phoneNumber, homeNumber, bonusPoint);
-			updateUserProfileBean = new Member(id, username, password, fullname, dob, gender, email, phoneNumber, homeNumber, bonusPoint);
+			updateUserProfileBean = new Member(id, 
+											   username, 
+											   password, 
+											   fullname, 
+											   dob, 
+											   gender, 
+											   email, 
+											   phoneNumber, 
+											   homeNumber, 
+											   bonusPoint);
 			if (updateUserProfileBean != null) {
 				userManageService.updateUser(updateUserProfileBean);
 //				request.getSession().setAttribute("user", updateUserProfileBean);
 				model.addAttribute("user", updateUserProfileBean);
 			}
 //		}
-		return "redirect:/user/home";
+//		return "redirect:/user/home";
+		return "redirect:/home";
 	}
 }

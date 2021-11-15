@@ -191,6 +191,7 @@ public class UserRegisterController {
 		userRegisterBean.setProvider(Provider.LOCAL);
 		userRegisterBean.setBonusPoint((float) 0);
 		userRegisterBean.setEnabled(false);
+		userRegisterBean.setDeleted(false);
 		
 		try {
 //			memberService.save(userRegisterBean);

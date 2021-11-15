@@ -415,23 +415,25 @@
 						value="<c:out value='${user.bonusPoint}' />" class="form-control"
 						name="bonusPoint">
 				</fieldset>
+				
 				<fieldset class="form-group">
-                    <label>會員大頭照</label> 
-                        <div style="text-align: center; ">
-                    <img height='200px' width='400px' style="object-fit: cover;"
+					<label>會員大頭照</label> 
+						<div style="text-align: center; ">
+	                <img height='200px' width='400px' style="object-fit: cover;"
                             src="
                     <c:if test="${!empty user.id}">
                             <c:url value='/getMemberImage?username=${user.username}'/>
                     </c:if>
                             ">
-                        </div>
-                    </div>
-                    <div class="st1" style="text-align: center;">
-                        <input type="file" name="file1" accept="image/*" name="memberMultipartFile" id="file" onchange="loadFile(event)" >
-                        <br>
-                        <span style="margin: 20px; text-decoration: underline;"><b>(任何圖片格式)</b></span>
-                    </div>
-                </fieldset>
+		                </div>
+		            </div>
+		            <div class="st1" style="text-align: center;">
+		                <input type="file" name="file1" accept="image/*" name="memberMultipartFile" id="file" onchange="loadFile(event)" >
+		                <br>
+		                <span style="margin: 20px; text-decoration: underline;"><b>(任何圖片格式)</b></span>
+		            </div>
+				</fieldset>
+
 				<button type="submit" class="btn btn-success">儲存變更</button>
 				</form>	
 
@@ -484,9 +486,9 @@
     ***********************************-->
     
     <!-- Required vendors -->
-    <script src="<c:url value='/focus2/vendor/global/global.min.js' />"></script>
-    <script src="<c:url value='/focus2/js/quixnav-init.js' />"></script>
-    <script src="<c:url value='/focus2/js/custom.min.js' />"></script>
+    <script src="<c:url value='/focus2/vendor/global/global.min.js'/>"></script>
+    <script src="<c:url value='/focus2/js/quixnav-init.js'/>"></script>
+    <script src="<c:url value='/focus2/js/custom.min.js'/>"></script>
 	<script>
 // 		$(document).ready( function () {
 // 		      $('#example').DataTable({
@@ -567,8 +569,8 @@
 	</script>
 
     <!-- Datatable -->
-    <script src="<c:url value='/focus2/vendor/datatables/js/jquery.dataTables.min.js' />"></script>
-    <script src="<c:url value='/focus2/js/plugins-init/datatables.init.js' />"></script>
+    <script src="<c:url value='/focus2/vendor/datatables/js/jquery.dataTables.min.js'/>"></script>
+    <script src="<c:url value='/focus2/js/plugins-init/datatables.init.js'/>"></script>
 </body>
 
 </html>

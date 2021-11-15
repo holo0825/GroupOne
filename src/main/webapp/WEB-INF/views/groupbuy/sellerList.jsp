@@ -14,7 +14,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="" />
 <meta name="keywords" content="" />
-<title>Food Ordering HTML Template</title>
+<title>團購商品目錄</title>
 <link rel="shortcut icon" href="../assets/images/favicon.png"
 	type="image/x-icon">
 <link rel="stylesheet" href="../assets/css/icons.min.css">

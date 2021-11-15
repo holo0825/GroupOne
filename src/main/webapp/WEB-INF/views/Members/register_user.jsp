@@ -63,7 +63,7 @@
 				} else {
 					$.ajax({
 						type: 'post',
-						url: "/ajaxCheckUsername",
+						url: "../ajaxCheckUsername",
 						data: JSON.stringify({username: $('#username').val()}),
 						contentType: 'application/json; charset=utf-8',
 						//dataType: 'html',
@@ -505,7 +505,7 @@
                                                         <!--註冊表單送出按鈕-->
                                                         <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 ">
                                                             <button class="red-bg brd-rd3 " style="font-size: 20px;" type="submit ">立即註冊</button>
-                                                            <input type="button" class="btn btn-info" value="商家用戶註冊一鍵輸入" onclick='quickInput();'>
+                                                            <input type="button" class="btn btn-info" value="一般用戶註冊一鍵輸入" onclick='quickInput();'>
                                                         </div>
                                                         <!-- <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 ">
                                                             <a class="sign-btn " href="# " title=" " itemprop="url " style="font-size: 15px;">已經註冊了嗎？ 登入</a>

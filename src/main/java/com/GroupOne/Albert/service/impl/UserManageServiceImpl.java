@@ -73,6 +73,15 @@ public class UserManageServiceImpl implements UserManageService {
 		return false;
 	}
 
+	// soft delete user by id
+	@Override
+	public void softDeleteById(Boolean deleted, int id) throws SQLException {
+		if (selectUser(id)!=null) {
+			userManageRepo.softDeleteById(deleted ,id);
+			System.out.println("Soft delete user by id successful");
+		}
+	}
+
 //	@Override
 //	public boolean updateUser(UserBean user) throws SQLException {
 //		return umDao.updateUser(user);

@@ -28,29 +28,26 @@ textarea {
 </head>
 
 <body itemscope>
-	<header>
-		<main>
-			<div class="preloader">
-				<div id="cooking">
-					<div class="bubble"></div>
-					<div class="bubble"></div>
-					<div class="bubble"></div>
-					<div class="bubble"></div>
-					<div class="bubble"></div>
-					<div id="area">
-						<div id="sides">
-							<div id="pan"></div>
-							<div id="handle"></div>
-						</div>
-						<div id="pancake">
-							<div id="pastry"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-	</header>
-
-	       <header class="stick">
+    <main>
+        <div class="preloader">
+            <div id="cooking">
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div id="area">
+                    <div id="sides">
+                        <div id="pan"></div>
+                        <div id="handle"></div>
+                    </div>
+                    <div id="pancake">
+                        <div id="pastry"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <header class="stick">
             <div class="topbar">
                 <div class="container">
                     <div class="topbar-register">

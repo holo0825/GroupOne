@@ -196,7 +196,8 @@
 									<i class="mdi mdi-account"></i>
 							</a>
 								<div class="dropdown-menu dropdown-menu-right">
-									<a href="./page-login.html" class="dropdown-item">
+<!-- 									<a href="./page-login.html" class="dropdown-item"> -->
+									<a href="#" class="dropdown-item">
                                         <i class="icon-key"></i>
                                         <span class="ml-2">
                                             <form action="<c:url value='/logout' />" method="post" style="display:inline;">
@@ -395,12 +396,12 @@
 
                                                         <a href=".\deleteseller\<c:out value='${seller.id}' />">
                                                             <button class="btn btn-danger" onclick="return confirm('請確認是否刪除該筆買家資料');">
-                                                                <!-- 刪除 -->
-<!--                                                                 <img src="./mySvg/trash-2.svg"> -->
+<!--                                                                 刪除 -->
                                                                 <img src="<c:url value='/mySvg/trash-2.svg'/>">
                                                             </button>
                                                         </a>
                                                     </td>
+                                                    
 <!--                                                     <td> -->
 <!--                                                         <button type="button" class="btn btn-primary delete"> -->
 <!--                                                             AjaxDelete -->

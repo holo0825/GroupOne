@@ -15,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -38,6 +40,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "Member")
+//@SQLDelete(sql = "UPDATE Member SET deleted = true WHERE id=?")
+//@Where(clause = "deleted=false")
 public class Member {
 //public class Member implements UserDetails{
 
@@ -152,28 +156,43 @@ public class Member {
 	}
 
 	// USER UPDATE/EDIT專用Constructor
-	public Member(Integer id, String username, String fullname, String email, String password, String dob,
-			String gender, String phoneNumber, String homeNumber, Float bonusPoint) {
+	public Member(Integer id, 
+			String username, 
+			String password, 
+			String fullname, 
+			String dob,
+			String gender, 
+			String email, 
+			String phoneNumber, 
+			String homeNumber, 
+			Float bonusPoint) {
 		this.id = id;
 		this.username = username;
-		this.fullname = fullname;
-		this.email = email;
 		this.password = password;
+		this.fullname = fullname;
 		this.dob = dob;
 		this.gender = gender;
+		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.homeNumber = homeNumber;
 		this.bonusPoint = bonusPoint;
 	}
 	
 	// USER CREATE專用Constructor
-	public Member(String username, String fullname, String email, String password, String dob,
-			String gender, String phoneNumber, String homeNumber, Float bonusPoint) {
+	public Member(String username, 
+			String password, 
+			String fullname, 
+			String dob,
+			String gender, 
+			String email, 
+			String phoneNumber, 
+			String homeNumber, 
+			Float bonusPoint) {
 		this.username = username;
-		this.fullname = fullname;
-		this.email = email;
 		this.password = password;
+		this.fullname = fullname;
 		this.dob = dob;
+		this.email = email;
 		this.gender = gender;
 		this.phoneNumber = phoneNumber;
 		this.homeNumber = homeNumber;
@@ -181,16 +200,26 @@ public class Member {
 	}
 
 	// SELLER UPDATE/EDIT專用Constructor
-	public Member(Integer id, String username, String fullname, String email, String password, String dob,
-			String gender, String phoneNumber, String telephoneNumber, String extensionNumber, String companyName,
-			String companyAddress, Boolean deleted) {
+	public Member(Integer id, 
+			String username, 
+			String password, 
+			String fullname, 
+			String dob,
+			String gender, 
+			String email, 
+			String phoneNumber, 
+			String telephoneNumber, 
+			String extensionNumber, 
+			String companyName,
+			String companyAddress, 
+			Boolean deleted) {
 		this.id = id;
 		this.username = username;
-		this.fullname = fullname;
-		this.email = email;
 		this.password = password;
+		this.fullname = fullname;
 		this.dob = dob;
 		this.gender = gender;
+		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.telephoneNumber = telephoneNumber;
 		this.extensionNumber = extensionNumber;
@@ -200,15 +229,24 @@ public class Member {
 	}
 	
 	// SELLER CREATE/INSERT專用Constructor
-	public Member(String username, String fullname, String email, String password, String dob,
-			String gender, String phoneNumber, String telephoneNumber, String extensionNumber, String companyName,
-			String companyAddress, Boolean deleted) {
+	public Member(String username, 
+			String password, 
+			String fullname, 
+			String dob, 
+			String gender, 
+			String email, 
+			String phoneNumber, 
+			String telephoneNumber, 
+			String extensionNumber, 
+			String companyName,
+			String companyAddress, 
+			Boolean deleted) {
 		this.username = username;
-		this.fullname = fullname;
-		this.email = email;
 		this.password = password;
+		this.fullname = fullname;
 		this.dob = dob;
 		this.gender = gender;
+		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.telephoneNumber = telephoneNumber;
 		this.extensionNumber = extensionNumber;

@@ -20,30 +20,28 @@
 <link rel="stylesheet" href="../assets/css/yu.css">
 </head>
 
-<body itemscope>
-	<header>
-		<main>
-			<div class="preloader">
-				<div id="cooking">
-					<div class="bubble"></div>
-					<div class="bubble"></div>
-					<div class="bubble"></div>
-					<div class="bubble"></div>
-					<div class="bubble"></div>
-					<div id="area">
-						<div id="sides">
-							<div id="pan"></div>
-							<div id="handle"></div>
-						</div>
-						<div id="pancake">
-							<div id="pastry"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-	</header>
 
-	       <header class="stick">
+<body itemscope>
+    <main>
+        <div class="preloader">
+            <div id="cooking">
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div id="area">
+                    <div id="sides">
+                        <div id="pan"></div>
+                        <div id="handle"></div>
+                    </div>
+                    <div id="pancake">
+                        <div id="pastry"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <header class="stick">
             <div class="topbar">
                 <div class="container">
                     <div class="topbar-register">
@@ -132,100 +130,106 @@
             </div>
             <!-- Logo Menu Section -->
         </header>
-        <!-- Header -->
-	
-	 <div class="bread-crumbs-wrapper">
-            <div class="container">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href=./seller/ManageRestaurant title="" itemprop="url">新建餐廳</a></li>
-                    <li class="breadcrumb-item active">建立完成</li>
-                </ol>
-            </div>
-        </div>
+	<!-- Header -->
 
-	<h1 style="text-align: center; margin:30px;">恭喜您，您的餐廳已建立完成！</h1>
-	<a href="<c:url value='./ManageRestaurant' />"> <img src="../assets/images/restaurant.png"
-		style="width: 500px; height: 500px; display: block; margin: auto;">		
-	</a>
-        <footer>
-            <div class="block top-padd80 bottom-padd80 dark-bg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 col-lg-12">
-                            <div class="footer-data">
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-6 col-lg-3">
-                                        <div class="widget about_widget wow fadeIn" data-wow-delay="0.1s">
-                                            <div class="logo">
-                                                <h1 itemprop="headline">
-                                                    <a href="#" title="Home" itemprop="url"><img src="../assets/images/logo.png" alt="logo.png" itemprop="image"></a>
-                                                </h1>
-                                            </div>
-                                            <p itemprop="description">聚點食刻，共享美食每一刻！<p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-lg-3">
-                                        <div class="widget information_links wow fadeIn" data-wow-delay="0.2s">
-                                            <h4 class="widget-title" itemprop="headline">About Shop</h4>
-                                            <ul>
-                                                <li>
-                                                    <a href="#" title="" itemprop="url">購物須知</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" title="" itemprop="url">退換貨政策</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" title="" itemprop="url">付款方式</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-lg-3">
-                                        <div class="widget customer_care wow fadeIn" data-wow-delay="0.3s">
-                                            <h4 class="widget-title" itemprop="headline">關於我們</h4>
-                                            <ul>
-                                                <li>
-                                                    <a href="#" title="" itemprop="url">會員條款</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" title="" itemprop="url">隱私權保護政策</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" title="" itemprop="url">關於聚點食刻</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-lg-3">
-                                        <div class="widget get_in_touch wow fadeIn" data-wow-delay="0.4s">
-                                            <h4 class="widget-title" itemprop="headline">聯絡我們</h4>
-                                            <ul>
-                                                <li>
-                                                    <i class="fa fa-envelope"></i>
-                                                    <a href="#" title="" itemprop="url">hello@yourdomain.com</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Footer Data -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <div class="bottom-bar dark-bg text-center">
-            <div class="container">
-                <p itemprop="description">
-                    &copy; 2021
-                    <a class="red-clr" href="http://www.bootstrapmb.com" title="Webinane" itemprop="url" target="_blank"></a>聚點食刻. All Rights Reserved
-                </p>
-            </div>
-        </div>
-        <script src="../assets/js/jquery.min.js"></script>
-        <script src="../assets/js/bootstrap.min.js"></script>
-        <script src="../assets/js/plugins.js"></script>
-        <script src="../assets/js/main.js"></script>
+	<div class="bread-crumbs-wrapper">
+		<div class="container">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href=./seller/ManageRestaurant
+					title="" itemprop="url">新建餐廳</a></li>
+				<li class="breadcrumb-item active">建立完成</li>
+			</ol>
+		</div>
+	</div>
+	<section>
+		<div class="block less-spacing gray-bg top-padd30">
+			<div class="container">
+				<div class="col-lg-12">
+					<div class="card">
+						<h1 style="text-align: center; margin: 30px;">恭喜您，您的餐廳已建立完成！</h1>
+						<a href="<c:url value='./ManageRestaurant' />"> <img
+							src="../assets/images/restaurant.png"
+							style="width: 500px; height: 500px; display: block; margin: auto;">
+						</a>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<div class="block top-padd80 bottom-padd80 dark-bg">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-lg-12">
+						<div class="footer-data">
+							<div class="row">
+								<div class="col-md-3 col-sm-6 col-lg-3">
+									<div class="widget about_widget wow fadeIn"
+										data-wow-delay="0.1s">
+										<div class="logo">
+											<h1 itemprop="headline">
+												<a href="#" title="Home" itemprop="url"><img
+													src="../assets/images/logo.png" alt="logo.png"
+													itemprop="image"></a>
+											</h1>
+										</div>
+										<p itemprop="description">聚點食刻，共享美食每一刻！
+										<p>
+									</div>
+								</div>
+								<div class="col-md-3 col-sm-6 col-lg-3">
+									<div class="widget information_links wow fadeIn"
+										data-wow-delay="0.2s">
+										<h4 class="widget-title" itemprop="headline">About Shop</h4>
+										<ul>
+											<li><a href="#" title="" itemprop="url">購物須知</a></li>
+											<li><a href="#" title="" itemprop="url">退換貨政策</a></li>
+											<li><a href="#" title="" itemprop="url">付款方式</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="col-md-3 col-sm-6 col-lg-3">
+									<div class="widget customer_care wow fadeIn"
+										data-wow-delay="0.3s">
+										<h4 class="widget-title" itemprop="headline">關於我們</h4>
+										<ul>
+											<li><a href="#" title="" itemprop="url">會員條款</a></li>
+											<li><a href="#" title="" itemprop="url">隱私權保護政策</a></li>
+											<li><a href="#" title="" itemprop="url">關於聚點食刻</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="col-md-3 col-sm-6 col-lg-3">
+									<div class="widget get_in_touch wow fadeIn"
+										data-wow-delay="0.4s">
+										<h4 class="widget-title" itemprop="headline">聯絡我們</h4>
+										<ul>
+											<li><i class="fa fa-envelope"></i> <a href="#" title=""
+												itemprop="url">hello@yourdomain.com</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Footer Data -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<div class="bottom-bar dark-bg text-center">
+		<div class="container">
+			<p itemprop="description">
+				&copy; 2021 <a class="red-clr" href="http://www.bootstrapmb.com"
+					title="Webinane" itemprop="url" target="_blank"></a>聚點食刻. All
+				Rights Reserved
+			</p>
+		</div>
+	</div>
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/bootstrap.min.js"></script>
+	<script src="../assets/js/plugins.js"></script>
+	<script src="../assets/js/main.js"></script>
 </body>
 </html>
